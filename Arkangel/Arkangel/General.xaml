@@ -1,0 +1,40 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Arkangel"
+             xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Arkangel.General"
+             mc:Ignorable="d" 
+             d:DesignHeight="430" d:DesignWidth="727">
+    <Grid>
+        <TabControl FontSize="30" FontFamily="FontAwesome" BorderBrush="White" >
+            <TabItem Header="General" BorderBrush="White" FontSize="30">
+                <StackPanel Margin="0,0,6,0" >
+                    <GroupBox Header="Security Setting" Height="126" Margin="-3,0,0,0" FontSize="20" >
+                    <CheckBox Content="Disable Task Manager"></CheckBox>
+                    
+                </GroupBox>
+                    <GroupBox Header="Encrypt logs" Height="114" Margin="-3,0,0,0" FontSize="20">
+                        <CheckBox IsChecked="True">
+                            Enable Encrypt logs
+                        </CheckBox>
+                    </GroupBox>
+                    <GroupBox Header="Hot Keys" Height="102" Margin="-3,0,0,0" FontSize="20">
+                        <StackPanel>
+                            <CheckBox IsChecked="True">
+                                Run as Windows start up
+                            </CheckBox>
+                            <CheckBox>
+                                 Hoy key : Ctrl + Shift + O
+                            </CheckBox>
+                        </StackPanel>
+                    </GroupBox>
+                    <Button Margin="528,6,12,0" Content="OK"/>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+
+</UserControl>

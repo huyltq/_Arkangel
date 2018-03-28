@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="Arkangel.Screenshot"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Arkangel"
+             mc:Ignorable="d" 
+             d:DesignHeight="430" d:DesignWidth="727">
+    <Grid>
+        <TabControl BorderBrush="White">
+            <TabItem Header="Screenshot" FontSize="30">
+                <StackPanel>
+                    <GroupBox Header="Enable/Disable" FontSize="20" Margin="0,0,5,0">
+                        <CheckBox>
+                            Enable visual surveilance
+                        </CheckBox>
+                    </GroupBox>
+                    <TextBlock Height="15"></TextBlock>
+                    <GroupBox Header="Setting" FontSize="20" Margin="0,0,5,0">
+                        <StackPanel>
+                            <CheckBox>Timestamp and user name on screenshots</CheckBox>
+                            <CheckBox>Enable douple screen for screenshot</CheckBox>
+                            <Grid>
+
+                                <CheckBox>Delete after ________ days</CheckBox>
+                                <TextBox Height="auto" Width="35" Margin="130,0,533,0" BorderBrush="#89FFFFFF"></TextBox>
+                            </Grid>
+                            <Grid>
+                                <TextBlock>
+                                Make screen capture every _____ hours _____ minutes
+                                </TextBlock>
+                                <TextBox Height="auto" Margin="243,-7,414,7" BorderBrush="#89FFFFFF"/>
+                                <TextBox Height="auto" Margin="346,-7,310,7" BorderBrush="#89FFFFFF"/>
+                            </Grid>
+                            <TextBlock>
+                                Picture quality (higher quality require more disk space
+                            </TextBlock>
+                            <Slider Width="500"
+                            TickFrequency="5"
+                            Orientation="Horizontal"
+                            TickPlacement="BottomRight"
+                            Minimum="1"
+                            Maximum="100"
+                            Value="50"
+                            IsSelectionRangeEnabled="True" />
+                        </StackPanel>
+                    </GroupBox>
+
+                </StackPanel>
+            </TabItem>
+
+        </TabControl>
+        <Button Width="160" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="OK" Margin="0,20,30,8"/>
+    </Grid>
+</UserControl>
