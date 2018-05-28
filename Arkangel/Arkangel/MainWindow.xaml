@@ -15,62 +15,86 @@
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
         >
+    <Window.Resources>
+        <Storyboard x:Key="OpenMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="50"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="150"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="CloseMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="150"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="OpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="CloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid>
-        <Button Height="50" Width="50" VerticalAlignment="Top" HorizontalAlignment="Right" RenderTransformOrigin="-0.89,0.566" Margin="0,0,102,0" Background="White" BorderBrush="White" Padding="0" Click="Button_Click" >
-            <materialDesign:PackIcon Kind="Home" Foreground="#DD000000" Height="50" Width="50" />
-        </Button>
+        <Grid  Height="50"  VerticalAlignment="Top" Margin="150,0,0,0">
+            <StackPanel Height="50"  VerticalAlignment="Top" Background="LightGreen" Margin="-100,0,0,0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="150" Height="50">
+                    <Button Height="50" Width="50" HorizontalAlignment="Left" Background="{x:Null}" Foreground="DarkGreen" BorderBrush="{x:Null}" Padding="4">
+                        <materialDesign:PackIcon Kind="Home" Height="40" Width="40"/>
+                    </Button>
+                    <Button Height="50" Width="50" HorizontalAlignment="Center" Background="{x:Null}" Foreground="DarkGreen" BorderBrush="{x:Null}" Padding="4">
+                        <materialDesign:PackIcon Kind="AccountMultiple" Height="40" Width="40"/>
+                    </Button>
+                    <Button Height="50" Width="50" HorizontalAlignment="Right" Background="{x:Null}" Foreground="DarkGreen" BorderBrush="{x:Null}" Padding="4">
+                        <materialDesign:PackIcon Kind="Logout" Height="40" Width="40"/>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </Grid >
+        <Grid x:Name="GridMenu" Width="50" HorizontalAlignment="Left">
+            <StackPanel Height="50" VerticalAlignment="Top" Background="LightGreen">
+                <Grid Height="50">
+                    <Button x:Name="CloseMenu" HorizontalAlignment="Right" Height="50" Width="50" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="DarkGreen" Padding="1" Visibility="Collapsed" Click="Button_CloseMenu_Click">
+                        <materialDesign:PackIcon Kind="ArrowLeft" Width="45" Height="45"></materialDesign:PackIcon>
+                    </Button>
+                    <Button x:Name="OpenMenu" HorizontalAlignment="Right" Height="50" Width="50" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="DarkGreen" Padding="1" Click="Button_OpenMenu_Click">
+                        <materialDesign:PackIcon  Kind="Menu" Width="45" Height="45"></materialDesign:PackIcon>
+                    </Button>
+                </Grid>
+            </StackPanel>
+            <ListView x:Name="allIcon" Padding="0 0 0 0" Margin="0,50,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Visibility="Hidden">
+                <StackPanel Orientation="Horizontal" Height="494" Width="135">
+                    <StackPanel Width="67.5">
+                        <Button Padding="0" Margin=" 4 4 4 4">
+                            <materialDesign:PackIcon Kind="Asterisk" Height="27" Width="27" />
+                        </Button>
+                        <Button Padding="0" Margin=" 4 4 4 4">
+                            <materialDesign:PackIcon Kind="Asterisk" Height="27" Width="27" />
+                        </Button>
+                        <Button Padding="0" Margin=" 4 4 4 4">
+                            <materialDesign:PackIcon Kind="Asterisk" Height="27" Width="27" />
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Width="67.5">
+                        <Button Padding="0" Margin=" 4 4 4 4">
+                            <materialDesign:PackIcon Kind="Asterisk" Height="27" Width="27" />
+                        </Button>
+                        <Button Padding="0" Margin=" 4 4 4 4">
+                            <materialDesign:PackIcon Kind="Asterisk" Height="27" Width="27" />
+                        </Button>
+                        <Button Padding="0" Margin=" 4 4 4 4">
+                            <materialDesign:PackIcon Kind="Asterisk" Height="27" Width="27" />
+                        </Button>
+                        <Button Padding="0" Margin=" 4 4 4 4">
+                            <materialDesign:PackIcon Kind="Asterisk" Height="27" Width="27" />
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </ListView>
 
-        <materialDesign:PackIcon Kind="Logout" Height="50" Width="50" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,50,0"  />
-        <materialDesign:PackIcon Kind="AccountMultiple" Height="50" Width="50" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,2,0"  />
-        <Grid x:Name="mainpanel" Width="730" Margin="137,66,25,54" />
-        <StackPanel Height="550" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left">
-            <Button x:Name="general"  BorderBrush="#FF475577" Background="#FF475577" Height="50" Width="auto">
-                <materialDesign:PackIcon Kind="Asterisk" Height="45" Width="70"  />
-            </Button>
-            <Button BorderBrush="#FF475577" Background="#FF475577" Height="50" Width="auto">
-                <materialDesign:PackIcon Kind="ContentCopy" Height="45" Width="70"  />
-            </Button>
-            <Button BorderBrush="#FF475577" Background="#FF475577" Height="50" Width="auto">
-                <materialDesign:PackIcon Kind="FolderUpload" Height="45" Width="70"  />
-            </Button>
-            <Button BorderBrush="#FF475577" Background="#FF475577" Height="50" Width="auto">
-                <materialDesign:PackIcon Kind="Webcam" Height="45" Width="70"  />
-            </Button>
-            <Button BorderBrush="#FF475577" Background="#FF475577" Height="50" Width="auto">
-                <materialDesign:PackIcon Kind="FacebookBox" Height="45" Width="70"  />
-            </Button>
-            <Button BorderBrush="#FF475577" Background="#FF475577" Height="50" Width="auto">
-                <materialDesign:PackIcon Kind="Target" Height="45" Width="70"  />
-            </Button>
-            <Button BorderBrush="#FF475577" Background="#FF475577" Height="50" Width="auto">
-                <materialDesign:PackIcon Kind="AccountSettingsVariant" Height="45" Width="70"  />
-            </Button>
-            <Button BorderBrush="#FF475577" Background="#FF475577" Height="50" Width="auto">
-                <materialDesign:PackIcon Kind="GoogleChrome" Height="45" Width="70"  />
-            </Button>
-            <Button BorderBrush="#FF475577" Background="#FF475577" Height="50" Width="auto">
-                <materialDesign:PackIcon Kind="CameraPartyMode" Height="45" Width="70"  />
-            </Button>
-            <Button BorderBrush="#FF475577" Background="#FF475577" Height="50" Width="auto">
-                <materialDesign:PackIcon Kind="Email" Height="45" Width="70"  />
-            </Button>
-            <Button BorderBrush="#FF475577" Background="#FF475577" Height="50" Width="auto">
-                <materialDesign:PackIcon Kind="AlertOctagon" Height="45" Width="70"  />
-            </Button>
-
-        </StackPanel>
-        <!--<Button Height="50" Width="100" Background="#FF475577" Foreground="White" MouseEnter="bt_qGeneral_MouseEnter" MouseLeave="bt_qGeneral_MouseLeave" >
-        <materialDesign:PackIcon x:Name="bt_qGeneral" Kind="Asterisk" />
-        </Button>
-        <materialDesign:PackIcon x:Name="bt_qClipboard" Kind="ContentCopy" Height="50" Width="100" Background="#FF475577" Foreground="White" Margin="0,50,0,0" MouseEnter="bt_qClipboard_MouseEnter" MouseLeave="bt_qClipboard_MouseLeave" />
-        <materialDesign:PackIcon x:Name="bt_qFTP" Kind="FolderUpload" Height="50" Width="100" Background="#FF475577" Foreground="White" Margin="0,100,0,0" MouseEnter="bt_qFTP_MouseEnter" MouseLeave="bt_qFTP_MouseLeave" />
-        <materialDesign:PackIcon x:Name="btn_qWebcam" Kind="Webcam" Height="50" Width="100" Background="#FF475577" Foreground="White" Margin="0,150,0,0" MouseEnter="btn_qWebcam_MouseEnter" MouseLeave="btn_qWebcam_MouseLeave"  />
-        <materialDesign:PackIcon x:Name="bt_qFacebook" Kind="FacebookBox" Height="50" Width="100" Background="#FF475577" Foreground="White" Margin="0,200,0,0" MouseEnter="bt_qFacebook_MouseEnter" MouseLeave="bt_qFacebook_MouseLeave" />
-        <materialDesign:PackIcon x:Name="bt_qTarget" Kind="Target" Height="50" Width="100" Background="#FF475577" Foreground="White" Margin="0,250,0,0" MouseEnter="bt_qTarget_MouseEnter" MouseLeave="bt_qTarget_MouseLeave"/>
-        <materialDesign:PackIcon x:Name="bt_qUser" Kind="AccountSettingsVariant" Height="50" Width="100" Background="#FF475577" Foreground="White" Margin="0,300,0,0" MouseEnter="bt_qUser_MouseEnter" MouseLeave="bt_qUser_MouseLeave"/>
-        <materialDesign:PackIcon x:Name="bt_qWebsite" Kind="GoogleChrome" Height="50" Width="100" Background="#FF475577" Foreground="White" Margin="0,350,0,0" MouseEnter="bt_qWebsite_MouseEnter" MouseLeave="bt_qWebsite_MouseLeave"/>
-        <materialDesign:PackIcon x:Name="bt_qScreenshot" Kind="CameraPartyMode" Height="50" Width="100" Background="#FF475577" Foreground="White" Margin="0,400,0,0" MouseEnter="bt_qScreenshot_MouseEnter" MouseLeave="bt_qScreenshot_MouseLeave"/>
-        <materialDesign:PackIcon x:Name="bt_qMail" Kind="Email" Height="50" Width="100" Background="#FF475577" Foreground="White" Margin="0,450,0,0" MouseEnter="bt_qMail_MouseEnter" MouseLeave="bt_qMail_MouseLeave"/>
-        <materialDesign:PackIcon x:Name="bt_qAlert" Kind="AlertOctagon" Height="50" Width="100" Background="#FF475577" Foreground="White" Margin="0,500,0,0" MouseEnter="bt_qAlert_MouseEnter" MouseLeave="bt_qAlert_MouseLeave"/>-->
+        </Grid>
     </Grid>
+
 </Window>
