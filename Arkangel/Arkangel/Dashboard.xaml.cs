@@ -70,5 +70,12 @@ namespace Arkangel
             _dasboard.Children.Clear();
             _dasboard.Children.Add(ftp);
         }
+
+        private void btn_General_Click(object sender, RoutedEventArgs e)
+        {
+            General general = new General();
+            _dasboard.Children.Clear();
+            _dasboard.Children.Add(general);
+        }
     }
 }

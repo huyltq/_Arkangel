@@ -18,7 +18,7 @@
     <Grid x:Name="_dasboard">
         <!--<TextBlock Text ="test" FontSize="100"></TextBlock>-->
         <Grid Margin="0,0,0,0">
-            <TextBlock x:Name="tb_hello" Text="Good Morning" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" />
+            <TextBlock x:Name="tb_hello" Text="Good Morning" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="DarkGreen" />
         </Grid>
         <Grid Height="360" Width=" 700" VerticalAlignment="Bottom">
             <Grid.ColumnDefinitions>
@@ -31,17 +31,83 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="General" Content=" General" FontSize="30" FontFamily="Font Awesome" HorizontalAlignment="Right" Height="Auto" Width="228" RenderTransformOrigin="0.416,0.4" Margin="0,0,5,5" Click="Button_Click" Background="#FF3266D4" ></Button>
-            <Button Grid.Column="1" Height="Auto" Content="Clipboard" FontSize="30" FontFamily="Font Awesome" Margin="0,0,0,5" Background="#FFB6193D"/>
-            <Button Grid.Column="2" Height="Auto" Content="FTP" FontSize="30" FontFamily="Font Awesome" Margin="5,0,0,5" Background="#FF35ADBF" Click="Button_Click_2"/>
-            <Button Margin="0,0,120,4" Grid.Row="1" Height="Auto" Content="Webcam" FontSize="20" FontFamily="Font Awesome" Background="#FF44BD60"></Button>
-            <Button Margin="118,0,5,4" Grid.Row="1" Height="Auto" Content="Facebook" FontSize="20" FontFamily="Font Awesome" HorizontalAlignment="Center" TextOptions.TextHintingMode="Fixed" Width="110" Padding="4" Background="#FF9158C9"  />
-            <Button Grid.Column="1" Height="Auto" Content="Target" FontSize="30" FontFamily="Font Awesome" Margin="0,0,0,4" Grid.Row="1" Background="#FFAC1963"/>
-            <Button Grid.Column="2" Height="Auto" Content="User" FontSize="30" FontFamily="Font Awesome" Margin="5,0,0,4" Grid.Row="1" Background="#FF03B0A0"/>
-            <Button Height="Auto" Content="User" FontSize="30" FontFamily="Font Awesome" Margin="0,0,5,4" Grid.Row="2" Background="#FF87B410"/>
-            <Button x:Name="bt_screenshot" Height="Auto" Content="Screenshot" FontSize="30" FontFamily="Font Awesome" Margin="0,0,0,4" Grid.Row="2" RenderTransformOrigin="1.636,0.621" Grid.Column="1" Background="#FF8163EE" Click="bt_screenshot_Click"/>
-            <Button Margin="5,0,115,4" Grid.Row="2" Height="Auto" Content="Email" FontSize="20" FontFamily="Font Awesome" Grid.Column="2" Background="#FFE86464"></Button>
-            <Button Margin="123,0,0,4" Grid.Row="2" Height="Auto" Content="Alert" FontSize="20" FontFamily="Font Awesome" HorizontalAlignment="Center" TextOptions.TextHintingMode="Fixed" Width="110" Padding="4" Grid.Column="2" Background="#FF66A0F5" Click="Button_Click_1"  />
+            <Button x:Name="btn_General" Height="auto" Margin="0,0,5,5" Padding="0"  BorderBrush="{x:Null}" Click="btn_General_Click">
+                <StackPanel Orientation="Horizontal" Width="180">
+                    <materialDesign:PackIcon Kind="Asterisk" Height="55" Width="55"></materialDesign:PackIcon>
+                    <StackPanel Width="10"></StackPanel>
+                    <TextBlock Text="General" FontSize="33" VerticalAlignment="Center" FontFamily="Font Awesome" ></TextBlock>
+                </StackPanel>
+            </Button>
+
+            <Button Grid.Column="1" Height="Auto" FontSize="30" FontFamily="Font Awesome" Margin="0,0,0,5" Padding="8">
+                <StackPanel Orientation="Horizontal" Width="230">
+                    <materialDesign:PackIcon Kind="ContentCopy" Height="55" Width="55"></materialDesign:PackIcon>
+                    <StackPanel Width="10"></StackPanel>
+                    <TextBlock Text="Clipboard" FontSize="33" VerticalAlignment="Center" FontFamily="Font Awesome" ></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="2" Height="Auto" FontSize="30" FontFamily="Font Awesome" Margin="5,0,0,5"  Click="Button_Click_2">
+                <StackPanel Orientation="Horizontal" Width="130">
+                    <materialDesign:PackIcon Kind="UploadMultiple" Height="55" Width="55"></materialDesign:PackIcon>
+                    <StackPanel Width="10"></StackPanel>
+                    <TextBlock Text="FTP" FontSize="33" VerticalAlignment="Center" FontFamily="Font Awesome" ></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Margin="0,0,120,4" Grid.Row="1" Height="Auto" FontSize="20" FontFamily="Font Awesome" Padding="4" >
+                <StackPanel Orientation="Vertical" Width="110">
+                    <materialDesign:PackIcon Kind="Webcam" Height="55" Width="55" HorizontalAlignment="Center"></materialDesign:PackIcon>
+                    <TextBlock Text="Webcam" FontSize="25" HorizontalAlignment="Center" FontFamily="Font Awesome" ></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Margin="118,0,5,4" Grid.Row="1" Height="Auto" FontSize="20" FontFamily="Font Awesome" HorizontalAlignment="Center" TextOptions.TextHintingMode="Fixed" Width="110" Padding="1">
+                <StackPanel Orientation="Vertical" Width="110">
+                    <materialDesign:PackIcon Kind="FacebookBox" Height="55" Width="55" HorizontalAlignment="Center"></materialDesign:PackIcon>
+                    <TextBlock Text="Facebook" FontSize="23" HorizontalAlignment="Center" FontFamily="Font Awesome" ></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="1" Height="Auto" FontSize="30" FontFamily="Font Awesome" Margin="0,0,0,4" Grid.Row="1">
+                <StackPanel Orientation="Horizontal" Width="180">
+                    <materialDesign:PackIcon Kind="Target" Height="55" Width="55"></materialDesign:PackIcon>
+                    <StackPanel Width="10"></StackPanel>
+                    <TextBlock Text="Target" FontSize="33" VerticalAlignment="Center" FontFamily="Font Awesome" ></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="2" Height="Auto" FontSize="30" FontFamily="Font Awesome" Margin="5,0,0,4" Grid.Row="1">
+                <StackPanel Orientation="Horizontal" Width="140">
+                    <materialDesign:PackIcon Kind="AccountBox" Height="55" Width="55"></materialDesign:PackIcon>
+                    <StackPanel Width="10"></StackPanel>
+                    <TextBlock Text="User" FontSize="33" VerticalAlignment="Center" FontFamily="Font Awesome" ></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Height="Auto" FontSize="30" FontFamily="Font Awesome" Margin="0,0,5,4" Grid.Row="2" >
+                <StackPanel Orientation="Horizontal" Width="210">
+                    <materialDesign:PackIcon Kind="GoogleChrome" Height="55" Width="55" VerticalAlignment="Center"></materialDesign:PackIcon>
+                    <StackPanel Width="10"></StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Website" FontSize="33" FontFamily="Font Awesome" HorizontalAlignment="Center"></TextBlock>
+                        <TextBlock Text="Usage" FontSize="33"  FontFamily="Font Awesome" HorizontalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </Button>
+            <Button x:Name="bt_screenshot" Height="Auto" FontSize="30" FontFamily="Font Awesome" Margin="0,0,0,4" Grid.Row="2" RenderTransformOrigin="1.636,0.621" Grid.Column="1"  Click="bt_screenshot_Click" Padding="4,4,2,4">
+                <StackPanel Orientation="Horizontal" Width="230">
+                    <materialDesign:PackIcon Kind="Camera" Height="55" Width="55"></materialDesign:PackIcon>
+                    <StackPanel Width="10"></StackPanel>
+                    <TextBlock Text="Screenshot" FontSize="30" VerticalAlignment="Center" FontFamily="Font Awesome" ></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Margin="5,0,115,4" Grid.Row="2" Height="Auto"  FontSize="20" FontFamily="Font Awesome" Grid.Column="2" Padding="1" >
+                <StackPanel Orientation="Vertical" Width="110">
+                    <materialDesign:PackIcon Kind="Email" Height="55" Width="55" HorizontalAlignment="Center"></materialDesign:PackIcon>
+                    <TextBlock Text="Mail" FontSize="26" HorizontalAlignment="Center" FontFamily="Font Awesome" ></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Margin="123,0,0,4" Grid.Row="2" Height="Auto" FontSize="20" FontFamily="Font Awesome" HorizontalAlignment="Center" TextOptions.TextHintingMode="Fixed" Width="110" Padding="1" Grid.Column="2" Click="Button_Click_1">
+                <StackPanel Orientation="Vertical" Width="110">
+                    <materialDesign:PackIcon Kind="AlertBox" Height="55" Width="55" HorizontalAlignment="Center"></materialDesign:PackIcon>
+                    <TextBlock Text="Alert" FontSize="26" HorizontalAlignment="Center" FontFamily="Font Awesome" ></TextBlock>
+                </StackPanel>
+            </Button>
 
         </Grid>
     </Grid>

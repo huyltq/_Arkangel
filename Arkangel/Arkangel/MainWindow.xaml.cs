@@ -23,19 +23,18 @@ namespace Arkangel
         public MainWindow()
         {
             InitializeComponent();
-            //if (mainpanel.Children.ToString() != "Dashboard")
-            //{
-            //    Dashboard dashboard = new Dashboard();
-            //    mainpanel.Children.Add(dashboard);
-            //}
-           
+            if (mainPanel.Children.ToString() != "Dashboard")
+            {
+                Dashboard dashboard = new Dashboard();
+                mainPanel.Children.Add(dashboard);
+            }
+
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
+        
             //mainpanel.Children.Clear();
             //Dashboard dashboard = new Dashboard();
             //mainpanel.Children.Add(dashboard);
-        }
+       
 
         private void Button_OpenMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -49,6 +48,14 @@ namespace Arkangel
             CloseMenu.Visibility = Visibility.Collapsed;
             OpenMenu.Visibility = Visibility.Visible;
             allIcon.Visibility = Visibility.Hidden;
+            
+        }
+
+        private void bt_home_Click(object sender, RoutedEventArgs e)
+        {
+            mainPanel.Children.Clear();
+            Dashboard dashboard = new Dashboard();
+            mainPanel.Children.Add(dashboard);
         }
     }
 }
