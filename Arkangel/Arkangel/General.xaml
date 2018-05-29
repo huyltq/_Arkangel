@@ -19,21 +19,16 @@
     >
     <Grid>
         <StackPanel>
-        <Grid Height="100">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
-                <Button Uid="0" Width="150" Content="HOME" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" />
-                <Button Uid="1" Width="150" Content="SHOP" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" />
-                <Button Uid="2" Width="150" Content="BLOG" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" />
-                <Button Uid="3" Width="150" Content="PAGES" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" />
-                <Button Uid="4" Width="150" Content="PRODUCTS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" />
-                <Button Uid="5" Width="150" Content="BRANDS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" />
-                <Button Uid="6" Width="150" Content="GIFT CARDS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" />
-            </StackPanel>
-            <Grid x:Name="GridCursor" Width="150" Height="5" Background="#FF2196F3" HorizontalAlignment="Left" Margin="10 0"/>
-        </Grid>
-        <Grid x:Name="GridMain" Height="460" Background="Aquamarine">
-            
-        </Grid>
+            <Grid Height="50">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0" >
+                    <Button Uid="0" Width="150" Content="General" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" FontSize="20" Click="Button_Click"/>
+
+                </StackPanel>
+                <Grid x:Name="GridCursor" Width="150" Height="5" Background="#FF2196F3" HorizontalAlignment="Left" Margin="10 0" VerticalAlignment="Bottom"/>
+            </Grid>
+            <Grid x:Name="GridMain" Height="372" Background="White" Margin="10,0">
+                <GroupBox Header="Security" Margin="0,10,0,0" FontSize="20" VerticalAlignment="Top" Height="117"></GroupBox>
+            </Grid>
         </StackPanel>
     </Grid>
 

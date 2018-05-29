@@ -22,7 +22,7 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="150"/>
             </DoubleAnimationUsingKeyFrames>
             <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="mainPanel">
-                <SplineThicknessKeyFrame KeyTime="00:00:00" Value="81,68,12,56" />
+                <SplineThicknessKeyFrame KeyTime="00:00:00" Value="81,68,81,56" />
                 <SplineThicknessKeyFrame KeyTime="00:00:0.5" Value="150,68,12,-13" />
             </ThicknessAnimationUsingKeyFrames>
         </Storyboard>
@@ -33,7 +33,7 @@
             </DoubleAnimationUsingKeyFrames>
             <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="mainPanel">
                 <SplineThicknessKeyFrame KeyTime="00:00:00" Value="150,68,12,-13" />
-                <SplineThicknessKeyFrame KeyTime="00:00:0.5" Value="81,68,12,56" />
+                <SplineThicknessKeyFrame KeyTime="00:00:0.5" Value="81,68,81,56" />
             </ThicknessAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
