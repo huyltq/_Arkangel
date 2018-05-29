@@ -46,8 +46,8 @@
         </EventTrigger>
     </Window.Triggers>
     <Grid>
-        <Grid  Height="50"  VerticalAlignment="Top" Margin="150,0,0,0">
-            <StackPanel Height="50"  VerticalAlignment="Top" Background="LightGreen" Margin="-100,0,0,0">
+        <Grid  Height="168"  VerticalAlignment="Top" Margin="150,0,0,0">
+            <StackPanel Height="50"  VerticalAlignment="Top" Background="BlanchedAlmond" Margin="-100,0,0,0">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="150" Height="50">
                     <Button x:Name="bt_home" Height="50" Width="50" HorizontalAlignment="Left" Background="{x:Null}" Foreground="DarkGreen" BorderBrush="{x:Null}" Padding="4" Click="bt_home_Click">
                         <materialDesign:PackIcon Kind="Home" Height="40" Width="40"/>
@@ -60,9 +60,11 @@
                     </Button>
                 </StackPanel>
             </StackPanel>
+            <StackPanel Height="70"  Background="BlanchedAlmond" Margin="-155,0,0,0">
+            </StackPanel>
         </Grid >
         <Grid x:Name="GridMenu" Width="50" HorizontalAlignment="Left">
-            <StackPanel Height="50" VerticalAlignment="Top" Background="LightGreen">
+            <StackPanel Height="50" VerticalAlignment="Top" Background="BlanchedAlmond">
                 <Grid Height="50">
                     <Button x:Name="CloseMenu" HorizontalAlignment="Right" Height="50" Width="50" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="DarkGreen" Padding="1" Visibility="Collapsed" Click="Button_CloseMenu_Click" >
                         <materialDesign:PackIcon Kind="ArrowLeft" Width="45" Height="45"></materialDesign:PackIcon>

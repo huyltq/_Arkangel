@@ -37,9 +37,6 @@ namespace Arkangel
                 case 0:
                     GridMain.Background = Brushes.Aquamarine;
                     break;
-                case 1:
-                    GridMain.Background = Brushes.Beige;
-                    break;
             }
         }
     }

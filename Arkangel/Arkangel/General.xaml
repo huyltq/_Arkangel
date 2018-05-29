@@ -6,7 +6,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Arkangel"
              mc:Ignorable="d" 
-             d:DesignHeight="430" d:DesignWidth="730"
+             d:DesignHeight="430" d:DesignWidth="759"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -18,16 +18,36 @@
      FontFamily="{DynamicResource MaterialDesignFont}"
     >
     <Grid>
-        <StackPanel>
+        <StackPanel Margin="8,4,4,4">
             <Grid Height="50">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0" >
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0" Background="BlanchedAlmond">
                     <Button Uid="0" Width="150" Content="General" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" FontSize="20" Click="Button_Click"/>
-
                 </StackPanel>
                 <Grid x:Name="GridCursor" Width="150" Height="5" Background="#FF2196F3" HorizontalAlignment="Left" Margin="10 0" VerticalAlignment="Bottom"/>
             </Grid>
-            <Grid x:Name="GridMain" Height="372" Background="White" Margin="10,0">
-                <GroupBox Header="Security" Margin="0,10,0,0" FontSize="20" VerticalAlignment="Top" Height="117"></GroupBox>
+            <Grid x:Name="GridMain" Height="372" Margin="10,0" >
+                <StackPanel Margin="0,0,0,4" >
+                    <GroupBox Header="Security Setting" Height="100" Margin="0,10,5,0" FontSize="20" >
+                        <CheckBox Content="Disable Task Manager" FontSize="25"></CheckBox>
+
+                    </GroupBox>
+                    <GroupBox Header="Encrypt logs" Height="100" Margin="0,10,5,0" FontSize="20">
+                        <CheckBox FontSize="25" IsChecked="True">
+                            Enable Encrypt logs
+                        </CheckBox>
+                    </GroupBox>
+                    <GroupBox Header="Hot Keys" Height="100" Margin="0,10,5,0" FontSize="20" Padding="4" VerticalAlignment="Center">
+                        <StackPanel>
+                            <CheckBox IsChecked="True">
+                                Run as Windows start up
+                            </CheckBox>
+                            <CheckBox>
+                                Hoy key : Ctrl + Shift + O
+                            </CheckBox>
+                        </StackPanel>
+                    </GroupBox>
+                    <Button Margin="528,6,12,0" Content="OK"/>
+                </StackPanel>
             </Grid>
         </StackPanel>
     </Grid>
