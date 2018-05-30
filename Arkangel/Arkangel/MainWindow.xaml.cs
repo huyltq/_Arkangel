@@ -57,6 +57,12 @@ namespace Arkangel
             Dashboard dashboard = new Dashboard();
             mainPanel.Children.Add(dashboard);
         }
+
+        private void btn_Login_Click(object sender, RoutedEventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+        }
     }
 }
 

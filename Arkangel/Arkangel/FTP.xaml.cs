@@ -23,6 +23,31 @@ namespace Arkangel
         public FTP()
         {
             InitializeComponent();
+            FTP_General general = new FTP_General();
+            GridMain.Children.Clear();
+            GridMain.Children.Add(general);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            int index = int.Parse(((Button)e.Source).Uid);
+
+            GridCursor.Margin = new Thickness(10 + (150 * index), 0, 0, 0);
+
+            switch (index)
+            {
+                case 0:
+                        FTP_General general = new FTP_General();
+                        GridMain.Children.Clear();
+                        GridMain.Children.Add(general);
+                    break;
+                case 1:
+                    FTP_Server server = new FTP_Server();
+                    GridMain.Children.Clear();
+                    GridMain.Children.Add(server);
+                    break;
+                    
+            }
         }
     }
 }

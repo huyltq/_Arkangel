@@ -77,5 +77,19 @@ namespace Arkangel
             _dasboard.Children.Clear();
             _dasboard.Children.Add(general);
         }
+
+        private void btn_Clipboard_Click(object sender, RoutedEventArgs e)
+        {
+            _Clipboard clipboard = new _Clipboard();
+            _dasboard.Children.Clear();
+            _dasboard.Children.Add(clipboard);
+        }
+
+        private void bt_Webcam_Click(object sender, RoutedEventArgs e)
+        {
+            Webcam webcam = new Webcam();
+            _dasboard.Children.Clear();
+            _dasboard.Children.Add(webcam);
+        }
     }
 }

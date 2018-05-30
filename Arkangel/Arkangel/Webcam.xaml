@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="Arkangel.Webcam"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Arkangel"
+             mc:Ignorable="d" 
+             d:DesignHeight="430" d:DesignWidth="759"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+    >
+    <Grid Background="#f2f2f2">
+        <StackPanel Margin="8,4,4,4" Background="#F2F2F2">
+            <Grid Height="50">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0" Background="#0489B1">
+                    <Button Uid="0" Width="150" Content="Webcam" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="20" />
+                </StackPanel>
+                <Grid x:Name="GridCursor" Width="150" Height="5" Background="#DBA901" HorizontalAlignment="Left" Margin="10 0" VerticalAlignment="Bottom"/>
+            </Grid>
+            <Grid x:Name="GridMain" Height="372" Margin="10,0" >
+                <GroupBox Header="Setting" FontSize="15" materialDesign:ColorZoneAssist.Mode="Light" Height="100" VerticalAlignment="Top" Margin="0,10,10,0">
+                    <StackPanel Orientation="Horizontal" Height="40">
+                        <CheckBox Grid.ColumnSpan="3" FontSize="25">Auto take a picture every</CheckBox>
+                        <StackPanel Width="5"></StackPanel>
+                        <TextBox x:Name="tb_hours" Width="50" Height="35" VerticalAlignment="Top" FontSize="25" FlowDirection="RightToLeft" />
+                        <StackPanel Width="5"></StackPanel>
+                        <TextBlock Text="hours" VerticalAlignment="Center" FontSize="25"></TextBlock>
+                        <StackPanel Width="5"></StackPanel>
+                        <TextBox x:Name="tb_minutes" Width="50" Height="35" FontSize="25" VerticalAlignment="Top" FlowDirection="RightToLeft" ></TextBox>
+                        <StackPanel Width="5"></StackPanel>
+                        <TextBlock Text="minutes" VerticalAlignment="Center" FontSize="25"></TextBlock>
+                    </StackPanel>
+                
+                </GroupBox>
+                <Button Width="130" Margin="573,330,24,10">OK</Button>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>

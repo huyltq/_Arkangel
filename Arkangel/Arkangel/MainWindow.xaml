@@ -12,6 +12,7 @@
      TextElement.FontSize="20"
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
+     WindowStartupLocation="CenterScreen"
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
         >
@@ -23,7 +24,7 @@
             </DoubleAnimationUsingKeyFrames>
             <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="mainPanel">
                 <SplineThicknessKeyFrame KeyTime="00:00:00" Value="81,68,81,56" />
-                <SplineThicknessKeyFrame KeyTime="00:00:0.5" Value="150,68,12,-13" />
+                <SplineThicknessKeyFrame KeyTime="00:00:0.5" Value="150,68,12,56" />
             </ThicknessAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="CloseMenu">
@@ -32,7 +33,7 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50"/>
             </DoubleAnimationUsingKeyFrames>
             <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="mainPanel">
-                <SplineThicknessKeyFrame KeyTime="00:00:00" Value="150,68,12,-13" />
+                <SplineThicknessKeyFrame KeyTime="00:00:00" Value="150,68,12,56" />
                 <SplineThicknessKeyFrame KeyTime="00:00:0.5" Value="81,68,81,56" />
             </ThicknessAnimationUsingKeyFrames>
         </Storyboard>
@@ -45,31 +46,31 @@
             <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
     </Window.Triggers>
-    <Grid>
+    <Grid Background="#F2F2F2">
         <Grid  Height="168"  VerticalAlignment="Top" Margin="150,0,0,0">
-            <StackPanel Height="50"  VerticalAlignment="Top" Background="BlanchedAlmond" Margin="-100,0,0,0">
+            <StackPanel Height="50"  VerticalAlignment="Top" Background="#0489B1" Margin="-100,0,0,0">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="150" Height="50">
-                    <Button x:Name="bt_home" Height="50" Width="50" HorizontalAlignment="Left" Background="{x:Null}" Foreground="DarkGreen" BorderBrush="{x:Null}" Padding="4" Click="bt_home_Click">
+                    <Button x:Name="bt_home" Height="50" Width="50" HorizontalAlignment="Left" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" Padding="4" Click="bt_home_Click">
                         <materialDesign:PackIcon Kind="Home" Height="40" Width="40"/>
                     </Button>
-                    <Button Height="50" Width="50" HorizontalAlignment="Center" Background="{x:Null}" Foreground="DarkGreen" BorderBrush="{x:Null}" Padding="4">
+                    <Button x:Name="btn_Login" Height="50" Width="50" HorizontalAlignment="Center" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" Padding="4" Click="btn_Login_Click">
                         <materialDesign:PackIcon Kind="AccountMultiple" Height="40" Width="40"/>
                     </Button>
-                    <Button Height="50" Width="50" HorizontalAlignment="Right" Background="{x:Null}" Foreground="DarkGreen" BorderBrush="{x:Null}" Padding="4">
+                    <Button Height="50" Width="50" HorizontalAlignment="Right" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" Padding="4">
                         <materialDesign:PackIcon Kind="Logout" Height="40" Width="40"/>
                     </Button>
                 </StackPanel>
             </StackPanel>
-            <StackPanel Height="70"  Background="BlanchedAlmond" Margin="-155,0,0,0">
+            <StackPanel Height="69"  Background="#0489B1" Margin="-155,0,0,0">
             </StackPanel>
         </Grid >
         <Grid x:Name="GridMenu" Width="50" HorizontalAlignment="Left">
-            <StackPanel Height="50" VerticalAlignment="Top" Background="BlanchedAlmond">
+            <StackPanel Height="50" VerticalAlignment="Top" Background="#0489B1">
                 <Grid Height="50">
-                    <Button x:Name="CloseMenu" HorizontalAlignment="Right" Height="50" Width="50" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="DarkGreen" Padding="1" Visibility="Collapsed" Click="Button_CloseMenu_Click" >
+                    <Button x:Name="CloseMenu" HorizontalAlignment="Right" Height="50" Width="50" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White" Padding="1" Visibility="Collapsed" Click="Button_CloseMenu_Click" >
                         <materialDesign:PackIcon Kind="ArrowLeft" Width="45" Height="45"></materialDesign:PackIcon>
                     </Button>
-                    <Button x:Name="OpenMenu" HorizontalAlignment="Right" Height="50" Width="50" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="DarkGreen" Padding="1" Click="Button_OpenMenu_Click">
+                    <Button x:Name="OpenMenu" HorizontalAlignment="Right" Height="50" Width="50" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White" Padding="1" Click="Button_OpenMenu_Click">
                         <materialDesign:PackIcon  Kind="Menu" Width="45" Height="45"></materialDesign:PackIcon>
                     </Button>
                 </Grid>
@@ -105,7 +106,7 @@
             </ListView>
 
         </Grid>
-        <Grid x:Name="mainPanel" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="81,68,81,56" Height="430" Width="759">
+        <Grid x:Name="mainPanel" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="81,68,81,56" Height="430" Width="759" Background="#F2F2F2">
 
         </Grid>
     </Grid>

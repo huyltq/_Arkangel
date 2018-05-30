@@ -32,12 +32,12 @@ namespace Arkangel
 
             GridCursor.Margin = new Thickness(10 + (150 * index), 0, 0, 0);
 
-            switch (index)
-            {
-                case 0:
-                    GridMain.Background = Brushes.Aquamarine;
-                    break;
-            }
+            //switch (index)
+            //{
+            //    case 0:
+            //        GridMain.Background = Brushes.Aquamarine;
+            //        break;
+            //}
         }
     }
 }

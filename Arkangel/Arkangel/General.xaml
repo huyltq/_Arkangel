@@ -18,35 +18,35 @@
      FontFamily="{DynamicResource MaterialDesignFont}"
     >
     <Grid>
-        <StackPanel Margin="8,4,4,4">
+        <StackPanel Margin="8,4,4,4" Background="#F2F2F2">
             <Grid Height="50">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0" Background="BlanchedAlmond">
-                    <Button Uid="0" Width="150" Content="General" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" FontSize="20" Click="Button_Click"/>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0" Background="#0489B1">
+                    <Button Uid="0" Width="150" Content="General" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="20" Click="Button_Click"/>
                 </StackPanel>
-                <Grid x:Name="GridCursor" Width="150" Height="5" Background="#FF2196F3" HorizontalAlignment="Left" Margin="10 0" VerticalAlignment="Bottom"/>
+                <Grid x:Name="GridCursor" Width="150" Height="5" Background="#DBA901" HorizontalAlignment="Left" Margin="10 0" VerticalAlignment="Bottom"/>
             </Grid>
             <Grid x:Name="GridMain" Height="372" Margin="10,0" >
                 <StackPanel Margin="0,0,0,4" >
-                    <GroupBox Header="Security Setting" Height="100" Margin="0,10,5,0" FontSize="20" >
+                    <GroupBox Header="Security Setting" Height="100" Margin="0,10,5,0" FontSize="15" Padding="4" materialDesign:ColorZoneAssist.Mode="Light" >
                         <CheckBox Content="Disable Task Manager" FontSize="25"></CheckBox>
 
                     </GroupBox>
-                    <GroupBox Header="Encrypt logs" Height="100" Margin="0,10,5,0" FontSize="20">
+                    <GroupBox Header="Encrypt logs" Height="100" Margin="0,5,5,0" FontSize="15" Padding="4" materialDesign:ColorZoneAssist.Mode="Light">
                         <CheckBox FontSize="25" IsChecked="True">
                             Enable Encrypt logs
                         </CheckBox>
                     </GroupBox>
-                    <GroupBox Header="Hot Keys" Height="100" Margin="0,10,5,0" FontSize="20" Padding="4" VerticalAlignment="Center">
+                    <GroupBox Header="Hot Keys" Height="100" Margin="0,5,5,0" FontSize="15" Padding="4" VerticalAlignment="Center" materialDesign:ColorZoneAssist.Mode="Light">
                         <StackPanel>
-                            <CheckBox IsChecked="True">
+                            <CheckBox IsChecked="True" FontSize="25">
                                 Run as Windows start up
                             </CheckBox>
-                            <CheckBox>
+                            <CheckBox FontSize="25"> 
                                 Hoy key : Ctrl + Shift + O
                             </CheckBox>
                         </StackPanel>
                     </GroupBox>
-                    <Button Margin="528,6,12,0" Content="OK"/>
+                    <Button Margin="546,15,32,0" Width="150" Content="OK"/>
                 </StackPanel>
             </Grid>
         </StackPanel>

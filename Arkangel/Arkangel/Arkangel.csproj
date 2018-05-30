@@ -78,8 +78,23 @@
     <Compile Include="FTP.xaml.cs">
       <DependentUpon>FTP.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FTP_General.xaml.cs">
+      <DependentUpon>FTP_General.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FTP_Server.xaml.cs">
+      <DependentUpon>FTP_Server.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.xaml.cs">
+      <DependentUpon>LoginForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Screenshot.xaml.cs">
       <DependentUpon>Screenshot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Webcam.xaml.cs">
+      <DependentUpon>Webcam.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_Clipboard.xaml.cs">
+      <DependentUpon>_Clipboard.xaml</DependentUpon>
     </Compile>
     <Page Include="Alert.xaml">
       <SubType>Designer</SubType>
@@ -93,7 +108,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FTP_General.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FTP_Server.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="General.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoginForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -116,6 +143,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Screenshot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Webcam.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_Clipboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

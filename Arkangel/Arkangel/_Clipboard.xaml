@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Arkangel.FTP"
+﻿<UserControl x:Class="Arkangel._Clipboard"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -19,16 +19,22 @@
         <StackPanel Margin="8,4,4,4" Background="#F2F2F2">
             <Grid Height="50">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0" Background="#0489B1">
-                    <Button Uid="0" Width="150" Content="General" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="20" Click="Button_Click"/>
-                    <Button Uid="1" Width="150" Content="FTP Sever" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="20" Click="Button_Click"/>
+                    <Button Uid="0" Width="150" Content="Clipboard" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="20"/>
                 </StackPanel>
                 <Grid x:Name="GridCursor" Width="150" Height="5" Background="#DBA901" HorizontalAlignment="Left" Margin="10 0" VerticalAlignment="Bottom"/>
             </Grid>
 
-            <Grid x:Name="GridMain" Height="306" Margin="10,16,10,0" Background="#F2F2F2">
+            <Grid x:Name="GridMain" Height="356" Margin="10,16,10,0" Background="#F2F2F2">
+                <GroupBox Header="Text" Height="255" Margin="5,0,5,0" Width="auto" FontSize="15" Padding="4" materialDesign:ColorZoneAssist.Mode="Light" VerticalAlignment="Top">
+                    <TextBlock x:Name="_text"></TextBlock>
+                </GroupBox>
+                <GroupBox Header="File" Height="72"  Margin="5,260,394,0" FontSize="15" Padding="4" materialDesign:ColorZoneAssist.Mode="Light" VerticalAlignment="Top">
+                    <Button Content="Get" Width="90" FontSize="15" Foreground="Blue" HorizontalAlignment="Right" Background="AliceBlue" ></Button>
+                </GroupBox>
+                <GroupBox Header="Picture" Height="72"  Margin="368,260,5,0" FontSize="15" Padding="4" materialDesign:ColorZoneAssist.Mode="Light" VerticalAlignment="Top">
+                    <Button Content="Get" Width="90" FontSize="15" Foreground="Blue" Background="AliceBlue" HorizontalAlignment="Right" ></Button>
+                </GroupBox>
             </Grid>
-            <Button HorizontalAlignment="Right" Width="160" Margin="0,10,50,0" Content="OK"/>
         </StackPanel>
-        
     </Grid>
 </UserControl>
