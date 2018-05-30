@@ -53,11 +53,33 @@
                     <Button x:Name="bt_home" Height="50" Width="50" HorizontalAlignment="Left" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" Padding="4" Click="bt_home_Click">
                         <materialDesign:PackIcon Kind="Home" Height="40" Width="40"/>
                     </Button>
-                    <Button x:Name="btn_Login" Height="50" Width="50" HorizontalAlignment="Center" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" Padding="4" Click="btn_Login_Click">
-                        <materialDesign:PackIcon Kind="AccountMultiple" Height="40" Width="40"/>
-                    </Button>
-                    <Button Height="50" Width="50" HorizontalAlignment="Right" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" Padding="4">
-                        <materialDesign:PackIcon Kind="Logout" Height="40" Width="40"/>
+                    <materialDesign:PopupBox x:Name="btn_Login" Height="50" Width="50" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False"  HorizontalAlignment="Center" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" FontSize="20" >
+                        <StackPanel>
+                            <Button>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                      <materialDesign:PackIcon Kind="AccountMultiple" Height="25" Width="25"/>
+                                      <StackPanel Width="10"></StackPanel>    
+                                      <TextBlock x:Name="_username" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                </StackPanel>
+                            </Button>
+                            <Button>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="Settings" Height="25" Width="25"/>
+                                    <StackPanel Width="10"></StackPanel>
+                                    <TextBlock Text="Setting" HorizontalAlignment="Right" VerticalAlignment="Center" ></TextBlock>
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="bt_logout" VerticalAlignment="Center" Click="bt_logout_Click_1" >
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="Logout" Height="25" Width="25"/>
+                                    <StackPanel Width="10"></StackPanel>
+                                    <TextBlock Text="Log out" HorizontalAlignment="Right" VerticalAlignment="Center" ></TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </materialDesign:PopupBox>
+                    <Button x:Name="bt_Quit" Height="50" Width="50" HorizontalAlignment="Right" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" Padding="4" Click="bt_Quit_Click">
+                        <materialDesign:PackIcon Kind="Power" Height="40" Width="40"/>
                     </Button>
                 </StackPanel>
             </StackPanel>

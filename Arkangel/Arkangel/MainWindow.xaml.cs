@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Forms;
 
 namespace Arkangel
 {
@@ -57,12 +58,25 @@ namespace Arkangel
             Dashboard dashboard = new Dashboard();
             mainPanel.Children.Add(dashboard);
         }
-
-        private void btn_Login_Click(object sender, RoutedEventArgs e)
+        private void bt_logout_Click_1(object sender, RoutedEventArgs e)
         {
-            LoginForm loginForm = new LoginForm();
-            loginForm.Show();
+            if (System.Windows.Forms.MessageBox.Show("Do you want to log out", "Warning", MessageBoxButtons.OK) == System.Windows.Forms.DialogResult.OK)
+
+            {
+
+                LoginForm loginForm = new LoginForm();
+                loginForm.Show();
+                Close();
+
+            }
         }
+
+        private void bt_Quit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+       
     }
 }
 

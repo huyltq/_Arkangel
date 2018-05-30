@@ -96,7 +96,7 @@
                     <TextBlock Text="Screenshot" FontSize="30" VerticalAlignment="Center" FontFamily="Font Awesome" ></TextBlock>
                 </StackPanel>
             </Button>
-            <Button Margin="5,0,115,4" Grid.Row="2" Height="Auto"  FontSize="20" FontFamily="Font Awesome" Grid.Column="2" Padding="1" >
+            <Button x:Name="bt_Email" Margin="5,0,115,4" Grid.Row="2" Height="Auto"  FontSize="20" FontFamily="Font Awesome" Grid.Column="2" Padding="1" Click="bt_Email_Click" >
                 <StackPanel Orientation="Vertical" Width="110">
                     <materialDesign:PackIcon Kind="Email" Height="55" Width="55" HorizontalAlignment="Center"></materialDesign:PackIcon>
                     <TextBlock Text="Mail" FontSize="26" HorizontalAlignment="Center" FontFamily="Font Awesome" ></TextBlock>

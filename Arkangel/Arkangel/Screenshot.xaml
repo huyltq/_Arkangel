@@ -5,51 +5,65 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Arkangel"
              mc:Ignorable="d" 
-             d:DesignHeight="430" d:DesignWidth="727">
+             d:DesignHeight="430" d:DesignWidth="759"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
-        <TabControl BorderBrush="White">
-            <TabItem Header="Screenshot" FontSize="30">
+        <StackPanel Margin="8,4,4,4" Background="#F2F2F2">
+            <Grid Height="50">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0" Background="#0489B1">
+                    <Button Uid="0" Width="150" Content="Screenshot" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="20" />
+                </StackPanel>
+                <Grid x:Name="GridCursor" Width="150" Height="5" Background="#DBA901" HorizontalAlignment="Left" Margin="10 0" VerticalAlignment="Bottom"/>
+            </Grid>
+            <Grid x:Name="GridMain" Height="372" Margin="10,0" >
                 <StackPanel>
-                    <GroupBox Header="Enable/Disable" FontSize="20" Margin="0,0,5,0">
-                        <CheckBox>
-                            Enable visual surveilance
-                        </CheckBox>
-                    </GroupBox>
-                    <TextBlock Height="15"></TextBlock>
-                    <GroupBox Header="Setting" FontSize="20" Margin="0,0,5,0">
-                        <StackPanel>
-                            <CheckBox>Timestamp and user name on screenshots</CheckBox>
-                            <CheckBox>Enable douple screen for screenshot</CheckBox>
-                            <Grid>
-
-                                <CheckBox>Delete after ________ days</CheckBox>
-                                <TextBox Height="auto" Width="35" Margin="130,0,533,0" BorderBrush="#89FFFFFF"></TextBox>
-                            </Grid>
-                            <Grid>
-                                <TextBlock>
-                                Make screen capture every _____ hours _____ minutes
-                                </TextBlock>
-                                <TextBox Height="auto" Margin="243,-7,414,7" BorderBrush="#89FFFFFF"/>
-                                <TextBox Height="auto" Margin="346,-7,310,7" BorderBrush="#89FFFFFF"/>
-                            </Grid>
-                            <TextBlock>
-                                Picture quality (higher quality require more disk space
-                            </TextBlock>
-                            <Slider Width="500"
-                            TickFrequency="5"
-                            Orientation="Horizontal"
-                            TickPlacement="BottomRight"
-                            Minimum="1"
-                            Maximum="100"
-                            Value="50"
-                            IsSelectionRangeEnabled="True" />
+                    <GroupBox Width="auto" materialDesign:ColorZoneAssist.Mode="Light" Header="Enable/Disable" Padding="4" FontSize="15" Margin="0,10,10,10">
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Height="50" Grid.ColumnSpan="3" FontSize="25" Content="Auto make a screenshot every"/>
+                            <StackPanel Width="5"/>
+                            <TextBox x:Name="tb_hours" Width="50" Height="35" VerticalAlignment="Top" FontSize="25" FlowDirection="RightToLeft" />
+                            <StackPanel Width="5"/>
+                            <TextBlock Text="hours" VerticalAlignment="Center" FontSize="25"/>
+                            <StackPanel Width="5"/>
+                            <TextBox x:Name="tb_minutes" Width="50" Height="35" FontSize="25" VerticalAlignment="Top" FlowDirection="RightToLeft" />
+                            <StackPanel Width="5"/>
+                            <TextBlock Text="minutes" VerticalAlignment="Center" FontSize="25"/>
                         </StackPanel>
                     </GroupBox>
+                    <GroupBox Header="Settings" materialDesign:ColorZoneAssist.Mode="Light" FontSize="15" Padding="4" Margin="0,0,10,0">
+                        <StackPanel>
+                            <CheckBox Height="40" Content="Timestaps and username on screenshot" FontSize="25"/>
+                            <CheckBox Height="40" Content="Enable douple screen on screenshot" FontSize="25"/>
+                            <StackPanel Orientation="Horizontal" Height="40">
+                                <CheckBox Content="Delete after" FontSize="25"/>
+                                <StackPanel Width="5"/>
+                                <TextBox Width="50" Height="32" FontSize="20" VerticalAlignment="Top" FlowDirection="RightToLeft"/>
+                                <StackPanel Width="5"/>
+                                <TextBlock Text="days" FontSize="25" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <TextBlock Text="Picture Quality" FontSize="25" HorizontalAlignment="Center"></TextBlock>
+                            <StackPanel Orientation="Horizontal" Height="40" Width="500">
+                                <TextBlock Text="Low" FontSize="20" VerticalAlignment="Center"></TextBlock>
+                                <StackPanel Width="10"></StackPanel>
+                                <Slider Width="400" VerticalAlignment="Center"></Slider>
+                                <StackPanel Width="10"></StackPanel>
+                                <TextBlock Text="High" FontSize="20" VerticalAlignment="Center"></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
 
+                    </GroupBox>
                 </StackPanel>
-            </TabItem>
+            </Grid>
 
-        </TabControl>
-        <Button Width="160" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="OK" Margin="0,20,30,8"/>
+        </StackPanel>
+        <Button Margin="574,388,35,10" Width="150" Content="OK"/>
     </Grid>
 </UserControl>

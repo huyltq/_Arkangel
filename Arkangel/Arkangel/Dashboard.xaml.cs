@@ -91,5 +91,12 @@ namespace Arkangel
             _dasboard.Children.Clear();
             _dasboard.Children.Add(webcam);
         }
+
+        private void bt_Email_Click(object sender, RoutedEventArgs e)
+        {
+            Email email = new Email();
+            _dasboard.Children.Clear();
+            _dasboard.Children.Add(email);
+        }
     }
 }

@@ -36,7 +36,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Height="50" Width="auto">
                         <TextBlock Text="Password:" FontSize="25" VerticalAlignment="Center"></TextBlock>
-                        <StackPanel Width="73"></StackPanel>
+                        <StackPanel Width="70"></StackPanel>
                         <TextBox Width="400" VerticalAlignment="Top" FontSize="25"></TextBox>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Height="50" Width="auto">
