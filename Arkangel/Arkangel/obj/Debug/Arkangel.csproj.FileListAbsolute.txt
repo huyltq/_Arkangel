@@ -97,3 +97,13 @@ D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Email
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Email_Server.baml
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\User.g.cs
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\User.baml
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Alert_Add.g.cs
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Alert_Add.baml
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Target_ByApp.g.cs
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Target_ByApp.baml
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Target_ByName.g.cs
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Target_ByName.baml
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\CB_File.g.cs
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\CB_Pic.g.cs
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\CB_File.baml
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\CB_Pic.baml

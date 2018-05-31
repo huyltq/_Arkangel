@@ -10,32 +10,30 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Arkangel
 {
     /// <summary>
-    /// Interaction logic for Alert.xaml
+    /// Interaction logic for Target_ByName.xaml
     /// </summary>
-    public partial class Alert : UserControl
+    public partial class Target_ByName : Window
     {
-        
-        public Alert()
+        private Target _target;
+        public Target_ByName(Target target)
         {
+            _target = target;
             InitializeComponent();
         }
 
-        private void bt_add_Click(object sender, RoutedEventArgs e)
+        private void bt_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            Alert_Add alert_Add = new Alert_Add(this);
-            alert_Add.Show();
+            Close();
         }
 
-        private void bt_delete_Click(object sender, RoutedEventArgs e)
+        private void bt_Add_Click(object sender, RoutedEventArgs e)
         {
-            keyword_list.Items.Remove(keyword_list.SelectedItem);
+            _target.target_list.Items.Add(tb_text.Text);
         }
     }
-    
 }

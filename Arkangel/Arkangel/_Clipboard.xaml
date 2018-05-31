@@ -26,13 +26,17 @@
 
             <Grid x:Name="GridMain" Height="356" Margin="10,16,10,0" Background="#F2F2F2">
                 <GroupBox Header="Text" Height="255" Margin="5,0,5,0" Width="auto" FontSize="15" Padding="4" materialDesign:ColorZoneAssist.Mode="Light" VerticalAlignment="Top">
-                    <TextBlock x:Name="_text"></TextBlock>
+                    <StackPanel>
+                        <TextBox x:Name="_text" Height="180" ScrollViewer.CanContentScroll="True" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Visible"></TextBox>
+                        <Button x:Name="bt_change" Width="80" Content="Change" HorizontalAlignment="Right" Margin="5" Click="bt_change_Click"></Button>
+                    </StackPanel>
+                   
                 </GroupBox>
                 <GroupBox Header="File" Height="72"  Margin="5,260,394,0" FontSize="15" Padding="4" materialDesign:ColorZoneAssist.Mode="Light" VerticalAlignment="Top">
-                    <Button Content="Get" Width="90" FontSize="15" Foreground="Blue" HorizontalAlignment="Right" Background="AliceBlue" ></Button>
+                    <Button x:Name="bt_file" Content="Get" Width="90" FontSize="15"  HorizontalAlignment="Right" Click="bt_file_Click" ></Button>
                 </GroupBox>
                 <GroupBox Header="Picture" Height="72"  Margin="368,260,5,0" FontSize="15" Padding="4" materialDesign:ColorZoneAssist.Mode="Light" VerticalAlignment="Top">
-                    <Button Content="Get" Width="90" FontSize="15" Foreground="Blue" Background="AliceBlue" HorizontalAlignment="Right" ></Button>
+                    <Button x:Name="bt_Picture" Content="Get" Width="90" FontSize="15"  HorizontalAlignment="Right" Click="bt_Picture_Click" ></Button>
                 </GroupBox>
             </Grid>
         </StackPanel>

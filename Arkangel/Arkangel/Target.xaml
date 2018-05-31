@@ -31,31 +31,20 @@
                             <CheckBox Content="Enable logging in the following only application" FontSize="25" Height="50"></CheckBox>
                             <StackPanel Height="10"></StackPanel>
                             <Grid Height="2" Background="Black"></Grid>
-                            <ListView Width="700" Height="100" FontSize="20" HorizontalAlignment="Center">
-                                <ListViewItem>
-                                    Hello
-                                </ListViewItem>
-                                <ListViewItem>
-                                    World
-                                </ListViewItem>
-                                <ListViewItem>
-                                    :)
-                                </ListViewItem>
-                                <ListViewItem>
-                                    abc
-                                </ListViewItem>
+                            <ListView x:Name="target_list" Width="700" Height="100" FontSize="20" HorizontalAlignment="Center">
+                                
                             </ListView>
                             <Grid Height="2" Background="Black"></Grid>
                             <StackPanel Orientation="Horizontal" Margin="10" Height="50" Width="600">
-                                <Button>
+                                <Button x:Name="bt_ByApp" Click="bt_ByApp_Click">
                                     Add by Application
                                 </Button>
                                 <StackPanel Width="100"></StackPanel>
-                                <Button>
+                                <Button x:Name="bt_byname" Click="bt_byname_Click">
                                     Add by Windows Title
                                 </Button>
                                 <StackPanel Width="100"></StackPanel>
-                                <Button>
+                                <Button x:Name="bt_delete" Click="bt_delete_Click">
                                     Delete
                                 </Button>
                             </StackPanel>

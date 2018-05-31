@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\App.xaml
-16-259023391
+21-338432991
 
-24-1162464827
+292072989180
 24-753969874
-Alert.xaml;Dashboard.xaml;Email.xaml;Email_General.xaml;Email_Server.xaml;FTP.xaml;FTP_General.xaml;FTP_Server.xaml;General.xaml;LoginForm.xaml;MainWindow.xaml;Screenshot.xaml;Target.xaml;User.xaml;Webcam.xaml;_Clipboard.xaml;
+Alert.xaml;Alert_Add.xaml;CB_File.xaml;CB_Pic.xaml;Dashboard.xaml;Email.xaml;Email_General.xaml;Email_Server.xaml;FTP.xaml;FTP_General.xaml;FTP_Server.xaml;General.xaml;LoginForm.xaml;MainWindow.xaml;Screenshot.xaml;Target.xaml;Target_ByApp.xaml;Target_ByName.xaml;User.xaml;Webcam.xaml;_Clipboard.xaml;
 
 True
 

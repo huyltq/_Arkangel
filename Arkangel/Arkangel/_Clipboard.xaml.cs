@@ -22,7 +22,35 @@ namespace Arkangel
     {
         public _Clipboard()
         {
+
             InitializeComponent();
+            _text.Text = Clipboard.GetText();
+            _text.IsReadOnly = true;
+        }
+
+        private void bt_change_Click(object sender, RoutedEventArgs e)
+        {
+            if (_text.IsReadOnly == false)
+            {
+                if (_text.Text != "")
+                {
+                    Clipboard.SetText(_text.Text);
+                }
+                _text.IsReadOnly = true;
+            }
+            else _text.IsReadOnly = false;
+        }
+
+        private void bt_file_Click(object sender, RoutedEventArgs e)
+        {
+            CB_File cB_File = new CB_File();
+            cB_File.Show();
+        }
+
+        private void bt_Picture_Click(object sender, RoutedEventArgs e)
+        {
+            CB_Pic cB_Pic = new CB_Pic();
+            cB_Pic.Show();
         }
     }
 }

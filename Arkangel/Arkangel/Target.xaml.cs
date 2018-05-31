@@ -24,5 +24,23 @@ namespace Arkangel
         {
             InitializeComponent();
         }
+
+        private void bt_ByApp_Click(object sender, RoutedEventArgs e)
+        {
+            Target_ByApp target_ByApp = new Target_ByApp(this);
+            target_ByApp.Show();
+        }
+
+        private void bt_delete_Click(object sender, RoutedEventArgs e)
+        {
+            target_list.Items.Remove(target_list.SelectedItem);
+        }
+
+        private void bt_byname_Click(object sender, RoutedEventArgs e)
+        {
+            Target_ByName target_ByName = new Target_ByName(this);
+            target_ByName.Show();
+               
+        }
     }
 }
