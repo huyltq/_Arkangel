@@ -98,5 +98,19 @@ namespace Arkangel
             _dasboard.Children.Clear();
             _dasboard.Children.Add(email);
         }
+
+        private void bt_Target_Click(object sender, RoutedEventArgs e)
+        {
+            Target target = new Target();
+            _dasboard.Children.Clear();
+            _dasboard.Children.Add(target);
+        }
+
+        private void bt_User_Click(object sender, RoutedEventArgs e)
+        {
+            User user = new User();
+            _dasboard.Children.Clear();
+            _dasboard.Children.Add(user);
+        }
     }
 }

@@ -65,14 +65,14 @@
                     <TextBlock Text="Facebook" FontSize="23" HorizontalAlignment="Center" FontFamily="Font Awesome" ></TextBlock>
                 </StackPanel>
             </Button>
-            <Button Grid.Column="1" Height="Auto" FontSize="30" FontFamily="Font Awesome" Margin="0,0,0,4" Grid.Row="1">
+            <Button x:Name="bt_Target" Grid.Column="1" Height="Auto" FontSize="30" FontFamily="Font Awesome" Margin="0,0,0,4" Grid.Row="1" Click="bt_Target_Click">
                 <StackPanel Orientation="Horizontal" Width="180">
                     <materialDesign:PackIcon Kind="Target" Height="55" Width="55"></materialDesign:PackIcon>
                     <StackPanel Width="10"></StackPanel>
                     <TextBlock Text="Target" FontSize="33" VerticalAlignment="Center" FontFamily="Font Awesome" ></TextBlock>
                 </StackPanel>
             </Button>
-            <Button Grid.Column="2" Height="Auto" FontSize="30" FontFamily="Font Awesome" Margin="5,0,0,4" Grid.Row="1">
+            <Button x:Name="bt_User" Grid.Column="2" Height="Auto" FontSize="30" FontFamily="Font Awesome" Margin="5,0,0,4" Grid.Row="1" Click="bt_User_Click">
                 <StackPanel Orientation="Horizontal" Width="140">
                     <materialDesign:PackIcon Kind="AccountBox" Height="55" Width="55"></materialDesign:PackIcon>
                     <StackPanel Width="10"></StackPanel>

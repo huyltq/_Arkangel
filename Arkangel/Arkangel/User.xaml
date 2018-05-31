@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="Arkangel.User"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Arkangel"
+             mc:Ignorable="d" 
+             d:DesignHeight="430" d:DesignWidth="759"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}">
+    <Grid Background="#f2f2f2">
+        <StackPanel Margin="8,4,4,53" Background="#F2F2F2">
+            <Grid Height="50">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0" Background="#0489B1">
+                    <Button Uid="0" Width="150" Content="User" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="20" />
+                </StackPanel>
+                <Grid x:Name="GridCursor" Width="150" Height="5" Background="#DBA901" HorizontalAlignment="Left" Margin="10 0" VerticalAlignment="Bottom"/>
+            </Grid>
+            <Grid x:Name="GridMain" Height="372" Margin="0,10" >
+                <StackPanel Margin="10,0,0,0">
+                    <GroupBox Header="Security Setting" FontSize="15" materialDesign:ColorZoneAssist.Mode="Light" Padding="4" Height="320">
+                        <StackPanel>
+                            <CheckBox Content="Monitor all Users" FontSize="25" Height="40"/>
+                            <CheckBox Content="Monitor the current User" FontSize="25" Height="40"/>
+                            <CheckBox Content="Monitor the following User" FontSize="25" Height="40"/>
+                            <Grid Height="2" Background="Black"/>
+                            <ListView Width="700" Height="100" FontSize="20" HorizontalAlignment="Center">
+                                <ListViewItem Content="Hello"/>
+                                <ListViewItem Content="World"/>
+                                <ListViewItem Content=":)"/>
+                                <ListViewItem Content="abc"/>
+                            </ListView>
+                            <Grid Height="2" Background="Black"/>
+                            <StackPanel Orientation="Horizontal" Margin="10" Height="50" Width="375">
+                                <Button Content="Add a User"/>
+                                <StackPanel Width="100"/>
+                                <StackPanel Width="100"/>
+                                <Button Content="Delete"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <Button Width="130" Margin="593,388,36,10">OK</Button>
+    </Grid>
+</UserControl>

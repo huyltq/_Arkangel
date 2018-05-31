@@ -25,8 +25,8 @@
                     </Button>
                     <StackPanel>
                         <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Height="50" Width="590">
-                            <TextBlock Text="Host Name:" FontSize="25" VerticalAlignment="Center"></TextBlock>
-                            <StackPanel Width="50"></StackPanel>
+                            <TextBlock Text="STMP Sever:" FontSize="25" VerticalAlignment="Center"></TextBlock>
+                            <StackPanel Width="45"></StackPanel>
                             <TextBox Width="400" VerticalAlignment="Top" FontSize="25"></TextBox>
                         </StackPanel >
                         <StackPanel Orientation="Horizontal" Height="50" Width="auto">
@@ -40,13 +40,15 @@
                             <TextBox Width="400" VerticalAlignment="Top" FontSize="25"></TextBox>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Height="50" Width="auto">
-                            <TextBlock Text="Romote Dir:" FontSize="25" VerticalAlignment="Center"></TextBlock>
-                            <StackPanel Width="51"></StackPanel>
+                            <TextBlock Text="Subject:" FontSize="25" VerticalAlignment="Center"></TextBlock>
+                            <StackPanel Width="90"></StackPanel>
                             <TextBox Width="400" VerticalAlignment="Top" FontSize="25"></TextBox>
                         </StackPanel>
-                        <TextBlock HorizontalAlignment="Center" FontSize="18"><Run Text="Remote dir is the directory on the FTP server when you want to store logs file."/></TextBlock>
-                        <TextBlock HorizontalAlignment="Center" FontSize="18" Width="515" ><Run Text="You can leave it blank to store logs at the intinal directory."/></TextBlock>
-                        <CheckBox HorizontalAlignment="Center" FontSize="18" Height="auto" Content="Use passive mode (this mabe neccessary for some firewalls)"/>
+                        <StackPanel Orientation="Horizontal" Width="500" Height="50"> 
+                            <CheckBox FontSize="25" Content="Zip with password:"></CheckBox>
+                            <StackPanel Width="20"></StackPanel>
+                            <PasswordBox FontSize="25" Width="200" VerticalAlignment="Top"></PasswordBox>
+                        </StackPanel>
                     </StackPanel>
                 </Grid>
             </GroupBox>

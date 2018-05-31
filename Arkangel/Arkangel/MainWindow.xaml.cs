@@ -60,8 +60,7 @@ namespace Arkangel
         }
         private void bt_logout_Click_1(object sender, RoutedEventArgs e)
         {
-            if (System.Windows.Forms.MessageBox.Show("Do you want to log out", "Warning", MessageBoxButtons.OK) == System.Windows.Forms.DialogResult.OK)
-
+            if (System.Windows.Forms.MessageBox.Show("Do you want to log out", "Warning", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
 
                 LoginForm loginForm = new LoginForm();
