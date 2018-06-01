@@ -136,6 +136,9 @@
     <Compile Include="Webcam.xaml.cs">
       <DependentUpon>Webcam.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Website_Usage.xaml.cs">
+      <DependentUpon>Website_Usage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="_Clipboard.xaml.cs">
       <DependentUpon>_Clipboard.xaml</DependentUpon>
     </Compile>
@@ -230,6 +233,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Webcam.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Website_Usage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

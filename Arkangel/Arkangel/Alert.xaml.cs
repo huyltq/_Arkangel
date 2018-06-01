@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,22 +21,83 @@ namespace Arkangel
     /// </summary>
     public partial class Alert : UserControl
     {
-        
+        int check;
         public Alert()
         {
-            InitializeComponent();
-        }
+            check = 0;
 
+            InitializeComponent();
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=C:\Users\8460p\Downloads\database.db"))
+            {
+                connect.Open();
+                using (SQLiteCommand fmd = connect.CreateCommand())
+                {
+                    SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"SELECT sendMail,scrShot FROM Alerts,current_user WHERE Alerts.id = current_user.id", connect);
+                    SQLiteDataReader data = sqlComm_Alert.ExecuteReader();
+                    while (data.Read())
+                    {
+
+                        if (data["sendMail"].ToString() == "1")
+                        {
+                            cb_sendMail.IsChecked = true;
+                        }
+                        else cb_sendMail.IsChecked = false;
+                        if ((string)data["scrShot"].ToString() == "1")
+                        {
+                            cb_scrShot.IsChecked = true;
+                        }
+                        else cb_scrShot.IsChecked = false;
+                    }
+                    SQLiteCommand sqlComm_AlertList = new SQLiteCommand(@"SELECT key FROM AlertList,current_user WHERE AlertList.id = current_user.id", connect);
+                    SQLiteDataReader data2 = sqlComm_AlertList.ExecuteReader();
+                    while (data2.Read())
+                    {
+                        keyword_list.Items.Add(data2["key"].ToString());
+                    }
+                }
+            }
+        }
         private void bt_add_Click(object sender, RoutedEventArgs e)
         {
+            check = 1;
             Alert_Add alert_Add = new Alert_Add(this);
             alert_Add.Show();
         }
 
         private void bt_delete_Click(object sender, RoutedEventArgs e)
         {
+            check = 1;
             keyword_list.Items.Remove(keyword_list.SelectedItem);
         }
+
+        private void bt_OK_Click(object sender, RoutedEventArgs e)
+        {
+            if (check == 1)
+            {
+                using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=C:\Users\8460p\Downloads\database.db"))
+                {
+                    connect.Open();
+                    int scrShot = 0;
+                    int sendMail = 0;
+                    if (cb_scrShot.IsChecked.Value == true) scrShot = 1;
+                    if (cb_sendMail.IsChecked.Value == true) sendMail = 1;
+                    SQLiteCommand sqlUpdateAlert = new SQLiteCommand(@"UPDATE Alerts SET sendMail="+sendMail+", scrShot="+scrShot+" WHERE Alerts.id IN (SELECT current_user.id from current_user)", connect);
+                    sqlUpdateAlert.ExecuteNonQuery();
+                    SQLiteCommand sqlUpdateAlertList = new SQLiteCommand(@"INSERT INTO Alerts (SELECT AlertList.id FROM AlertList,current_user) VALUES (1,1) WHERE Alerts.id IN (SELECT current_user.id from current_user)", connect);
+                    connect.Close();
+                }
+            }
+        }
+
+        private void cb_sendMail_Click(object sender, RoutedEventArgs e)
+        {
+            check = 1;
+        }
+
+        private void cb_scrShot_Click(object sender, RoutedEventArgs e)
+        {
+            check = 1;
+        }
     }
-    
 }
+    

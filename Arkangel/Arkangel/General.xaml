@@ -28,8 +28,10 @@
             <Grid x:Name="GridMain" Height="372" Margin="10,0" >
                 <StackPanel Margin="0,0,0,4" >
                     <GroupBox Header="Security Setting" Height="100" Margin="0,10,5,0" FontSize="15" Padding="4" materialDesign:ColorZoneAssist.Mode="Light" >
-                        <CheckBox Content="Disable Task Manager" FontSize="25"></CheckBox>
-
+                        <StackPanel>
+                            <CheckBox Content="Disable Task Manager" FontSize="25"></CheckBox>
+                            <CheckBox Content="Disable Registry" FontSize="25"></CheckBox>
+                        </StackPanel>
                     </GroupBox>
                     <GroupBox Header="Encrypt logs" Height="100" Margin="0,5,5,0" FontSize="15" Padding="4" materialDesign:ColorZoneAssist.Mode="Light">
                         <CheckBox FontSize="25" IsChecked="True">
