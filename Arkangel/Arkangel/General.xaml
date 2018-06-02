@@ -27,31 +27,27 @@
             </Grid>
             <Grid x:Name="GridMain" Height="372" Margin="10,0" >
                 <StackPanel Margin="0,0,0,4" >
-                    <GroupBox Header="Security Setting" Height="100" Margin="0,10,5,0" FontSize="15" Padding="4" materialDesign:ColorZoneAssist.Mode="Light" >
+                    <GroupBox Header="Security Setting" Height="120" Margin="0,10,5,0" FontSize="15" Padding="4" materialDesign:ColorZoneAssist.Mode="Light">
                         <StackPanel>
-                            <CheckBox Content="Disable Task Manager" FontSize="25"></CheckBox>
-                            <CheckBox Content="Disable Registry" FontSize="25"></CheckBox>
+                            <CheckBox x:Name="cb_taskmanager" Content="Disable Task Manager" FontSize="25" Height="40" Click="cb_taskmanager_Click"></CheckBox>
+                            <CheckBox x:Name="cb_registry" Content="Disable Registry" FontSize="25" Height="40" Click="cb_registry_Click"></CheckBox>
                         </StackPanel>
                     </GroupBox>
-                    <GroupBox Header="Encrypt logs" Height="100" Margin="0,5,5,0" FontSize="15" Padding="4" materialDesign:ColorZoneAssist.Mode="Light">
-                        <CheckBox FontSize="25" IsChecked="True">
-                            Enable Encrypt logs
-                        </CheckBox>
-                    </GroupBox>
-                    <GroupBox Header="Hot Keys" Height="100" Margin="0,5,5,0" FontSize="15" Padding="4" VerticalAlignment="Center" materialDesign:ColorZoneAssist.Mode="Light">
+                    
+                    <GroupBox Header="Hot Keys" Height="120" Margin="0,5,5,0" FontSize="15" Padding="4" VerticalAlignment="Center" materialDesign:ColorZoneAssist.Mode="Light">
                         <StackPanel>
-                            <CheckBox IsChecked="True" FontSize="25">
+                            <CheckBox x:Name="cb_runstart" IsChecked="True" FontSize="25" Height="40" Click="cb_runstart_Click">
                                 Run as Windows start up
                             </CheckBox>
-                            <CheckBox FontSize="25"> 
+                            <CheckBox x:Name="cb_hotkey" FontSize="25" Height="40" Click="cb_hotkey_Click"> 
                                 Hoy key : Ctrl + Shift + O
                             </CheckBox>
                         </StackPanel>
                     </GroupBox>
-                    <Button Margin="546,15,32,0" Width="150" Content="OK"/>
                 </StackPanel>
             </Grid>
         </StackPanel>
+        <Button x:Name="bt_OK" Margin="570,368,39,30" Width="150" Content="OK" Click="bt_OK_Click"/>
     </Grid>
 
 </UserControl>
