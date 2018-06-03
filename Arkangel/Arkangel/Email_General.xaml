@@ -19,7 +19,7 @@
         <StackPanel>
             <GroupBox Header="Enable/Disable" FontSize="15" Height="70" Padding="4" materialDesign:ColorZoneAssist.Mode="Light" Margin="0,0,10,0">
                 <StackPanel Orientation="Horizontal" Height="40">
-                    <CheckBox x:Name="cb_enable" Grid.ColumnSpan="3" FontSize="20" Checked="cb_enable_Checked">Try to sent logs to Email every</CheckBox>
+                    <CheckBox x:Name="cb_enable" Grid.ColumnSpan="3" FontSize="20">Try to sent logs to Email every</CheckBox>
                     <StackPanel Width="5"></StackPanel>
                     <TextBox x:Name="tb_hours" Width="50" Height="35" VerticalAlignment="Top" FontSize="20" FlowDirection="RightToLeft" />
                     <StackPanel Width="5"></StackPanel>

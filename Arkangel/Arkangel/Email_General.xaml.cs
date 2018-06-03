@@ -21,9 +21,9 @@ namespace Arkangel
     /// </summary>
     public partial class Email_General : UserControl
     {
-        public Email_General(int check)
+        public Email_General()
         {
-            check = 1;
+            //check = 1;
             InitializeComponent();
             using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=C:\Users\8460p\Downloads\database.db"))
             {
@@ -43,11 +43,6 @@ namespace Arkangel
                     }
                 }
             }
-            
-        }
-
-        private void cb_enable_Checked(object sender, RoutedEventArgs e)
-        {
             
         }
     }

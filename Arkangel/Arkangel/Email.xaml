@@ -28,7 +28,7 @@
             <Grid x:Name="GridMain" Height="306" Margin="10,16,10,0" Background="#F2F2F2">
                 
             </Grid>
-            <Button x:Name="bt_OK" HorizontalAlignment="Right" Width="160" Margin="0,10,50,0" Content="OK"/>
+            <Button x:Name="bt_OK" HorizontalAlignment="Right" Width="160" Margin="0,10,50,0" Content="OK" Click="bt_OK_Click"/>
         </StackPanel>
 
     </Grid>
