@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Linq;
@@ -80,6 +81,45 @@ namespace Arkangel
         private void cb_hotkey_Click(object sender, RoutedEventArgs e)
         {
             check = 1;
+        }
+        public static void RunStartUp()
+        {
+            RegistryKey regkey = Registry.CurrentUser.CreateSubKey("Software\\ListenToUser");
+            RegistryKey regstart = Registry.CurrentUser.CreateSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run");
+            string keyvalue = "1";
+            try
+            {
+                regkey.SetValue("Index", keyvalue);
+                regstart.SetValue("ListenToUser",System.Windows.Forms.Application.StartupPath + "\\" + System.Windows.Forms.Application.ProductName + ".exe");
+                regkey.Close();
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+        public static void DontRunStartUp()
+        {
+            RegistryKey regkey = Registry.CurrentUser.OpenSubKey("Software\\ListenToUser", true);
+            RegistryKey regstart = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+
+            try
+            {
+                regkey.DeleteValue("Index", false);
+                regstart.DeleteValue("ListenToUser", false);
+                regkey.Close();
+                regstart.Close();
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+        public static void ToggleTaskManager(string keyValue)
+        {
+            RegistryKey objRegistryKey = Registry.CurrentUser.CreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System");
+            objRegistryKey.SetValue("DisableTaskMgr", keyValue);
+            objRegistryKey.Close();
         }
 
         private void bt_OK_Click(object sender, RoutedEventArgs e)

@@ -20,10 +20,12 @@ namespace Arkangel
     /// </summary>
     public partial class Email : UserControl
     {
+        int check;
         public Email()
         {
+            
             InitializeComponent();
-            Email_General general = new Email_General();
+            Email_General general = new Email_General(check);
             GridMain.Children.Clear();
             GridMain.Children.Add(general);
         }
@@ -31,13 +33,13 @@ namespace Arkangel
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             int index = int.Parse(((Button)e.Source).Uid);
-
+            
             GridCursor.Margin = new Thickness(10 + (150 * index), 0, 0, 0);
 
             switch (index)
             {
                 case 0:
-                    Email_General general = new Email_General();
+                    Email_General general = new Email_General(check);
                     GridMain.Children.Clear();
                     GridMain.Children.Add(general);
                     break;
