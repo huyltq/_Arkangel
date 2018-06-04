@@ -56,6 +56,7 @@ namespace Arkangel
                         MainWindow bs = new MainWindow();
                         bs._username.Text = username_;
                         SQLiteCommand getid = new SQLiteCommand(@"UPDATE current_user SET id="+Uid, connect);
+                        getid.ExecuteNonQuery();
                         bs.Show();
                         Hide();
                     }
