@@ -25,7 +25,7 @@
                 <Grid x:Name="GridCursor" Width="150" Height="5" Background="#DBA901" HorizontalAlignment="Left" Margin="10 0" VerticalAlignment="Bottom"/>
             </Grid>
 
-            <Grid x:Name="GridMain" Height="347" Margin="10,16,10,0" Background="#F2F2F2">
+            <Grid x:Name="GridMain" Height="358" Margin="10,16,10,0" Background="#F2F2F2">
                 
             </Grid>
             
