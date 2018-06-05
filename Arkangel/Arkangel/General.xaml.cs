@@ -126,7 +126,7 @@ namespace Arkangel
         {
             if (check == 1)
             {
-                using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=C:\Users\8460p\Downloads\database.db"))
+                using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=database.db"))
                 {
                     connect.Open();
                     using (SQLiteCommand fmd = connect.CreateCommand())

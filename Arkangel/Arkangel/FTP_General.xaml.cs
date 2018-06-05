@@ -26,7 +26,7 @@ namespace Arkangel
         {
             check = 0;
             InitializeComponent();
-            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=.\database.db"))
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=database.db"))
             {
                 connect.Open();
                 using (SQLiteCommand fmd = connect.CreateCommand())
@@ -65,6 +65,110 @@ namespace Arkangel
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void bt_OK_Click(object sender, RoutedEventArgs e)
+        {
+            if (check == 1)
+            {
+                int enable = 0;
+                int upKeyStroke = 0;
+                int upScrshot = 0;
+                int upWebcam = 0;
+                int upWebsite = 0;
+                int clear = 0;
+                int upSize = 0;
+                if (cb_enable.IsChecked.Value == true) enable = 1;
+                if (cb_upKeystroke.IsChecked.Value == true) upKeyStroke = 1;
+                if (cb_upScrshot.IsChecked.Value == true) upWebcam = 1;
+                if (cb_upWebsite.IsChecked.Value == true) upWebsite = 1;
+                if (cb_upWebcam.IsChecked.Value == true) upWebcam = 1;
+                if (cb_clear.IsChecked.Value == true) clear = 1;
+                if (cb_limitedSize.IsChecked.Value == true) upSize = 1;
+                int limitSize = 0;
+                int hout = 0;
+                int minutes = 0;
+                if ((enable==1&&(!Int32.TryParse(tb_hours.Text, out hout) || !Int32.TryParse(tb_minutes.Text, out minutes) || (minutes < 0) || (hout < 0) || (minutes == 0 && hout == 0)))||((upSize==1)&&((int.TryParse(tb_kbs.Text,out limitSize)|| (limitSize <= 0) ))))
+                {
+                    MessageBox.Show("Limit Size, Hour, Minute should be a number", "Fail");
+                }
+                else
+                {
+                    using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=.\database.db"))
+                    {
+                        connect.Open();
+                        using (SQLiteCommand fmd = connect.CreateCommand())
+                        {
+                            SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"UPDATE FTP SET enable=" + enable + ",upKeystroke=" + upKeyStroke + ",upScrshot=" + upScrshot + ",upWebcam=" + upWebcam + ",upWebsite=" + upWebsite+",upSize= "+ upSize+",size=" + limitSize + ",clear=" + clear + " WHERE FTP.id = (SELECT current_user.id FROM current_user)", connect);
+                            sqlComm_Alert.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+        }
+
+        private void cb_enable_Click(object sender, RoutedEventArgs e)
+        {
+            check = 1;
+            if (cb_enable.IsChecked.Value == true)
+            {
+                tb_hours.IsEnabled = true;
+                tb_minutes.IsEnabled = true;
+            }
+            else
+            {
+                tb_hours.IsEnabled = false;
+                tb_minutes.IsEnabled = false;
+            }
+        }
+
+        private void tb_hours_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            check = 1;
+        }
+
+        private void tb_minutes_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            check = 1;
+        }
+
+        private void cb_upKeystroke_Click(object sender, RoutedEventArgs e)
+        {
+            check = 1;
+        }
+
+        private void cb_upScrshot_Click(object sender, RoutedEventArgs e)
+        {
+            check = 1;
+        }
+
+        private void cb_upWebcam_Click(object sender, RoutedEventArgs e)
+        {
+            check = 1;
+        }
+
+        private void cb_upWebsite_Click(object sender, RoutedEventArgs e)
+        {
+            check = 1;
+        }
+
+        private void cb_limitedSize_Click(object sender, RoutedEventArgs e)
+        {
+            if (cb_limitedSize.IsChecked.Value == false)
+                tb_kbs.IsEnabled = false;
+            else
+                tb_kbs.IsEnabled = true;
+            check = 1;
+        }
+
+        private void cb_clear_Click(object sender, RoutedEventArgs e)
+        {
+            check = 1;
+        }
+
+        private void tb_kbs_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            check = 1;
         }
     }
 }

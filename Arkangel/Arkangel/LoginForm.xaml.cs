@@ -35,7 +35,7 @@ namespace Arkangel
         public void btn_Login_Click(object sender, RoutedEventArgs e)
         {
            
-            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=C:\Users\8460p\Downloads\database.db"))
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=database.db"))
             {
                 connect.Open();
                 using (SQLiteCommand fmd = connect.CreateCommand())

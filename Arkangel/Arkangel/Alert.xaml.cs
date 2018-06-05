@@ -27,7 +27,7 @@ namespace Arkangel
             check = 0;
 
             InitializeComponent();
-            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=C:\Users\8460p\Downloads\database.db"))
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=database.db"))
             {
                 connect.Open();
                 using (SQLiteCommand fmd = connect.CreateCommand())
@@ -74,7 +74,7 @@ namespace Arkangel
         {
             if (check == 1)
             {
-                using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=C:\Users\8460p\Downloads\database.db"))
+                using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=database.db"))
                 {
                     connect.Open();
                     int scrShot = 0;
@@ -83,7 +83,19 @@ namespace Arkangel
                     if (cb_sendMail.IsChecked.Value == true) sendMail = 1;
                     SQLiteCommand sqlUpdateAlert = new SQLiteCommand(@"UPDATE Alerts SET sendMail="+sendMail+", scrShot="+scrShot+" WHERE Alerts.id IN (SELECT current_user.id from current_user)", connect);
                     sqlUpdateAlert.ExecuteNonQuery();
-                    SQLiteCommand sqlUpdateAlertList = new SQLiteCommand(@"INSERT INTO Alerts (SELECT AlertList.id FROM AlertList,current_user) VALUES (1,1) WHERE Alerts.id IN (SELECT current_user.id from current_user)", connect);
+                 //   sqlUpdateAlert.Dispose();
+                    SQLiteCommand getuser = new SQLiteCommand(@"SELECT Alerts.id FROM Alerts,current_user Where Alerts.id=current_user.id",connect);
+                    SQLiteDataReader data = getuser.ExecuteReader();
+                    while (data.Read())
+                    {
+                        string user = data["id"].ToString();
+                        for (int i =0;i<keyword_list.Items.Count;i++)
+                        {
+                            Console.WriteLine(keyword_list.Items[i].ToString());
+                            SQLiteCommand sqlUpdateAlertList = new SQLiteCommand(@"INSERT or Ignore INTO AlertList VALUES (" + user + ",'"+keyword_list.Items[i].ToString() +"')", connect);
+                            sqlUpdateAlertList.ExecuteNonQuery();
+                        }
+                    }
                     connect.Close();
                 }
             }

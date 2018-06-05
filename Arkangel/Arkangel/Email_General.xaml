@@ -45,8 +45,8 @@
                     <CheckBox x:Name="cb_upWebsite" FontSize="20" Grid.Column="1" Grid.Row="1" Click="cb_upWebsite_Click">Website</CheckBox>
                 </Grid>
             </GroupBox>
-            <GroupBox Header="Additional Option" FontSize="15" Height="116" Padding="4" materialDesign:ColorZoneAssist.Mode="Light" Margin="0,0,10,0">
-                <StackPanel>
+            <GroupBox Header="Additional Option" FontSize="15" Height="108" Padding="4" materialDesign:ColorZoneAssist.Mode="Light" Margin="0,0,10,0">
+                <StackPanel Margin="0,0,0,6">
                     <Grid Height="38">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -64,6 +64,6 @@
                 </StackPanel>
             </GroupBox>
         </StackPanel>
-        <Button x:Name="bt_OK" HorizontalAlignment="Right" Width="160" Margin="0,310,17,10" Content="OK" Click="bt_OK_Click"/>
+        <Button x:Name="bt_OK" HorizontalAlignment="Right" Width="160" Margin="0,295,18,21" Content="OK" Click="bt_OK_Click"/>
     </Grid>
 </UserControl>
