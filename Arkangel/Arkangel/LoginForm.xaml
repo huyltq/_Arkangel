@@ -11,7 +11,7 @@
         WindowStartupLocation="CenterScreen" 
         WindowStyle="None" 
         FontFamily="Segoe UI Emoji" 
-        Icon ="C:\Users\8460p\Downloads\logo_LSC_icon.ico">
+        Icon =".\Sources\logo_LSC_icon.ico">
     <Grid>
             <Rectangle Height="280" VerticalAlignment="Top">
             <Rectangle.Fill>
@@ -41,6 +41,6 @@
         <Button x:Name="btn_Close" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" Padding="0" BorderBrush="{x:Null}" Click="btn_Close_Click">
             <materialDesign:PackIcon Kind="Power" Height="50" Width="50"></materialDesign:PackIcon>
         </Button>
-        <Image Source="C:\Users\8460p\Downloads\34054291_1039096782920609_216488157267361792_n.png" Height="100" Width="70" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="140,77,140,0" IsManipulationEnabled="True"></Image>
+        <Image Source=".\Sources\34054291_1039096782920609_216488157267361792_n.png" Height="100" Width="70" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="140,77,140,0" IsManipulationEnabled="True"></Image>
     </Grid>
 </Window>

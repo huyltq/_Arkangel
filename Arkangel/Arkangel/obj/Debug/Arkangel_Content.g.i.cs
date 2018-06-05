@@ -8,12 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("web/jsx/palettebuilder.js")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("web/palettebuilder.html")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("web/scripts/palettebuilder.js")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("web/scripts/react.js")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("web/scripts/react.min.js")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("web/scripts/swatches.js")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("web/styles/style.css")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sources/34054291_1039096782920609_216488157267361792_n.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sources/logo_lsc_icon.ico")]
 
 
