@@ -82,11 +82,11 @@ namespace Arkangel
                 int limitSize = 0;
                 int hout = 0;
                 int minutes = 0;
-                if (!Int32.TryParse(tb_kbs.Text, out limitSize) || !Int32.TryParse(tb_hours.Text, out hout) || !Int32.TryParse(tb_minutes.Text, out minutes) || minutes < 0 || hout < 0 || limitSize < 0 || (minutes == 0 && hout == 0))
-                {
-                    MessageBox.Show("Limit Size, Hour, Minute should be a number", "Fail");
-                }
-                else
+                //if (!Int32.TryParse(tb_kbs.Text, out limitSize) || !Int32.TryParse(tb_hours.Text, out hout) || !Int32.TryParse(tb_minutes.Text, out minutes) || minutes < 0 || hout < 0 || limitSize < 0 || (minutes == 0 && hout == 0))
+                //{
+                //    MessageBox.Show("Limit Size, Hour, Minute should be a number", "Fail");
+                //}
+                //else
                 {
                     using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=.\database.db"))
                     {

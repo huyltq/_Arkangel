@@ -15,7 +15,7 @@
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}" Height="366">
     <Grid Background="#f2f2f2" Margin="0,0,0,-9">
-        <Button HorizontalAlignment="Right" Width="160" Margin="0,310,24,31" Content="OK" Padding="0" Height="Auto"/>
+        <Button x:Name="bt_OK" HorizontalAlignment="Right" Width="160" Margin="0,310,24,31" Content="OK" Padding="0" Height="Auto" Click="bt_OK_Click"/>
         <StackPanel Margin="0,0,0,58">
             <GroupBox Header="Information" FontSize="15" Height="307" Padding="3" materialDesign:ColorZoneAssist.Mode="Light" Margin="0,0,10,0">
                 <Grid>
@@ -26,26 +26,26 @@
                         <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Height="50" Width="590">
                             <TextBlock Text="Host Name:" FontSize="25" VerticalAlignment="Center"></TextBlock>
                             <StackPanel Width="50"></StackPanel>
-                            <TextBox Width="400" VerticalAlignment="Top" FontSize="25"></TextBox>
+                            <TextBox x:Name="tb_hostname" Width="400" VerticalAlignment="Top" FontSize="25"></TextBox>
                         </StackPanel >
                         <StackPanel Orientation="Horizontal" Height="50" Width="auto">
                             <TextBlock Text="Username:" FontSize="25" VerticalAlignment="Center"></TextBlock>
                             <StackPanel Width="65"></StackPanel>
-                            <TextBox Width="400" VerticalAlignment="Top" FontSize="25"/>
+                            <TextBox x:Name="tb_uname" Width="400" VerticalAlignment="Top" FontSize="25"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Height="50" Width="auto">
                             <TextBlock Text="Password:" FontSize="25" VerticalAlignment="Center"></TextBlock>
                             <StackPanel Width="70"></StackPanel>
-                            <TextBox Width="400" VerticalAlignment="Top" FontSize="25"></TextBox>
+                            <PasswordBox x:Name="tb_password" Width="400" VerticalAlignment="Top" FontSize="25"></PasswordBox>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Height="50" Width="auto">
                             <TextBlock Text="Romote Dir:" FontSize="25" VerticalAlignment="Center"></TextBlock>
                             <StackPanel Width="51"></StackPanel>
-                            <TextBox Width="400" VerticalAlignment="Top" FontSize="25"></TextBox>
+                            <TextBox x:Name="tb_dir" Width="400" VerticalAlignment="Top" FontSize="25"></TextBox>
                         </StackPanel>
                         <TextBlock HorizontalAlignment="Center" FontSize="18"><Run Text="Remote dir is the directory on the FTP server when you want to store logs file."/></TextBlock>
                         <TextBlock HorizontalAlignment="Center" FontSize="18" Width="515" ><Run Text="You can leave it blank to store logs at the intinal directory."/></TextBlock>
-                        <CheckBox HorizontalAlignment="Center" FontSize="18" Height="auto" Content="Use passive mode (this mabe neccessary for some firewalls)"/>
+                        <CheckBox x:Name="cb_passiveMode" HorizontalAlignment="Center" FontSize="18" Height="auto" Content="Use passive mode (this mabe neccessary for some firewalls)"/>
                     </StackPanel>
                 </Grid>
             </GroupBox>

