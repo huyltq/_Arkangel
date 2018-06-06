@@ -70,26 +70,30 @@ namespace Arkangel
         }
         public void enter ()
         {
-            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=C:\Users\8460p\Downloads\database.db"))
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=database.db"))
             {
                 connect.Open();
                 using (SQLiteCommand fmd = connect.CreateCommand())
                 {
-                    SQLiteCommand sqlComm = new SQLiteCommand(@"SELECT username,password FROM Users WHERE username='" + tb_username.Text + "' AND password = '" + tb_password.Password + "'", connect);
+                    SQLiteCommand sqlComm = new SQLiteCommand(@"SELECT id,username,password FROM Users WHERE username='" + tb_username.Text + "' AND password = '" + tb_password.Password + "'", connect);
                     SQLiteDataReader r = sqlComm.ExecuteReader();
                     int count = 0;
                     string username_ = null;
+                    int Uid = 0;
                     while (r.Read())
                     {
                         count = 1;
                         username_ = ((string)r["username"]);
+                        Uid = ((int)r["id"]);
                     }
                     if (count == 1)
                     {
                         MainWindow bs = new MainWindow();
                         bs._username.Text = username_;
+                        SQLiteCommand getid = new SQLiteCommand(@"UPDATE current_user SET id=" + Uid, connect);
+                        getid.ExecuteNonQuery();
                         bs.Show();
-                        Close();
+                        Hide();
                     }
                     else if (count == 0)
                     {
