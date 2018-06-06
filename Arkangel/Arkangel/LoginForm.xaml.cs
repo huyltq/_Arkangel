@@ -49,7 +49,7 @@ namespace Arkangel
                     {
                         count = 1;
                         username_ = ((string)r["username"]);
-                        Uid = ((int)r["id"]);
+                        MessageBox.Show(r["id"].ToString());
                     }
                     if (count == 1)
                     {
@@ -79,19 +79,33 @@ namespace Arkangel
                     SQLiteDataReader r = sqlComm.ExecuteReader();
                     int count = 0;
                     string username_ = null;
-                    int Uid = 0;
+                    long Uid = 0;
                     while (r.Read())
                     {
                         count = 1;
                         username_ = ((string)r["username"]);
-                        Uid = ((int)r["id"]);
+                        Uid = ((long)r["id"]);
                     }
                     if (count == 1)
                     {
                         MainWindow bs = new MainWindow();
                         bs._username.Text = username_;
-                        SQLiteCommand getid = new SQLiteCommand(@"UPDATE current_user SET id=" + Uid, connect);
-                        getid.ExecuteNonQuery();
+                        SQLiteCommand check_user = new SQLiteCommand(@"SELECT * FROM current_user",connect);
+                        SQLiteDataReader check = check_user.ExecuteReader();
+                        while (check.Read())
+                        {
+                            if (check["id"].ToString()==null)
+                            {
+                                SQLiteCommand getid = new SQLiteCommand(@"insert into current_user values ("+ Uid+")", connect);
+                                getid.ExecuteNonQuery();
+                            }
+                            else
+                            {
+                                SQLiteCommand getid = new SQLiteCommand(@"UPDATE current_user SET id=" + Uid, connect);
+                                getid.ExecuteNonQuery();
+                            }
+                        }
+                        
                         bs.Show();
                         Hide();
                     }

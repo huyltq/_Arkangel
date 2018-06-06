@@ -33,7 +33,7 @@ namespace Arkangel
                 connect.Open();
                 using (SQLiteCommand fmd = connect.CreateCommand())
                 {
-                    SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"SELECT enable,time,upKeystroke,upScrshot,upWebcam,upWebsite,limitSize,clear,zipPasswd FROM Email,current_user WHERE Email.id = current_user.id", connect);
+                    SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"SELECT enable,upKeystroke,upScrshot,upWebcam,upWebsite,limitSize,clear,zipPasswd FROM Email,current_user WHERE Email.id = current_user.id", connect);
                     SQLiteDataReader data = sqlComm_Alert.ExecuteReader();
                     while(data.Read())
                     {
