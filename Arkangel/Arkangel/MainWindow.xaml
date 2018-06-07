@@ -15,9 +15,13 @@
      WindowStartupLocation="CenterScreen"
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
-     Icon =".\Sources\logo_LSC_icon.ico"
+     Icon =".\Sources\logo_LSC_icon.ico" KeyDown="Window_KeyDown"
      
         >
+    <Window.InputBindings>
+        <KeyBinding Command="ApplicationCommands.Open"
+              Gesture="CTRL+R" />
+    </Window.InputBindings>
     <Window.Resources>
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">

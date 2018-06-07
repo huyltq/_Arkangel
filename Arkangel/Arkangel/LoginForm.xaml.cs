@@ -44,12 +44,12 @@ namespace Arkangel
                     SQLiteDataReader r = sqlComm.ExecuteReader();
                     int count = 0;
                     string username_=null;
-                    int Uid = 0;
+                    long Uid = 0;
                     while (r.Read())
                     {
                         count = 1;
                         username_ = ((string)r["username"]);
-                        MessageBox.Show(r["id"].ToString());
+                        Uid = (long)r["id"];
                     }
                     if (count == 1)
                     {
@@ -58,7 +58,7 @@ namespace Arkangel
                         SQLiteCommand getid = new SQLiteCommand(@"UPDATE current_user SET id="+Uid, connect);
                         getid.ExecuteNonQuery();
                         bs.Show();
-                        Hide();
+                        Close();
                     }
                     else if (count == 0)
                     {
@@ -107,7 +107,7 @@ namespace Arkangel
                         }
                         
                         bs.Show();
-                        Hide();
+                        Close();
                     }
                     else if (count == 0)
                     {

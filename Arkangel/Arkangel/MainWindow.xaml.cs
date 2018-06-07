@@ -72,10 +72,20 @@ namespace Arkangel
 
         private void bt_Quit_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            Hide();
         }
 
-       
+        private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.F1 && Keyboard.IsKeyDown(Key.LeftCtrl))
+            {
+               System.Windows.Forms.MessageBox.Show("ctrlF1");
+            }
+            if (e.Key == Key.F1 && !Keyboard.IsKeyDown(Key.LeftCtrl))
+            {
+                System.Windows.Forms.MessageBox.Show("F1");
+            }
+        }
     }
 }
 
