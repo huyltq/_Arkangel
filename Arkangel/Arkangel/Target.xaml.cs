@@ -16,13 +16,17 @@ using System.Windows.Shapes;
 
 namespace Arkangel
 {
+    
     /// <summary>
     /// Interaction logic for Target.xaml
     /// </summary>
+    
     public partial class Target : UserControl
     {
+        int check;
         public Target()
         {
+            check= 0;
             InitializeComponent();
             using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=database.db"))
             {
@@ -57,17 +61,20 @@ namespace Arkangel
 
         private void bt_ByApp_Click(object sender, RoutedEventArgs e)
         {
+            check = 1;
             Target_ByApp target_ByApp = new Target_ByApp(this);
             target_ByApp.Show();
         }
 
         private void bt_delete_Click(object sender, RoutedEventArgs e)
         {
+            check = 1;
             target_list.Items.Remove(target_list.SelectedItem);
         }
 
         private void bt_byname_Click(object sender, RoutedEventArgs e)
         {
+            check = 1;
             Target_ByName target_ByName = new Target_ByName(this);
             target_ByName.Show();
                
@@ -75,33 +82,47 @@ namespace Arkangel
 
         private void bt_OK_Click(object sender, RoutedEventArgs e)
         {
-            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=database.db"))
+            if(check==1)
             {
-                connect.Open();
-                int enAllApp = 0;
-                int enFollowApp = 0;
-                if (cb_enAllApp.IsChecked.Value == true) enAllApp = 1;
-                if (cb_FollowApp.IsChecked.Value == true) enFollowApp = 1;
-                SQLiteCommand sqlUpdateAlert = new SQLiteCommand(@"UPDATE Targets SET enAllApp=" + enAllApp + ", enFollowApp=" + enFollowApp + " WHERE Targets.id IN (SELECT current_user.id from current_user)", connect);
-                sqlUpdateAlert.ExecuteNonQuery();
-                //   sqlUpdateAlert.Dispose();
-                SQLiteCommand getuser = new SQLiteCommand(@"SELECT id FROM current_user", connect);
-                SQLiteDataReader data = getuser.ExecuteReader();
-                while (data.Read())
+                using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=database.db"))
                 {
-
-                    string user = data["id"].ToString();
-                    SQLiteCommand sqldelete = new SQLiteCommand(@"DELETE from TargetList where id =" + user, connect);
-                    sqldelete.ExecuteNonQuery();
-                    for (int i = 0; i < target_list.Items.Count; i++)
+                    connect.Open();
+                    int enAllApp = 0;
+                    int enFollowApp = 0;
+                    if (cb_enAllApp.IsChecked.Value == true) enAllApp = 1;
+                    if (cb_FollowApp.IsChecked.Value == true) enFollowApp = 1;
+                    SQLiteCommand sqlUpdateAlert = new SQLiteCommand(@"UPDATE Targets SET enAllApp=" + enAllApp + ", enFollowApp=" + enFollowApp + " WHERE Targets.id IN (SELECT current_user.id from current_user)", connect);
+                    sqlUpdateAlert.ExecuteNonQuery();
+                    //   sqlUpdateAlert.Dispose();
+                    SQLiteCommand getuser = new SQLiteCommand(@"SELECT id FROM current_user", connect);
+                    SQLiteDataReader data = getuser.ExecuteReader();
+                    while (data.Read())
                     {
 
-                        SQLiteCommand sqlUpdateAlertList = new SQLiteCommand(@"INSERT INTO TargetList VALUES (" + user + ",'" + target_list.Items[i].ToString() + "','')", connect);
-                        sqlUpdateAlertList.ExecuteNonQuery();
+                        string user = data["id"].ToString();
+                        SQLiteCommand sqldelete = new SQLiteCommand(@"DELETE from TargetList where id =" + user, connect);
+                        sqldelete.ExecuteNonQuery();
+                        for (int i = 0; i < target_list.Items.Count; i++)
+                        {
+
+                            SQLiteCommand sqlUpdateAlertList = new SQLiteCommand(@"INSERT INTO TargetList VALUES (" + user + ",'" + target_list.Items[i].ToString() + "','')", connect);
+                            sqlUpdateAlertList.ExecuteNonQuery();
+                        }
                     }
+                    connect.Close();
                 }
-                connect.Close();
             }
+            
+        }
+
+        private void cb_enAllApp_Click(object sender, RoutedEventArgs e)
+        {
+            check = 1;
+        }
+
+        private void cb_FollowApp_Click(object sender, RoutedEventArgs e)
+        {
+            check = 1;
         }
     }
 }
