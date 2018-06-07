@@ -27,25 +27,25 @@
                 <StackPanel>
                     <GroupBox Width="auto" materialDesign:ColorZoneAssist.Mode="Light" Header="Enable/Disable" Padding="4" FontSize="15" Margin="0,10,10,10">
                         <StackPanel Orientation="Horizontal">
-                            <CheckBox Height="50" Grid.ColumnSpan="3" FontSize="25" Content="Auto make a screenshot every"/>
+                            <CheckBox x:Name="cb_enable" Height="50" Grid.ColumnSpan="3" FontSize="25" Content="Auto make a screenshot every" Click="cb_enable_Click"/>
                             <StackPanel Width="5"/>
-                            <TextBox x:Name="tb_hours" Width="50" Height="35" VerticalAlignment="Top" FontSize="25" FlowDirection="RightToLeft" />
+                            <TextBox x:Name="tb_hours" Width="50" Height="35" VerticalAlignment="Top" FontSize="25" FlowDirection="RightToLeft" TextChanged="tb_hours_TextChanged" />
                             <StackPanel Width="5"/>
                             <TextBlock Text="hours" VerticalAlignment="Center" FontSize="25"/>
                             <StackPanel Width="5"/>
-                            <TextBox x:Name="tb_minutes" Width="50" Height="35" FontSize="25" VerticalAlignment="Top" FlowDirection="RightToLeft" />
+                            <TextBox x:Name="tb_minutes" Width="50" Height="35" FontSize="25" VerticalAlignment="Top" FlowDirection="RightToLeft" TextChanged="tb_minutes_TextChanged" />
                             <StackPanel Width="5"/>
                             <TextBlock Text="minutes" VerticalAlignment="Center" FontSize="25"/>
                         </StackPanel>
                     </GroupBox>
                     <GroupBox Header="Settings" materialDesign:ColorZoneAssist.Mode="Light" FontSize="15" Padding="4" Margin="0,0,10,0">
                         <StackPanel>
-                            <CheckBox Height="40" Content="Timestaps and username on screenshot" FontSize="25"/>
-                            <CheckBox Height="40" Content="Enable douple screen on screenshot" FontSize="25"/>
+                            <CheckBox x:Name="cb_timeNuser" Height="40" Content="Timestaps and username on screenshot" FontSize="25" Click="cb_timeNuser_Click"/>
+                            <CheckBox x:Name="cb_doubleScr" Height="40" Content="Enable douple screen on screenshot" FontSize="25" Click="cb_doubleScr_Click"/>
                             <StackPanel Orientation="Horizontal" Height="40">
-                                <CheckBox Content="Delete after" FontSize="25"/>
+                                <CheckBox x:Name="cb_enDel" Content="Delete after" FontSize="25" Click="cb_enDel_Click"/>
                                 <StackPanel Width="5"/>
-                                <TextBox Width="50" Height="32" FontSize="20" VerticalAlignment="Top" FlowDirection="RightToLeft"/>
+                                <TextBox x:Name="cb_daysDel" Width="50" Height="32" FontSize="20" VerticalAlignment="Top" FlowDirection="RightToLeft" TextChanged="cb_daysDel_TextChanged"/>
                                 <StackPanel Width="5"/>
                                 <TextBlock Text="days" FontSize="25" VerticalAlignment="Center"/>
                             </StackPanel>
@@ -53,7 +53,7 @@
                             <StackPanel Orientation="Horizontal" Height="40" Width="500">
                                 <TextBlock Text="Low" FontSize="20" VerticalAlignment="Center"></TextBlock>
                                 <StackPanel Width="10"></StackPanel>
-                                <Slider Width="400" VerticalAlignment="Center" Value="1"></Slider>
+                                <Slider x:Name="sld_quaity" Width="400" VerticalAlignment="Center" Value="50" Maximum="100" ValueChanged="sld_quaity_ValueChanged"></Slider>
                                 <StackPanel Width="10"></StackPanel>
                                 <TextBlock Text="High" FontSize="20" VerticalAlignment="Center"></TextBlock>
                             </StackPanel>
@@ -64,6 +64,6 @@
             </Grid>
 
         </StackPanel>
-        <Button Margin="574,388,35,10" Width="150" Content="OK"/>
+        <Button x:Name="bt_OK" Margin="574,388,35,10" Width="150" Content="OK" Click="bt_OK_Click"/>
     </Grid>
 </UserControl>

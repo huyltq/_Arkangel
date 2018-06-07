@@ -64,6 +64,11 @@ namespace Arkangel
                 }
             }
         }
+
+        private void cb_enable_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 
 }
