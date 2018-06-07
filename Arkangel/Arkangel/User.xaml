@@ -32,10 +32,10 @@
                             <CheckBox Content="Monitor the following User" FontSize="25" Height="40"/>
                             <Grid Height="2" Background="Black"/>
                             <ListView Width="700" Height="100" FontSize="20" HorizontalAlignment="Center">
-                                <ListViewItem Content="Hello"/>
-                                <ListViewItem Content="World"/>
-                                <ListViewItem Content=":)"/>
-                                <ListViewItem Content="abc"/>
+                                <CheckBox Content="Hello"/>
+                                <CheckBox Content="World"/>
+                                <CheckBox Content=":)"/>
+                                <CheckBox Content="abc"/>
                             </ListView>
                             <Grid Height="2" Background="Black"/>
                             <StackPanel Orientation="Horizontal" Margin="10" Height="50" Width="375">

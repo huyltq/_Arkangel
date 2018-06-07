@@ -27,8 +27,8 @@
                 <StackPanel>
                     <GroupBox materialDesign:ColorZoneAssist.Mode="Light" Header="Security Setting" FontSize="15" Padding="4" Margin="10" Height="314">
                         <StackPanel>
-                            <CheckBox x:Name="cb_enAllApp" Content="Enable logging all application" FontSize="25" Height="50"></CheckBox>
-                            <CheckBox x:Name="cb_FollowApp" Content="Enable logging in the following only application" FontSize="25" Height="50"></CheckBox>
+                            <CheckBox x:Name="cb_enAllApp" Content="Enable logging all application" FontSize="25" Height="50" Click="cb_enAllApp_Click"></CheckBox>
+                            <CheckBox x:Name="cb_FollowApp" Content="Enable logging in the following only application" FontSize="25" Height="50" Click="cb_FollowApp_Click"></CheckBox>
                             <StackPanel Height="10"></StackPanel>
                             <Grid Height="2" Background="Black"></Grid>
                             <ListView x:Name="target_list" Width="700" Height="100" FontSize="20" HorizontalAlignment="Center">

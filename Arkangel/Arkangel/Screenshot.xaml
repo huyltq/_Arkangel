@@ -53,7 +53,7 @@
                             <StackPanel Orientation="Horizontal" Height="40" Width="500">
                                 <TextBlock Text="Low" FontSize="20" VerticalAlignment="Center"></TextBlock>
                                 <StackPanel Width="10"></StackPanel>
-                                <Slider Width="400" VerticalAlignment="Center"></Slider>
+                                <Slider Width="400" VerticalAlignment="Center" Value="1"></Slider>
                                 <StackPanel Width="10"></StackPanel>
                                 <TextBlock Text="High" FontSize="20" VerticalAlignment="Center"></TextBlock>
                             </StackPanel>
