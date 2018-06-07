@@ -88,12 +88,17 @@ namespace Arkangel
                     SQLiteDataReader data = getuser.ExecuteReader();
                     while (data.Read())
                     {
+                        
                         string user = data["id"].ToString();
+                        SQLiteCommand sqldelete = new SQLiteCommand(@"DELETE from AlertList where id ="+user, connect);
+                        sqldelete.ExecuteNonQuery();
                         for (int i =0;i<keyword_list.Items.Count;i++)
                         {
-                            Console.WriteLine(keyword_list.Items[i].ToString());
-                            SQLiteCommand sqlUpdateAlertList = new SQLiteCommand(@"INSERT or Ignore INTO AlertList VALUES (" + user + ",'"+keyword_list.Items[i].ToString() +"')", connect);
-                            sqlUpdateAlertList.ExecuteNonQuery();
+                            
+                                    SQLiteCommand sqlUpdateAlertList = new SQLiteCommand(@"INSERT INTO AlertList VALUES (" + user + ",'" + keyword_list.Items[i].ToString() + "')", connect);
+                                    sqlUpdateAlertList.ExecuteNonQuery();
+                            
+                            
                         }
                     }
                     connect.Close();

@@ -41,6 +41,7 @@ namespace Arkangel
                         if (data["upWebcam"].ToString() == "1") cb_upWebcam.IsChecked = true; else cb_upWebcam.IsChecked = false;
                         if (data["upWebsite"].ToString() == "1") cb_upWebsite.IsChecked = true; else cb_upWebsite.IsChecked = false;
                         if (data["upSize"].ToString() == "1") cb_limitedSize.IsChecked = true; else cb_limitedSize.IsChecked = false;
+                        if (data["clear"].ToString() == "1") cb_clear.IsChecked = true; else cb_clear.IsChecked = false;
                         tb_kbs.Text = data["size"].ToString();
                         tb_hours.Text = data["hours"].ToString();
                         tb_minutes.Text = data["minutes"].ToString();
@@ -85,14 +86,19 @@ namespace Arkangel
                 if (cb_upScrshot.IsChecked.Value == true) upWebcam = 1;
                 if (cb_upWebsite.IsChecked.Value == true) upWebsite = 1;
                 if (cb_upWebcam.IsChecked.Value == true) upWebcam = 1;
+                if (cb_upScrshot.IsChecked.Value == true) upScrshot = 1;
                 if (cb_clear.IsChecked.Value == true) clear = 1;
                 if (cb_limitedSize.IsChecked.Value == true) upSize = 1;
                 int limitSize = 0;
                 int hout = 0;
                 int minutes = 0;
-                if ((enable == 1 && (!Int32.TryParse(tb_hours.Text, out hout) || !Int32.TryParse(tb_minutes.Text, out minutes) || (minutes < 0) || (hout < 0) || (minutes == 0 && hout == 0))) || ((upSize == 1) && ((int.TryParse(tb_kbs.Text, out limitSize) || (limitSize <= 0)))))
+                if (enable==1 && ((Int32.TryParse(tb_hours.Text, out hout)==false)|| !Int32.TryParse(tb_minutes.Text, out minutes)||minutes<0||hout<0||(minutes==0&&hout==0)))
                 {
-                    MessageBox.Show("Limit Size, Hour, Minute should be a number", "Fail");
+                    MessageBox.Show("Hour, Minute should be a number", "Fail");
+                }
+                else if (upSize == 1 && (!int.TryParse(tb_kbs.Text, out limitSize) || limitSize <= 0))
+                {
+                    MessageBox.Show("Limit Size should be a number", "Fail");
                 }
                 else
                 {
