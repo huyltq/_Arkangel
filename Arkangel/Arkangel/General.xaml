@@ -40,7 +40,7 @@
                                 Run as Windows start up
                             </CheckBox>
                             <CheckBox x:Name="cb_hotkey" FontSize="25" Height="40" Click="cb_hotkey_Click"> 
-                                Hoy key : Ctrl + Shift + O
+                                Hoy key : Ctrl + Caps lock
                             </CheckBox>
                         </StackPanel>
                     </GroupBox>
