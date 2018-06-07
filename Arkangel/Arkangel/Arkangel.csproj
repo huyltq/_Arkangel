@@ -139,6 +139,7 @@
     <Compile Include="Website_Usage.xaml.cs">
       <DependentUpon>Website_Usage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowBehavior.cs" />
     <Compile Include="_Clipboard.xaml.cs">
       <DependentUpon>_Clipboard.xaml</DependentUpon>
     </Compile>
