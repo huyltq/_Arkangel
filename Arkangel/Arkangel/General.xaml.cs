@@ -34,7 +34,7 @@ namespace Arkangel
                 connect.Open();
                 using (SQLiteCommand fmd = connect.CreateCommand())
                 {
-                    SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"SELECT disTaskManager,disRegedit,startup FROM General,current_user WHERE General.id = current_user.id", connect);
+                    SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"SELECT * FROM General,current_user WHERE General.id = current_user.id", connect);
                     SQLiteDataReader data = sqlComm_Alert.ExecuteReader();
                     while (data.Read())
                     {
@@ -44,6 +44,7 @@ namespace Arkangel
                         else cb_registry.IsChecked = false;
                         if (data["startup"].ToString() == "1") cb_runstart.IsChecked = true;
                         else cb_runstart.IsChecked = false;
+                        if (data["hotkey"].ToString() == "1") cb_hotkey.IsChecked = true; else cb_hotkey.IsChecked = false;
                     }
                 }
                 connect.Close();
@@ -134,10 +135,12 @@ namespace Arkangel
                         int task = 0;
                         int res = 0;
                         int start = 0;
+                        int hotkey = 0;
                         if (cb_taskmanager.IsChecked.Value == true) task = 1;
                         if (cb_registry.IsChecked.Value == true) res = 1;
                         if (cb_runstart.IsChecked.Value == true) start = 1;
-                        SQLiteCommand sqlComm = new SQLiteCommand(@"UPDATE General SET disTaskManager="+task+",disRegedit="+res+",startup="+start+ " WHERE General.id in (select current_user.id from current_user)", connect);
+                        if (cb_hotkey.IsChecked.Value == true) hotkey = 1;
+                        SQLiteCommand sqlComm = new SQLiteCommand(@"UPDATE General SET disTaskManager="+task+",disRegedit="+res+",startup="+start+ ", hotkey="+hotkey+" WHERE General.id in (select current_user.id from current_user)", connect);
                         sqlComm.ExecuteNonQuery();
                         connect.Close();
                     }

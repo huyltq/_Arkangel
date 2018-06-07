@@ -28,7 +28,7 @@
                 <StackPanel>
                     <GroupBox Header="General" FontSize="15" materialDesign:ColorZoneAssist.Mode="Light" Height="100" VerticalAlignment="Top" Margin="0,10,10,0">
                         <StackPanel Orientation="Horizontal" Height="40">
-                            <CheckBox Grid.ColumnSpan="3" FontSize="25">Auto take a picture every</CheckBox>
+                            <CheckBox x:Name="cb_enable" Grid.ColumnSpan="3" FontSize="25">Auto take a picture every</CheckBox>
                             <StackPanel Width="5"></StackPanel>
                             <TextBox x:Name="tb_hours" Width="50" Height="35" VerticalAlignment="Top" FontSize="25" FlowDirection="RightToLeft" />
                             <StackPanel Width="5"></StackPanel>
@@ -42,21 +42,19 @@
                     <GroupBox Header="Advanced Setting" FontSize="15" materialDesign:ColorZoneAssist.Mode="Light" Height="auto" VerticalAlignment="Top" Margin="0,10,10,0">
                         <StackPanel>
                             <StackPanel Orientation="Horizontal" Height="40">
-                                <CheckBox Grid.ColumnSpan="3" FontSize="25">Auto delete a picture every</CheckBox>
+                                <CheckBox x:Name="cb_delete" Grid.ColumnSpan="3" FontSize="25">Auto delete a picture every</CheckBox>
                                 <StackPanel Width="5"></StackPanel>
                                 <TextBox x:Name="tb_delete_hours" Width="50" Height="35" VerticalAlignment="Top" FontSize="25" FlowDirection="RightToLeft" />
                                 <StackPanel Width="5"></StackPanel>
-                                <TextBlock Text="hours" VerticalAlignment="Center" FontSize="25"></TextBlock>
+                                <TextBlock Text="days" VerticalAlignment="Center" FontSize="25"></TextBlock>
                                 <StackPanel Width="5"></StackPanel>
-                                <TextBox x:Name="tb_delete_minutes" Width="50" Height="35" FontSize="25" VerticalAlignment="Top" FlowDirection="RightToLeft" ></TextBox>
                                 <StackPanel Width="5"></StackPanel>
-                                <TextBlock Text="minutes" VerticalAlignment="Center" FontSize="25"></TextBlock>
                             </StackPanel>
-                            <CheckBox FontSize="25">Auto delete after uploading</CheckBox>
+                            <CheckBox x:Name="cb_autodelete" FontSize="25">Auto delete after uploading</CheckBox>
                         </StackPanel>
                     </GroupBox>
                 </StackPanel>
-                <Button Width="130" Margin="573,330,24,10">OK</Button>
+                <Button x:Name="bt_OK" Width="130" Margin="573,330,24,10" Click="bt_OK_Click">OK</Button>
             </Grid>
         </StackPanel>
     </Grid>
