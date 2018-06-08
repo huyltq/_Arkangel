@@ -278,7 +278,6 @@
     <None Include="Module_py\clipboard logging.py" />
     <None Include="Module_py\content filter.py" />
     <None Include="Module_py\createdb.py" />
-    <None Include="Module_py\database.db" />
     <None Include="Module_py\ftp.py" />
     <None Include="Module_py\getsqldata.py" />
     <None Include="Module_py\keystroke.py" />

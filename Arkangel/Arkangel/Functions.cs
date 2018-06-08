@@ -143,7 +143,7 @@ namespace Arkangel
                 if (Directory.Exists(dir))
                 {
                     zip.Password = password;
-                    zip.AddDirectory("Screenshot\\");
+                    zip.AddDirectory(dir+"\\");
                     zip.Save(dir + ".zip");
                 }
             }

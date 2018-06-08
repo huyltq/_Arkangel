@@ -1,10 +1,10 @@
 import sqlite3
 
 
-db = open("database.db",'a+')
+db = open("..\\database.db",'a+')
 db.close()
 
-conn = sqlite3.connect("database.db")
+conn = sqlite3.connect("..\\database.db")
 
 #conn.row_factory = lambda cursor, row: row[0]
 

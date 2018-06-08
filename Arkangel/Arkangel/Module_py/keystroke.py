@@ -36,10 +36,10 @@ def alerts(alertList, word):
     word = word.strip() #remove last character like space \t \n \r
     if(word in alertList):
         if conf[2] == 1:
-            call("python screenshot.py", shell=True)
+            call("python ..\\..\\Module_py\\screenshot.py", shell=True)
             print("Alert - screenshot successful")
         if conf[1] == 1:
-            call("python email.py", shell=True)
+            call("python ..\\..\\Module_py\\email.py", shell=True)
             print("Alert - send email successful")
 '''
 def target(uid, activeWindows):
