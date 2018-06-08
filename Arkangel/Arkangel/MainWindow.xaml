@@ -55,7 +55,7 @@
             <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
     </Window.Triggers>
-    <Grid Background="#F2F2F2">
+    <Grid Background="#F2F2F2" Loaded="Grid_Loaded">
         <Grid  Height="168"  VerticalAlignment="Top" Margin="150,0,0,0">
             <StackPanel Height="50"  VerticalAlignment="Top" Background="#0489B1" Margin="-100,0,0,0">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="150" Height="50">
