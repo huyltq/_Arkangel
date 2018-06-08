@@ -83,10 +83,6 @@ namespace Arkangel
             }
             return IntPtr.Zero;
         }
-        //mainpanel.Children.Clear();
-        //Dashboard dashboard = new Dashboard();
-        //mainpanel.Children.Add(dashboard);
-
 
         private void Button_OpenMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -125,8 +121,6 @@ namespace Arkangel
         {
             Hide();
         }
-
-        
     }
 }
 
