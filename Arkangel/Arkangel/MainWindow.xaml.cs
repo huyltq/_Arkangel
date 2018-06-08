@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Forms;
-<<<<<<< HEAD
+
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
-=======
+
 using System.Diagnostics;
->>>>>>> General
+
 
 namespace Arkangel
 {
@@ -39,7 +39,7 @@ namespace Arkangel
                 Dashboard dashboard = new Dashboard();
                 mainPanel.Children.Add(dashboard);
             }
-            
+            Closing += new System.ComponentModel.CancelEventHandler(MainWindow_Closing);
         }
         private IntPtr _windowHandle;
         private HwndSource _source;
@@ -51,7 +51,7 @@ namespace Arkangel
             _source = HwndSource.FromHwnd(_windowHandle);
             _source.AddHook(HwndHook);
 
-<<<<<<< HEAD
+
             RegisterHotKey(_windowHandle, HOTKEY_ID, MOD_CONTROL,VK_CAPITAL); //CTRL + CAPS_LOCK
         }
 
@@ -76,15 +76,9 @@ namespace Arkangel
             }
             return IntPtr.Zero;
         }
-=======
-            Closing += new System.ComponentModel.CancelEventHandler(MainWindow_Closing);
-        }
 
-        //mainpanel.Children.Clear();
-        //Dashboard dashboard = new Dashboard();
-        //mainpanel.Children.Add(dashboard);
-
->>>>>>> General
+            
+       
 
         private void Button_OpenMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -123,8 +117,7 @@ namespace Arkangel
         {
             Hide();
         }
-<<<<<<< HEAD
-=======
+
 
         private Process myProcess = new Process();
 
@@ -162,7 +155,7 @@ namespace Arkangel
                 Console.WriteLine(ex.ToString());
             }
         }
->>>>>>> General
+
     }
 }
 
