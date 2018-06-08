@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Forms;
+using System.Diagnostics;
+using System.IO;
 
 namespace Arkangel
 {
@@ -30,12 +32,13 @@ namespace Arkangel
                 mainPanel.Children.Add(dashboard);
             }
 
+            Closing += new System.ComponentModel.CancelEventHandler(MainWindow_Closing);
         }
-        
-            //mainpanel.Children.Clear();
-            //Dashboard dashboard = new Dashboard();
-            //mainpanel.Children.Add(dashboard);
-       
+
+        //mainpanel.Children.Clear();
+        //Dashboard dashboard = new Dashboard();
+        //mainpanel.Children.Add(dashboard);
+
 
         private void Button_OpenMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -75,7 +78,35 @@ namespace Arkangel
             Close();
         }
 
-       
+        private Process myProcess = new Process();
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                myProcess.StartInfo.UseShellExecute = true;
+                // You can start any process, HelloWorld is a do-nothing example.
+                myProcess.StartInfo.FileName = "..\\..\\Module_py\\keystroke.py";
+                myProcess.StartInfo.CreateNoWindow = true;
+                myProcess.Start();
+                // This code assumes the process you are starting will terminate itself. 
+                // Given that is is started without a window so you cannot terminate it 
+                // on the desktop, it must terminate itself or you can do it programmatically
+                // from this application using the Kill method.
+                //myProcess.Kill();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("MESSAGE: " + ex.Message);
+            }
+
+
+        }
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            myProcess.Kill();
+           // myProcess.Dispose();
+        }
     }
 }
 

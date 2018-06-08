@@ -8,7 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sources/34054291_1039096782920609_216488157267361792_n.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sources/logo_lsc_icon.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module_py/screenshot/screen-2018_05_30-08_46_57.jpeg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module_py/screenshot/screen-2018_05_30-08_47_09.jpeg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module_py/screenshot/screen-2018_05_30-17_28_49.jpeg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module_py/screenshot/screen-2018_05_30-23_21_19.jpeg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module_py/screenshot/screen-2018_05_31-15_01_34.jpeg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module_py/screenshot/screen-2018_05_31-15_02_02.jpeg")]
 
 
