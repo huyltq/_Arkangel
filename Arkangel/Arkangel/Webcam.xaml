@@ -44,7 +44,7 @@
                             <StackPanel Orientation="Horizontal" Height="40">
                                 <CheckBox x:Name="cb_delete" Grid.ColumnSpan="3" FontSize="25">Auto delete a picture every</CheckBox>
                                 <StackPanel Width="5"></StackPanel>
-                                <TextBox x:Name="tb_delete_hours" Width="50" Height="35" VerticalAlignment="Top" FontSize="25" FlowDirection="RightToLeft" />
+                                <TextBox x:Name="tb_delete_days" Width="50" Height="35" VerticalAlignment="Top" FontSize="25" FlowDirection="RightToLeft" />
                                 <StackPanel Width="5"></StackPanel>
                                 <TextBlock Text="days" VerticalAlignment="Center" FontSize="25"></TextBlock>
                                 <StackPanel Width="5"></StackPanel>

@@ -128,6 +128,9 @@
     <Compile Include="Screenshot.xaml.cs">
       <DependentUpon>Screenshot.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Setting.xaml.cs">
+      <DependentUpon>Setting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Target.xaml.cs">
       <DependentUpon>Target.xaml</DependentUpon>
     </Compile>
@@ -221,6 +224,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Screenshot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Setting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -156,6 +156,32 @@ namespace Arkangel
             }
         }
 
+        private void bt_Setting_Click(object sender, RoutedEventArgs e)
+        {
+            Setting setting = new Setting();
+            setting.Show();
+        }
+
+        private void bt_qGeneral_Click(object sender, RoutedEventArgs e)
+        {
+            General general = new General();
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(general);
+        }
+
+        private void bt_qClipboard_Click(object sender, RoutedEventArgs e)
+        {
+            _Clipboard general = new _Clipboard();
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(general);
+        }
+
+        private void bt_qFTP_Click(object sender, RoutedEventArgs e)
+        {
+            FTP general = new FTP();
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(general);
+        }
     }
 }
 
