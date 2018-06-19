@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Interop;
 
 using System.Diagnostics;
-
+using System.Data.SQLite;
 
 namespace Arkangel
 {
@@ -115,7 +115,20 @@ namespace Arkangel
 
         private void bt_Quit_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
+            {
+                connect.Open();
+                using (SQLiteCommand fmd = connect.CreateCommand())
+                {
+                    SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"SELECT * FROM General,current_user WHERE General.id = current_user.id", connect);
+                    SQLiteDataReader data = sqlComm_Alert.ExecuteReader();
+                    while (data.Read())
+                    {
+                        if (data["enHotKey"].ToString() == "1") Hide(); else Close();
+                    }
+                    connect.Close();
+                }
+            }
         }
 
 
@@ -181,6 +194,11 @@ namespace Arkangel
             FTP general = new FTP();
             mainPanel.Children.Clear();
             mainPanel.Children.Add(general);
+        }
+
+        private void bt_qWebcam_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

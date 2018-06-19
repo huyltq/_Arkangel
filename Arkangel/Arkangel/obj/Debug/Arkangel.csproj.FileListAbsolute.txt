@@ -132,7 +132,6 @@ D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\Mater
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\MaterialDesignThemes.Wpf.xml
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\System.Data.SQLite.xml
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\System.Data.SQLite.dll.config
-D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.csprojResolveAssemblyReference.cache
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\LoginForm.baml
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Alert.g.cs
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Alert_Add.g.cs

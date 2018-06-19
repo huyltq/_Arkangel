@@ -115,19 +115,37 @@
                         <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qFTP" Click="bt_qFTP_Click">
                             <materialDesign:PackIcon Kind="Upload" Height="27" Width="27" />
                         </Button>
+                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qWebcam" Click="bt_qWebcam_Click">
+                            <materialDesign:PackIcon Kind="Webcam" Height="27" Width="27" />
+                        </Button>
+                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qTarget">
+                            <materialDesign:PackIcon Kind="Target" Height="27" Width="27" />
+                        </Button>
+                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qUser">
+                            <materialDesign:PackIcon Kind="AccountBox" Height="27" Width="27" />
+                        </Button>
+                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qWU">
+                            <materialDesign:PackIcon Kind="GoogleChrome" Height="27" Width="27" />
+                        </Button>
+                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qScrshot">
+                            <materialDesign:PackIcon Kind="ScreenRotation" Height="27" Width="27" />
+                        </Button>
+                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qMail">
+                            <materialDesign:PackIcon Kind="Gmail" Height="27" Width="27" />
+                        </Button>
+                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qAlert">
+                            <materialDesign:PackIcon Kind="Alert" Height="27" Width="27" />
+                        </Button>
                     </StackPanel>
                     <StackPanel Width="67.5">
-                        <Button Padding="0" Margin=" 4 4 4 4">
-                            <materialDesign:PackIcon Kind="Asterisk" Height="27" Width="27" />
+                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qSetting" Click="bt_Setting_Click">
+                            <materialDesign:PackIcon Kind="Settings" Height="27" Width="27" />
                         </Button>
-                        <Button Padding="0" Margin=" 4 4 4 4">
-                            <materialDesign:PackIcon Kind="Asterisk" Height="27" Width="27" />
+                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qLogout" Click="bt_logout_Click_1">
+                            <materialDesign:PackIcon Kind="Logout" Height="27" Width="27" />
                         </Button>
-                        <Button Padding="0" Margin=" 4 4 4 4">
-                            <materialDesign:PackIcon Kind="Asterisk" Height="27" Width="27" />
-                        </Button>
-                        <Button Padding="0" Margin=" 4 4 4 4">
-                            <materialDesign:PackIcon Kind="Asterisk" Height="27" Width="27" />
+                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qQuit" Click="bt_Quit_Click">
+                            <materialDesign:PackIcon Kind="PowerPlugOff" Height="27" Width="27" />
                         </Button>
                     </StackPanel>
                 </StackPanel>

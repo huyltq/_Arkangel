@@ -19,8 +19,7 @@
      FontFamily="{DynamicResource MaterialDesignFont}"
      Icon =".\Sources\logo_LSC_icon.ico" 
      ResizeMode="NoResize"
-     local:WindowBehavior.HideCloseButton="True"   
-       >
+    >
     <Grid>
         <StackPanel Background="#f2f2f2">
             <StackPanel Height="25"  VerticalAlignment="Top" Background="#0489B1" Margin="0,0,0,0">
