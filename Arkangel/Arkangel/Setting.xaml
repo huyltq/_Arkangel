@@ -7,7 +7,7 @@
         
         mc:Ignorable="d"
        
-        Title="Setting" Height="300" Width="500" 
+        Title="Setting" Height="336" Width="500" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
@@ -22,7 +22,7 @@
     >
     <Grid>
         <StackPanel Background="#f2f2f2">
-            <StackPanel Height="25"  VerticalAlignment="Top" Background="#0489B1" Margin="0,0,0,0">
+            <StackPanel Height="25"  VerticalAlignment="Top" Background="#0489B1" Margin="0,0,0,0" MouseDown="StackPanel_MouseDown">
                     <Button Height="25" Width="25" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" HorizontalAlignment="Right" Padding="0,0,0,0" x:Name="bt_quit" Click="bt_quit_Click">
                         <materialDesign:PackIcon Kind="Power" Height="25" Width="25"/>
                     </Button>
@@ -40,10 +40,10 @@
                     </StackPanel>
                     <StackPanel Height="40" VerticalAlignment="Center" Orientation="Horizontal">
                         <TextBlock FontSize="20" VerticalAlignment="Center" Text="Webcam:"></TextBlock>
-                        <StackPanel Width="65"></StackPanel>
+                        <StackPanel Width="66.5"></StackPanel>
                         <TextBox x:Name="tb_Webcam" Width="275" Height="35" VerticalAlignment="Top"></TextBox>
                         <StackPanel Width="7"></StackPanel>
-                        <Button x:Name="bt_browserWebcam" Click="bt_browserWebcam_Click">
+                        <Button x:Name="bt_browserWebcam" Click="bt_browserWebcam_Click" Margin="0,4">
                             <materialDesign:PackIcon Kind="FileDocument"></materialDesign:PackIcon>
                         </Button>
                     </StackPanel>
@@ -53,6 +53,15 @@
                         <TextBox x:Name="tb_Scrshot" Width="275" Height="35" VerticalAlignment="Top"></TextBox>
                         <StackPanel Width="7"></StackPanel>
                         <Button x:Name="bt_browerScrshot" Click="bt_browerScrshot_Click">
+                            <materialDesign:PackIcon Kind="FileDocument"></materialDesign:PackIcon>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Height="40" VerticalAlignment="Center" Orientation="Horizontal">
+                        <TextBlock FontSize="20" VerticalAlignment="Center" Text="Website:     "></TextBlock>
+                        <StackPanel Width="47"></StackPanel>
+                        <TextBox x:Name="tb_Wslogs" Width="275" Height="35" VerticalAlignment="Top"></TextBox>
+                        <StackPanel Width="7"></StackPanel>
+                        <Button x:Name="bt_brower_Wslogs" Click="bt_brower_Wslogs_Click" >
                             <materialDesign:PackIcon Kind="FileDocument"></materialDesign:PackIcon>
                         </Button>
                     </StackPanel>

@@ -124,7 +124,7 @@ namespace Arkangel
                     SQLiteDataReader data = sqlComm_Alert.ExecuteReader();
                     while (data.Read())
                     {
-                        if (data["enHotKey"].ToString() == "1") Hide(); else Close();
+                        if (data["HotKey"].ToString() == "1") Hide(); else Close();
                     }
                     connect.Close();
                 }
@@ -198,7 +198,51 @@ namespace Arkangel
 
         private void bt_qWebcam_Click(object sender, RoutedEventArgs e)
         {
+            Webcam webcam = new Webcam();
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(webcam);
+        }
 
+        private void bt_qTarget_Click(object sender, RoutedEventArgs e)
+        {
+            Target target = new Target();
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(target);
+        }
+
+        private void bt_qUser_Click(object sender, RoutedEventArgs e)
+        {
+            User user = new User();
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(user);
+        }
+
+        private void bt_qWU_Click(object sender, RoutedEventArgs e)
+        {
+            Website_Usage website_Usage = new Website_Usage();
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(website_Usage);
+        }
+
+        private void bt_qScrshot_Click(object sender, RoutedEventArgs e)
+        {
+            Screenshot screenshot = new Screenshot();
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(screenshot);
+        }
+
+        private void bt_qMail_Click(object sender, RoutedEventArgs e)
+        {
+            Email email = new Email();
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(email);
+        }
+
+        private void bt_qAlert_Click(object sender, RoutedEventArgs e)
+        {
+            Alert alert = new Alert();
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(alert);
         }
     }
 }

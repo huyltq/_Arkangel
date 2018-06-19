@@ -106,34 +106,34 @@
             <ListView x:Name="allIcon" Padding="0 0 0 0" Margin="0,50,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Visibility="Hidden" Background="LawnGreen">
                 <StackPanel Orientation="Horizontal" Height="494" Width="135">
                     <StackPanel Width="67.5">
-                        <Button x:Name="bt_qGeneral" Padding="0" Margin=" 4 4 4 4" Click="bt_qGeneral_Click"  >
+                        <Button x:Name="bt_qGeneral" Padding="0" Margin=" 4 4 4 4" Click="bt_qGeneral_Click" Height="35" >
                             <materialDesign:PackIcon Kind="Asterisk" Height="27" Width="27" />
                         </Button>
-                        <Button x:Name="bt_qClipboard" Padding="0" Margin=" 4 4 4 4" Click="bt_qClipboard_Click">
-                            <materialDesign:PackIcon Kind="Clipboard" Height="27" Width="27" />
+                        <Button x:Name="bt_qClipboard" Padding="0" Margin=" 4 4 4 4" Click="bt_qClipboard_Click" Height="35">
+                            <materialDesign:PackIcon Kind="ContentCopy" Height="27" Width="27" />
                         </Button>
-                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qFTP" Click="bt_qFTP_Click">
+                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qFTP" Click="bt_qFTP_Click" Height="35">
                             <materialDesign:PackIcon Kind="Upload" Height="27" Width="27" />
                         </Button>
-                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qWebcam" Click="bt_qWebcam_Click">
+                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qWebcam" Click="bt_qWebcam_Click" Height="35">
                             <materialDesign:PackIcon Kind="Webcam" Height="27" Width="27" />
                         </Button>
-                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qTarget">
+                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qTarget" Height="35" Click="bt_qTarget_Click" >
                             <materialDesign:PackIcon Kind="Target" Height="27" Width="27" />
                         </Button>
-                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qUser">
+                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qUser" Height="35" Click="bt_qUser_Click">
                             <materialDesign:PackIcon Kind="AccountBox" Height="27" Width="27" />
                         </Button>
-                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qWU">
+                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qWU" Height="35" Click="bt_qWU_Click">
                             <materialDesign:PackIcon Kind="GoogleChrome" Height="27" Width="27" />
                         </Button>
-                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qScrshot">
-                            <materialDesign:PackIcon Kind="ScreenRotation" Height="27" Width="27" />
+                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qScrshot" Height="35" Click="bt_qScrshot_Click">
+                            <materialDesign:PackIcon Kind="Camera" Height="27" Width="27" />
                         </Button>
-                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qMail">
+                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qMail" Height="35" Click="bt_qMail_Click">
                             <materialDesign:PackIcon Kind="Gmail" Height="27" Width="27" />
                         </Button>
-                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qAlert">
+                        <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qAlert" Height="35" Click="bt_qAlert_Click">
                             <materialDesign:PackIcon Kind="Alert" Height="27" Width="27" />
                         </Button>
                     </StackPanel>
@@ -145,7 +145,7 @@
                             <materialDesign:PackIcon Kind="Logout" Height="27" Width="27" />
                         </Button>
                         <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qQuit" Click="bt_Quit_Click">
-                            <materialDesign:PackIcon Kind="PowerPlugOff" Height="27" Width="27" />
+                            <materialDesign:PackIcon Kind="Power" Height="27" Width="27" />
                         </Button>
                     </StackPanel>
                 </StackPanel>

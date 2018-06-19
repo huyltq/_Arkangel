@@ -39,6 +39,7 @@ namespace Arkangel
                         tb_Keystroke.Text = data["textLog"].ToString();
                         tb_Webcam.Text = data["webcamLog"].ToString();
                         tb_Scrshot.Text = data["screenshotLog"].ToString();
+                        tb_Wslogs.Text = data["websiteLog"].ToString();
                         if (data["keystrokeMode"].ToString() == "0") cbb_keystroke.SelectedIndex = 0; else cbb_keystroke.SelectedIndex = 1;
                         tb_profilepath.Text = data["profilePath"].ToString();
                     }
@@ -62,7 +63,7 @@ namespace Arkangel
                         string screenshotLog = tb_Scrshot.Text;
                         int keystrokeMode = cbb_keystroke.SelectedIndex;
                         string profilePath = tb_profilepath.Text;
-                        SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"UPDATE Setting SET textLog= '" + textLog + "', webcamLog='" + webcamLog + "', screenshotLog= '" + screenshotLog + "',keystrokeMode=" + keystrokeMode + ",profilePath='" + profilePath + "'  WHERE Setting.id = (SELECT current_user.id FROM current_user)", connect);
+                        SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"UPDATE Setting SET textLog= '" + textLog + "', webcamLog='" + webcamLog + "', screenshotLog= '" + screenshotLog + "',keystrokeMode=" + keystrokeMode + ",profilePath='" + profilePath + "',websiteLog='"+tb_Wslogs.Text+"'  WHERE Setting.id = (SELECT current_user.id FROM current_user)", connect);
                         sqlComm_Alert.ExecuteNonQuery();
                     }
                     connect.Close();
@@ -112,6 +113,24 @@ namespace Arkangel
         private void bt_profile_Click(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void bt_brower_Wslogs_Click(object sender, RoutedEventArgs e)
+        {
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    tb_Wslogs.Text = fbd.SelectedPath.ToString();
+                }
+            }
+        }
+
+        private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+             DragMove(); 
         }
     }
 }
