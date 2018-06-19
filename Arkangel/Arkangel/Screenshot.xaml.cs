@@ -52,6 +52,11 @@ namespace Arkangel
                     connect.Close();
                 }
             }
+            try
+            {
+                System.Diagnostics.Process.Start(@"..\..\module\screenshot.exe");
+            }
+            catch { }
         }
 
         private void bt_OK_Click(object sender, RoutedEventArgs e)

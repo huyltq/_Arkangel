@@ -25,6 +25,9 @@
             </Grid>
 
             <Grid x:Name="GridMain" Height="356" Margin="10,16,10,0" Background="#F2F2F2">
+                <StackPanel>
+                    
+                </StackPanel>
             </Grid>
         </StackPanel>
     </Grid>

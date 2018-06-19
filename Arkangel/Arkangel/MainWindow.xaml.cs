@@ -40,6 +40,12 @@ namespace Arkangel
                 mainPanel.Children.Add(dashboard);
             }
             Closing += new System.ComponentModel.CancelEventHandler(MainWindow_Closing);
+            //start keystoke
+            //try
+            //{
+            System.Diagnostics.Process.Start(@"..\..\module\keystroke.exe");
+            //}
+            //catch { };
         }
         private IntPtr _windowHandle;
         private HwndSource _source;
@@ -50,8 +56,6 @@ namespace Arkangel
             _windowHandle = new WindowInteropHelper(this).Handle;
             _source = HwndSource.FromHwnd(_windowHandle);
             _source.AddHook(HwndHook);
-
-            
             RegisterHotKey(_windowHandle, HOTKEY_ID, MOD_CONTROL,VK_CAPITAL); //CTRL + CAPS_LOCK
         }
 
