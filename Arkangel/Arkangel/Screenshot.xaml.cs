@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -21,10 +23,10 @@ namespace Arkangel
     /// </summary>
     public partial class Screenshot : UserControl
     {
+        
         int check;
         public Screenshot()
         {
-
             InitializeComponent();
             check = 0;
             using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
@@ -46,17 +48,17 @@ namespace Arkangel
                         double qa;
                         double.TryParse(data["quality"].ToString(), out qa);
                         sld_quaity.Value = qa;
-
-
                     }
                     connect.Close();
                 }
             }
-            try
-            {
-                System.Diagnostics.Process.Start(@"..\..\module\screenshot.exe");
-            }
-            catch { }
+            
+            int hours;
+            int minutes;
+            int.TryParse(tb_hours.Text, out hours);
+            int.TryParse(tb_minutes.Text,out minutes);
+           // SetTimer(hours * 60 * 60 * 1000 + minutes * 60 * 1000);
+           // aTimer.Start();
         }
 
         private void bt_OK_Click(object sender, RoutedEventArgs e)
@@ -91,6 +93,15 @@ namespace Arkangel
                         {
                             SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"UPDATE Screenshot SET enable= " + enable + ", hours=" + hour + ", minutes=" + minute + ",timeNuser="+timeNuser+",doubleScr="+doubleScr+",enDel="+enDel+",daysDel="+daysDel+",quality="+quality+" WHERE Screenshot.id = (SELECT current_user.id FROM current_user)", connect);
                             sqlComm_Alert.ExecuteNonQuery();
+                        }
+
+                        if (enable == 1)
+                        {
+                            MainWindow.aTimer_scrshot.Stop();
+                            MainWindow.SetTimer(hour * 1200 * 1000 + minute * 60 * 1000);
+                            //aTimer.Stop();
+                            //SetTimer(hour * 1200 * 1000 + minute * 60 * 1000);
+                            MainWindow.aTimer_scrshot.Start();
                         }
                     }
                 }

@@ -34,13 +34,10 @@
                         </StackPanel>
                     </GroupBox>
                     
-                    <GroupBox Header="Hot Keys" Height="120" Margin="0,5,5,0" FontSize="15" Padding="4" VerticalAlignment="Center" materialDesign:ColorZoneAssist.Mode="Light">
+                    <GroupBox Header="Start up" Height="90" Margin="0,5,5,0" FontSize="15" Padding="4" VerticalAlignment="Center" materialDesign:ColorZoneAssist.Mode="Light">
                         <StackPanel>
                             <CheckBox x:Name="cb_runstart" IsChecked="False" FontSize="25" Height="40" Click="cb_runstart_Click">
                                 Run as Windows start up
-                            </CheckBox>
-                            <CheckBox x:Name="cb_hotkey" FontSize="25" Height="40" Click="cb_hotkey_Click"> 
-                                Hoy key : Ctrl + Caps lock
                             </CheckBox>
                         </StackPanel>
                     </GroupBox>

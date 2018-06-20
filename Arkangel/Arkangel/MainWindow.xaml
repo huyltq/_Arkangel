@@ -19,7 +19,7 @@
      FontFamily="{DynamicResource MaterialDesignFont}"
      Icon =".\Sources\logo_LSC_icon.ico" 
      ResizeMode="NoResize"
-     local:WindowBehavior.HideCloseButton="True"   
+     WindowStyle="None"  
         >
    
     <Window.Resources>
@@ -54,7 +54,7 @@
     </Window.Triggers>
     <Grid Background="#F2F2F2" Loaded="Grid_Loaded">
         <Grid  Height="168"  VerticalAlignment="Top" Margin="150,0,0,0">
-            <StackPanel Height="50"  VerticalAlignment="Top" Background="#0489B1" Margin="-100,0,0,0">
+            <StackPanel Height="50"  VerticalAlignment="Top" Background="#0489B1" Margin="-100,0,0,0" MouseDown="StackPanel_MouseDown">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="150" Height="50">
                     <Button x:Name="bt_home" Height="50" Width="50" HorizontalAlignment="Left" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" Padding="4" Click="bt_home_Click">
                         <materialDesign:PackIcon Kind="Home" Height="40" Width="40"/>

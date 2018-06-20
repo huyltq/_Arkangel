@@ -7,7 +7,7 @@
         
         mc:Ignorable="d"
        
-        Title="Setting" Height="336" Width="500" 
+        Title="Setting" Height="392" Width="500" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
@@ -23,9 +23,9 @@
     <Grid>
         <StackPanel Background="#f2f2f2">
             <StackPanel Height="25"  VerticalAlignment="Top" Background="#0489B1" Margin="0,0,0,0" MouseDown="StackPanel_MouseDown">
-                    <Button Height="25" Width="25" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" HorizontalAlignment="Right" Padding="0,0,0,0" x:Name="bt_quit" Click="bt_quit_Click">
-                        <materialDesign:PackIcon Kind="Power" Height="25" Width="25"/>
-                    </Button>
+                <Button Height="25" Width="25" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" HorizontalAlignment="Right" Padding="0,0,0,0" x:Name="bt_quit" Click="bt_quit_Click">
+                    <materialDesign:PackIcon Kind="Power" Height="25" Width="25"/>
+                </Button>
             </StackPanel>
             <GroupBox materialDesign:ColorZoneAssist.Mode="Light" Header="Logs Path" FontSize="15" Margin="5,5,5,5" Padding="4">
                 <StackPanel>
@@ -84,7 +84,12 @@
                 <TextBlock Text="   Chrome Profle's Path: " VerticalAlignment="Center"></TextBlock>
                 <TextBox x:Name="tb_profilepath" Height="45" Width="230"></TextBox>
                 <Button x:Name="bt_profile" Click="bt_profile_Click" Margin="0,9">
-                    <materialDesign:PackIcon Kind="AccountCheck"></materialDesign:PackIcon></Button>
+                    <materialDesign:PackIcon Kind="AccountCheck"></materialDesign:PackIcon>
+                </Button>
+            </StackPanel>
+            <StackPanel Height="20"></StackPanel>
+            <StackPanel HorizontalAlignment="Center" Height="27" VerticalAlignment="Bottom" Margin="93,0" >
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Height="29" Text="HOT KEY to OPEN: CTRL+Caps Lock" Foreground="DarkGreen"/>
             </StackPanel>
         </StackPanel>
     </Grid>
