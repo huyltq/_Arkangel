@@ -190,5 +190,4 @@ C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\obj\Debug\
 C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.exe
 C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.pdb
 C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.csprojResolveAssemblyReference.cache
->>>>>>> General
 C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\obj\Debug\GeneratedInternalTypeHelper.g.cs
