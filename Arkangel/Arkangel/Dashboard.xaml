@@ -16,6 +16,7 @@
      FontFamily="{DynamicResource MaterialDesignFont}">
 
     <Grid x:Name="_dasboard" Background="#F2F2F2">
+     
         <!--<TextBlock Text ="test" FontSize="100"></TextBlock>-->
         <Grid Margin="0,0,0,0" Background="#0489B1" Height="54.5" VerticalAlignment="Top">
             <TextBlock x:Name="tb_hello" Text="Good Morning" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="White" Height="60" />

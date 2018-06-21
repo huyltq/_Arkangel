@@ -71,7 +71,7 @@
                 <StackPanel Width="80"></StackPanel>
                 <TextBlock Text="Keystroke Mode:" VerticalAlignment="Center"></TextBlock>
                 <StackPanel Width="25"></StackPanel>
-                <ComboBox x:Name="cbb_keystroke" Width="150"  SelectedIndex="0">
+                <ComboBox x:Name="cbb_keystroke" Width="150"  SelectedIndex="0" >
                     <ComboBoxItem>
                         English
                     </ComboBoxItem>
@@ -88,8 +88,8 @@
                 </Button>
             </StackPanel>
             <StackPanel Height="20"></StackPanel>
-            <StackPanel HorizontalAlignment="Center" Height="27" VerticalAlignment="Bottom" Margin="93,0" >
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Height="29" Text="HOT KEY to OPEN: CTRL+Caps Lock" Foreground="DarkGreen"/>
+            <StackPanel HorizontalAlignment="Center" Height="27" VerticalAlignment="Bottom" Margin="58,0,93,0" Width="349" >
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Height="29" Text="HOT KEY to OPEN: CTRL+Caps Lock" Foreground="DarkGreen" Width="317"/>
             </StackPanel>
         </StackPanel>
     </Grid>

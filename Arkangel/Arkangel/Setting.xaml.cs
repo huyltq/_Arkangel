@@ -31,7 +31,6 @@ namespace Arkangel
                 connect.Open();
                 using (SQLiteCommand fmd = connect.CreateCommand())
                 {
-
                     SQLiteCommand sqlComm = new SQLiteCommand(@"SELECT * FROM Setting,current_user WHERE Setting.id=current_user.id", connect);
                     SQLiteDataReader data = sqlComm.ExecuteReader();
                     while (data.Read())

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Arkangel"
         mc:Ignorable="d"
-        Title="Clipboard Picture" Height="282" Width="460.5"
+        Title="Clipboard Picture" Height="295.5" Width="460.5"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
