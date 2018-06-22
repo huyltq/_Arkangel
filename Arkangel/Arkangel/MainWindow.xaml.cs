@@ -3,8 +3,9 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
-using System.Timers;
 using System.Diagnostics;
+
+using System.Timers;
 using System.Data.SQLite;
 
 namespace Arkangel
@@ -63,6 +64,10 @@ namespace Arkangel
                 Dashboard dashboard = new Dashboard();
                 mainPanel.Children.Add(dashboard);
             }
+
+
+//Closing += new System.ComponentModel.CancelEventHandler(MainWindow_Closing);
+
             //Keystroke
             //try
             //{
@@ -105,6 +110,7 @@ namespace Arkangel
 
           //  Closing += new System.ComponentModel.CancelEventHandler(windowl);
 
+
         }
         private IntPtr _windowHandle;
         private HwndSource _source;
@@ -114,6 +120,7 @@ namespace Arkangel
             _windowHandle = new WindowInteropHelper(this).Handle;
             _source = HwndSource.FromHwnd(_windowHandle);
             _source.AddHook(HwndHook);
+
             RegisterHotKey(_windowHandle, HOTKEY_ID, MOD_CONTROL,VK_CAPITAL); //CTRL + CAPS_LOCK
         }
 
@@ -138,9 +145,6 @@ namespace Arkangel
             }
             return IntPtr.Zero;
         }
-
-            
-       
 
         private void Button_OpenMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -194,7 +198,6 @@ namespace Arkangel
         {
             Hide();
         }
-
 
         private Process myProcess = new Process();
 
@@ -305,6 +308,7 @@ namespace Arkangel
         {
             DragMove();
         }
+
     }
 }
 
