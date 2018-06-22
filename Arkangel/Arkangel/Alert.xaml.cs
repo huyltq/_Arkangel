@@ -60,12 +60,7 @@ namespace Arkangel
             }
         }
         //synccccc
-        public class TodoItem
-        {
-            public string Id { get; set; }
-            public string Text { get; set; }
-            public bool Complete { get; set; }
-        }
+       
 
 
 
@@ -74,12 +69,7 @@ namespace Arkangel
             check = 1;
             Alert_Add alert_Add = new Alert_Add(this);
             alert_Add.Show();
-            TodoItem item = new TodoItem
-            {
-                Text = "Awesome item",
-                Complete = false
-            };
-            await App.MobileService.GetTable<TodoItem>().InsertAsync(item);
+            
         }
 
         private void bt_delete_Click(object sender, RoutedEventArgs e)
@@ -87,7 +77,11 @@ namespace Arkangel
             check = 1;
             keyword_list.Items.Remove(keyword_list.SelectedItem);
         }
-
+        public class _Alert
+        {
+            int id;
+            string key;
+        }
         private void bt_OK_Click(object sender, RoutedEventArgs e)
         {
             if (check == 1)
@@ -121,6 +115,7 @@ namespace Arkangel
                     }
                     connect.Close();
                 }
+
             }
         }
 

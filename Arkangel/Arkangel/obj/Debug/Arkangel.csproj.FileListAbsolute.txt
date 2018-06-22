@@ -256,3 +256,4 @@ C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\bin\Debug\
 C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\bin\Debug\Newtonsoft.Json.xml
 C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\obj\Debug\Setting.baml
 >>>>>>> 6cf119d1bd9638956e74c81509ccb18f9dabc949
+D:\Do an chuyen nganh\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\DotNetZip.xml

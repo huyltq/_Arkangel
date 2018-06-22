@@ -18,16 +18,7 @@ namespace Arkangel
     /// Interaction logic for Alert_Add.xaml
     /// </summary>
     /// 
-    public class _AlertList
-    {
-        public int Id { get; set; }
-        public string Key { get; set; }
-        //public bool Complete { get; set; }
-    }
-    public class CurrentUser
-    {
-        public int id;
-    }
+
     public partial class Alert_Add : Window
     {
         private Alert _form = null;
@@ -36,13 +27,13 @@ namespace Arkangel
             InitializeComponent();
             _form = form;
         }
-       
-        private async void bt_Add_Click(object sender, RoutedEventArgs e)
+
+        private void bt_Add_Click(object sender, RoutedEventArgs e)
         {
             _form.keyword_list.Items.Add(tb_text.Text);
             Close();
         }
-        
+
         private void bt_Cancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
