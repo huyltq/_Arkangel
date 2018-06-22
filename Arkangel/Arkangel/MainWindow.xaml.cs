@@ -3,14 +3,10 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
-<<<<<<< HEAD
 using System.Diagnostics;
 
-=======
 using System.Timers;
-using System.Diagnostics;
 using System.Data.SQLite;
->>>>>>> 2c6da9611ec36095b3686fefd8fddd14d1361ba8
 
 namespace Arkangel
 {
@@ -68,10 +64,10 @@ namespace Arkangel
                 Dashboard dashboard = new Dashboard();
                 mainPanel.Children.Add(dashboard);
             }
-<<<<<<< HEAD
 
-            Closing += new System.ComponentModel.CancelEventHandler(MainWindow_Closing);
-=======
+
+//Closing += new System.ComponentModel.CancelEventHandler(MainWindow_Closing);
+
             //Keystroke
             //try
             //{
@@ -113,7 +109,7 @@ namespace Arkangel
             //FTP
 
           //  Closing += new System.ComponentModel.CancelEventHandler(windowl);
->>>>>>> 2c6da9611ec36095b3686fefd8fddd14d1361ba8
+
 
         }
         private IntPtr _windowHandle;
@@ -124,10 +120,7 @@ namespace Arkangel
             _windowHandle = new WindowInteropHelper(this).Handle;
             _source = HwndSource.FromHwnd(_windowHandle);
             _source.AddHook(HwndHook);
-<<<<<<< HEAD
 
-=======
->>>>>>> 2c6da9611ec36095b3686fefd8fddd14d1361ba8
             RegisterHotKey(_windowHandle, HOTKEY_ID, MOD_CONTROL,VK_CAPITAL); //CTRL + CAPS_LOCK
         }
 
@@ -152,13 +145,6 @@ namespace Arkangel
             }
             return IntPtr.Zero;
         }
-
-<<<<<<< HEAD
-      
-=======
-            
-       
->>>>>>> 2c6da9611ec36095b3686fefd8fddd14d1361ba8
 
         private void Button_OpenMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -212,10 +198,6 @@ namespace Arkangel
         {
             Hide();
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> 2c6da9611ec36095b3686fefd8fddd14d1361ba8
 
         private Process myProcess = new Process();
 
@@ -326,10 +308,7 @@ namespace Arkangel
         {
             DragMove();
         }
-<<<<<<< HEAD
 
-=======
->>>>>>> 2c6da9611ec36095b3686fefd8fddd14d1361ba8
     }
 }
 
