@@ -78,5 +78,7 @@ D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkan
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.pdb
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\Arkangel.pdb
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.csprojResolveAssemblyReference.cache
-D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Thaydoiquydinh.g.cs
-D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Thaydoiquydinh.baml
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\Microsoft.Azure.Mobile.Client.dll
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\Newtonsoft.Json.dll
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\Microsoft.Azure.Mobile.Client.xml
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\Newtonsoft.Json.xml

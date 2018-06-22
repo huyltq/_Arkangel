@@ -64,15 +64,15 @@ namespace Arkangel
                 mainPanel.Children.Add(dashboard);
             }
             //Keystroke
-            try
-            {
-                myProcess.StartInfo.UseShellExecute = true;
-                myProcess.StartInfo.FileName =@"..\..\Module\keystroke.exe";
-                myProcess.StartInfo.CreateNoWindow = true;
-                myProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                myProcess.Start();
-            }
-            catch { };
+            //try
+            //{
+            //    myProcess.StartInfo.UseShellExecute = true;
+            //    myProcess.StartInfo.FileName =@"..\..\Module\keystroke.exe";
+            //    myProcess.StartInfo.CreateNoWindow = true;
+            //    myProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            //    myProcess.Start();
+            //}
+            //catch { };
             //Screenshot
 
             int _hours=0,_minutes=0,enable=0;
