@@ -12,5 +12,6 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/keystroke.exe")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/screenshot.exe")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/sendmail.exe")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("quanlyvdqg.sql")]
 
 
