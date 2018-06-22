@@ -4,17 +4,26 @@
 winexe
 C#
 .cs
-C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\obj\Debug\
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\
 Arkangel
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\App.xaml
 222121349331
 
 28-786121370
 2519408685
 Alert.xaml;Alert_Add.xaml;CB_File.xaml;CB_Pic.xaml;Dashboard.xaml;Email.xaml;Email_General.xaml;Email_Server.xaml;FTP.xaml;FTP_General.xaml;FTP_Server.xaml;General.xaml;LoginForm.xaml;MainWindow.xaml;Screenshot.xaml;Target.xaml;Target_ByApp.xaml;Target_ByName.xaml;User.xaml;Webcam.xaml;Website_Usage.xaml;_Clipboard.xaml;
+=======
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\App.xaml
+23374330992
+4333468788
+291976041158
+27-664826482
+Alert.xaml;Alert_Add.xaml;CB_File.xaml;CB_Pic.xaml;Dashboard.xaml;Email.xaml;Email_General.xaml;Email_Server.xaml;FTP.xaml;FTP_General.xaml;FTP_Server.xaml;General.xaml;LoginForm.xaml;MainWindow.xaml;Screenshot.xaml;Setting.xaml;Target.xaml;Target_ByApp.xaml;Target_ByName.xaml;User.xaml;Webcam.xaml;Website_Usage.xaml;_Clipboard.xaml;
+>>>>>>> 2c6da9611ec36095b3686fefd8fddd14d1361ba8
 
 False
 

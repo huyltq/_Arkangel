@@ -24,7 +24,7 @@ namespace Arkangel
         public Email_Server()
         {
             InitializeComponent();
-            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=.\database.db"))
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
             {
                 connect.Open();
                 using (SQLiteCommand fmd = connect.CreateCommand())
@@ -48,7 +48,7 @@ namespace Arkangel
 
         private void bt_OK_Click(object sender, RoutedEventArgs e)
         {
-            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=.\database.db"))
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
             {
                 connect.Open();
                 using (SQLiteCommand fmd = connect.CreateCommand())

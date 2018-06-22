@@ -1,40 +1,5 @@
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\obj\Debug\Arkangel.csprojResolveAssemblyReference.cache
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\obj\Debug\MainWindow.g.cs
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\obj\Debug\App.g.cs
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\obj\Debug\Arkangel_MarkupCompile.cache
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\obj\Debug\Arkangel_MarkupCompile.lref
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\bin\Debug\Arkangel.exe.config
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\bin\Debug\Arkangel.exe
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\bin\Debug\Arkangel.pdb
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\bin\Debug\MaterialDesignColors.dll
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\bin\Debug\MaterialDesignThemes.Wpf.dll
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\bin\Debug\MaterialDesignThemes.Wpf.pdb
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\bin\Debug\MaterialDesignThemes.Wpf.xml
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\obj\Debug\App.baml
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\obj\Debug\MainWindow.baml
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\obj\Debug\Arkangel.g.resources
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\obj\Debug\Arkangel.Properties.Resources.resources
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\obj\Debug\Arkangel.csproj.GenerateResource.cache
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\obj\Debug\Arkangel.csproj.CoreCompileInputs.cache
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\obj\Debug\Arkangel.csproj.CopyComplete
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\obj\Debug\Arkangel.exe
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\obj\Debug\Arkangel.pdb
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\bin\Debug\MetroFramework.Design.dll
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\bin\Debug\MetroFramework.dll
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\bin\Debug\MetroFramework.Fonts.dll
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\obj\Debug\Dashboard.g.cs
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\obj\Debug\Dashboard.baml
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\obj\Debug\General.g.cs
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\obj\Debug\General.baml
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\obj\Debug\Screenshot.g.cs
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\obj\Debug\Screenshot.baml
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\obj\Debug\Alert.g.cs
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\obj\Debug\Alert.baml
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\obj\Debug\FTP.g.cs
-C:\Users\8460p\Documents\Visual Studio 2017\Project\Arkangel\Arkangel\obj\Debug\FTP.baml
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\Arkangel.exe.config
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\Arkangel.exe
-D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\Arkangel.pdb
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\Dragablz.dll
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\EntityFramework.dll
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\EntityFramework.SqlServer.dll
@@ -53,7 +18,6 @@ D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\Mater
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\MaterialDesignThemes.Wpf.xml
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\System.Data.SQLite.xml
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\System.Data.SQLite.dll.config
-D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.csprojResolveAssemblyReference.cache
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\LoginForm.baml
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Alert.g.cs
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Alert_Add.g.cs
@@ -70,6 +34,7 @@ D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Gener
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\LoginForm.g.cs
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\MainWindow.g.cs
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Screenshot.g.cs
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Setting.g.cs
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Target.g.cs
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Target_ByApp.g.cs
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Target_ByName.g.cs
@@ -78,6 +43,7 @@ D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Webca
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Website_Usage.g.cs
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\_Clipboard.g.cs
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\App.g.cs
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel_Content.g.cs
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel_MarkupCompile.cache
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel_MarkupCompile.lref
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\App.baml
@@ -95,6 +61,7 @@ D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\FTP_S
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\General.baml
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\MainWindow.baml
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Screenshot.baml
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Setting.baml
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Target.baml
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Target_ByApp.baml
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Target_ByName.baml
@@ -109,6 +76,7 @@ D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkan
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.csproj.CopyComplete
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.exe
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.pdb
+<<<<<<< HEAD
 <<<<<<< HEAD
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\GeneratedInternalTypeHelper.g.cs
 =======
@@ -191,3 +159,11 @@ C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\obj\Debug\
 C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.pdb
 C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.csprojResolveAssemblyReference.cache
 C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\obj\Debug\GeneratedInternalTypeHelper.g.cs
+=======
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\Arkangel.pdb
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.csprojResolveAssemblyReference.cache
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\Microsoft.Azure.Mobile.Client.dll
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\Newtonsoft.Json.dll
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\Microsoft.Azure.Mobile.Client.xml
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\Newtonsoft.Json.xml
+>>>>>>> 2c6da9611ec36095b3686fefd8fddd14d1361ba8

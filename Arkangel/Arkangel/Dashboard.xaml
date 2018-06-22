@@ -16,6 +16,7 @@
      FontFamily="{DynamicResource MaterialDesignFont}">
 
     <Grid x:Name="_dasboard" Background="#F2F2F2">
+     
         <!--<TextBlock Text ="test" FontSize="100"></TextBlock>-->
         <Grid Margin="0,0,0,0" Background="#0489B1" Height="54.5" VerticalAlignment="Top">
             <TextBlock x:Name="tb_hello" Text="Good Morning" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="White" Height="60" />
@@ -53,16 +54,11 @@
                     <TextBlock Text="FTP" FontSize="33" VerticalAlignment="Center" FontFamily="Font Awesome" ></TextBlock>
                 </StackPanel>
             </Button>
-            <Button x:Name="bt_Webcam" Margin="0,0,120,4" Grid.Row="1" Height="Auto" FontSize="20" FontFamily="Font Awesome" Padding="4" Click="bt_Webcam_Click" >
-                <StackPanel Orientation="Vertical" Width="110">
-                    <materialDesign:PackIcon Kind="Webcam" Height="55" Width="55" HorizontalAlignment="Center"></materialDesign:PackIcon>
-                    <TextBlock Text="Webcam" FontSize="25" HorizontalAlignment="Center" FontFamily="Font Awesome" ></TextBlock>
-                </StackPanel>
-            </Button>
-            <Button Margin="118,0,5,4" Grid.Row="1" Height="Auto" FontSize="20" FontFamily="Font Awesome" HorizontalAlignment="Center" TextOptions.TextHintingMode="Fixed" Width="110" Padding="1">
-                <StackPanel Orientation="Vertical" Width="110">
-                    <materialDesign:PackIcon Kind="FacebookBox" Height="55" Width="55" HorizontalAlignment="Center"></materialDesign:PackIcon>
-                    <TextBlock Text="Facebook" FontSize="23" HorizontalAlignment="Center" FontFamily="Font Awesome" ></TextBlock>
+            <Button x:Name="bt_Webcam" Margin="0,0,5,4" Grid.Row="1" Height="Auto" FontSize="20" FontFamily="Font Awesome" Padding="4" Click="bt_Webcam_Click" >
+                <StackPanel Orientation="Horizontal" Width="196" Height="92" VerticalAlignment="Center">
+                    <materialDesign:PackIcon Kind="Webcam" Height="55" Width="55" HorizontalAlignment="Center" VerticalAlignment="Center"></materialDesign:PackIcon>
+                    <StackPanel Width="10"></StackPanel>
+                    <TextBlock Text="Webcam" FontSize="33" HorizontalAlignment="Center" FontFamily="Font Awesome" VerticalAlignment="Center"></TextBlock>
                 </StackPanel>
             </Button>
             <Button x:Name="bt_Target" Grid.Column="1" Height="Auto" FontSize="30" FontFamily="Font Awesome" Margin="0,0,0,4" Grid.Row="1" Click="bt_Target_Click">
