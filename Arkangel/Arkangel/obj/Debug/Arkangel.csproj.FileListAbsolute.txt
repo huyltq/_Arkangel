@@ -76,7 +76,6 @@ D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkan
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.csproj.CopyComplete
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.exe
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.pdb
-D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\bin\Debug\Arkangel.exe.config
 C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\bin\Debug\Arkangel.exe
 C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\bin\Debug\Arkangel.pdb
@@ -253,3 +252,4 @@ C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\bin\Debug\
 C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\obj\Debug\Setting.baml
 D:\Do an chuyen nganh\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\DotNetZip.xml
 C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.csprojResolveAssemblyReference.cache
+D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\DotNetZip.xml
