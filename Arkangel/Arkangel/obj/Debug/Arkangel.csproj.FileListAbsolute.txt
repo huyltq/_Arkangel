@@ -154,15 +154,12 @@ C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\obj\Debug\
 C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.csproj.CoreCompileInputs.cache
 C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.exe
 C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.pdb
-C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.csprojResolveAssemblyReference.cache
-C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\Arkangel.pdb
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.csprojResolveAssemblyReference.cache
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\Microsoft.Azure.Mobile.Client.dll
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\Newtonsoft.Json.dll
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\Microsoft.Azure.Mobile.Client.xml
 D:\Đồ án chuyên ngành\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\Newtonsoft.Json.xml
-<<<<<<< HEAD
 D:\Do an chuyen nganh\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\Arkangel.exe.config
 D:\Do an chuyen nganh\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\Arkangel.exe
 D:\Do an chuyen nganh\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\Arkangel.pdb
@@ -247,7 +244,6 @@ D:\Do an chuyen nganh\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.cs
 D:\Do an chuyen nganh\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.csproj.CopyComplete
 D:\Do an chuyen nganh\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.exe
 D:\Do an chuyen nganh\Arkangel\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.pdb
-=======
 C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\obj\Debug\Setting.g.cs
 C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel_Content.g.cs
 C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\bin\Debug\Microsoft.Azure.Mobile.Client.dll
@@ -255,5 +251,5 @@ C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\bin\Debug\
 C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\bin\Debug\Microsoft.Azure.Mobile.Client.xml
 C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\bin\Debug\Newtonsoft.Json.xml
 C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\obj\Debug\Setting.baml
->>>>>>> 6cf119d1bd9638956e74c81509ccb18f9dabc949
 D:\Do an chuyen nganh\Arkangel\_Arkangel\Arkangel\Arkangel\bin\Debug\DotNetZip.xml
+C:\Users\TyTran\Documents\doanchuyennganh\_Arkangel\Arkangel\Arkangel\obj\Debug\Arkangel.csprojResolveAssemblyReference.cache

@@ -32,6 +32,8 @@ namespace Arkangel
             check = 1;
             GridMain.Children.Clear();
             GridMain.Children.Add(general);
+
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

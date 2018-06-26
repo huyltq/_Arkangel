@@ -7,6 +7,7 @@ using System.Diagnostics;
 
 using System.Timers;
 using System.Data.SQLite;
+using System.IO;
 
 namespace Arkangel
 {
@@ -33,27 +34,11 @@ namespace Arkangel
         private const uint VK_CAPITAL = 0x14;
         //Screenshot
         public static System.Timers.Timer aTimer_scrshot;
-        public static void SetTimer(int _time)
-        {
-            // Create a timer with a two second interval.
-            aTimer_scrshot = new System.Timers.Timer(_time);
-            // Hook up the Elapsed event for the timer. 
-            aTimer_scrshot.Elapsed += OnTimedEvent;
-            aTimer_scrshot.AutoReset = true;
-            aTimer_scrshot.Enabled = true;
-        }
-        public static void OnTimedEvent(Object source, ElapsedEventArgs e)
-        {
-            try
-            {
-                ProcessStartInfo start = new ProcessStartInfo();
-                start.WorkingDirectory = @"..\..\module\";
-                start.FileName = "screenshot.exe";
-                start.WindowStyle = ProcessWindowStyle.Hidden;
-                Process.Start(start);
-            }
-            catch { }
-        }
+        //Webcam
+        public static System.Timers.Timer aTimer_webcam = new System.Timers.Timer();
+        // send mail
+        public static System.Timers.Timer aTimer_sendMail;
+       
         public MainWindow()
         {
 
@@ -80,28 +65,68 @@ namespace Arkangel
             //catch { };
             //Screenshot
 
-            int _hours=0,_minutes=0,enable=0;
+           
             using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
             {
                 connect.Open();
                 using (SQLiteCommand fmd = connect.CreateCommand())
                 {
-                    SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"SELECT * FROM Screenshot,current_user WHERE Screenshot.id = current_user.id", connect);
-                    SQLiteDataReader data = sqlComm_Alert.ExecuteReader();
+                    //----------- Screenshot -----------------//
+                    // query to get values of screenshot table
+                    int Screenshot_hours = 0, Screenshot_minutes = 0, Screenshot_enable = 0;
+                    SQLiteCommand sqlComm_Screenshot = new SQLiteCommand(@"SELECT * FROM Screenshot,current_user WHERE Screenshot.id = current_user.id", connect);
+                    SQLiteDataReader data = sqlComm_Screenshot.ExecuteReader();
                     while (data.Read())
                     {
                         
-                        int.TryParse(data["enable"].ToString(),out enable);
-                        int.TryParse(data["hours"].ToString(), out _hours);
-                        int.TryParse(data["minutes"].ToString(), out _minutes);
+                        int.TryParse(data["enable"].ToString(),out Screenshot_enable);
+                        int.TryParse(data["hours"].ToString(), out Screenshot_hours);
+                        int.TryParse(data["minutes"].ToString(), out Screenshot_minutes);
                     }
+                    // start timer screenshot if enable
+                    if (Screenshot_enable == 1)
+                    {
+                        Functions.SetTimerScreenShot(Screenshot_hours * 60 * 60 * 1000 + Screenshot_minutes * 60 * 1000);
+                        aTimer_scrshot.Start();
+                    }
+
+                    //----------------------------------//
+                    //------------Webcam----------------//
+                    int Webcam_enable = 0, Webcam_hours = 0, Webcam_minutes = 0;
+                    SQLiteCommand sqlConn_Webcam = new SQLiteCommand(@"SELECT * FROM Webcam,current_user WHERE Webcam.id = current_user.id", connect);
+                    SQLiteDataReader wc = sqlConn_Webcam.ExecuteReader();
+                    while(wc.Read())
+                    {
+                        int.TryParse(wc["enable"].ToString(),out Webcam_enable);
+                        int.TryParse(wc["hours"].ToString(), out Webcam_hours);
+                        int.TryParse(wc["minutes"].ToString(), out Webcam_minutes);
+
+                        /// calculate time and dele folder webcam
+                        DateTime temp = DateTime.Parse(wc["datetime"].ToString());
+                        double days = Double.Parse(wc["days"].ToString());
+
+                        if (temp.AddDays(days).CompareTo(DateTime.Now) >= 0)
+                        {
+                            if (Directory.Exists("..\\..\\Webcam"))
+                            {
+                                Directory.Delete("..\\..\\Webcam", true);
+                                Console.WriteLine("Delete successful!");
+                            }
+                        }
+                    }
+                    // Start timer for webcam
+                    if (Webcam_enable == 1)
+                    {
+                        Functions.SetTimerWebcam(Webcam_hours * 60 * 60 * 1000 + Webcam_minutes * 60 * 1000);
+                        aTimer_webcam.Start();
+                    }
+                    //----------------------------------------//
+
                 }
+
+                connect.Close();
             }
-            if (enable == 1)
-            {
-                SetTimer(_hours * 60 * 60 * 1000 + _minutes * 60 * 1000);
-                aTimer_scrshot.Start();
-            }
+
 
             //Mail
 
