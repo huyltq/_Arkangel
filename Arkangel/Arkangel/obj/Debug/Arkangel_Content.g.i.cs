@@ -8,7 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/ftp.exe")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/keystroke.exe")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/screenshot.exe")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/sendmail.exe")]

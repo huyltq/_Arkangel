@@ -322,7 +322,6 @@
     <Resource Include="Sources\logo_LSC_icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="module\ftp.exe" />
     <Content Include="module\keystroke.exe" />
     <Content Include="module\screenshot.exe" />
     <Content Include="module\sendMail.exe" />

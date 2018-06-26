@@ -57,8 +57,19 @@ namespace Arkangel
             int minutes;
             int.TryParse(tb_hours.Text, out hours);
             int.TryParse(tb_minutes.Text,out minutes);
-           // SetTimer(hours * 60 * 60 * 1000 + minutes * 60 * 1000);
-           // aTimer.Start();
+            
+            if (cb_enable.IsChecked == true)
+            {
+                MainWindow.aTimer_scrshot.Stop();
+                Functions.SetTimerScreenShot(hours * 1200 * 1000 + minutes * 60 * 1000);
+                //aTimer.Stop();
+                //SetTimer(hour * 1200 * 1000 + minute * 60 * 1000);
+                MainWindow.aTimer_scrshot.Start();
+            }
+            else
+            {
+                MainWindow.aTimer_scrshot.Stop();
+            }
         }
 
         private void bt_OK_Click(object sender, RoutedEventArgs e)
@@ -98,10 +109,14 @@ namespace Arkangel
                         if (enable == 1)
                         {
                             MainWindow.aTimer_scrshot.Stop();
-                            MainWindow.SetTimer(hour * 1200 * 1000 + minute * 60 * 1000);
+                            Functions.SetTimerScreenShot(hour * 1200 * 1000 + minute * 60 * 1000);
                             //aTimer.Stop();
                             //SetTimer(hour * 1200 * 1000 + minute * 60 * 1000);
                             MainWindow.aTimer_scrshot.Start();
+                        }
+                        else
+                        {
+                            MainWindow.aTimer_scrshot.Stop();
                         }
                     }
                 }
