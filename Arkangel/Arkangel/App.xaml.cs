@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.WindowsAzure.MobileServices;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,10 @@ namespace Arkangel
     /// </summary>
     public partial class App : Application
     {
+        public static MobileServiceClient MobileService =
+       new MobileServiceClient(
+            "https://arkangelapp.azurewebsites.net"
+       );
     }
+   
 }

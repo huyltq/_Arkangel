@@ -28,7 +28,7 @@ namespace Arkangel
         {
             check= 0;
             InitializeComponent();
-            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=database.db"))
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
             {
                 connect.Open();
                 using (SQLiteCommand fmd = connect.CreateCommand())
@@ -84,7 +84,7 @@ namespace Arkangel
         {
             if(check==1)
             {
-                using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=database.db"))
+                using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
                 {
                     connect.Open();
                     int enAllApp = 0;

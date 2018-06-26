@@ -17,12 +17,12 @@
      FontFamily="{DynamicResource MaterialDesignFont}"
     >
     <Grid Background="#f2f2f2">
-        <StackPanel Margin="8,4,4,4" Background="#F2F2F2">
-            <Grid Height="50">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0" Background="#0489B1">
-                    <Button Uid="0" Width="150" Content="Webcam" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="20" />
+        <StackPanel Margin="0" Background="#F2F2F2">
+            <Grid Height="53">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0" Background="#0489B1">
+                    <Button Uid="0" Width="150" Content="Webcam" Height="53" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="20" />
                 </StackPanel>
-                <Grid x:Name="GridCursor" Width="150" Height="5" Background="#DBA901" HorizontalAlignment="Left" Margin="10 0" VerticalAlignment="Bottom"/>
+                <Grid x:Name="GridCursor" Width="150" Height="5" Background="#DBA901" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Bottom"/>
             </Grid>
             <Grid x:Name="GridMain" Height="372" Margin="10,0" >
                 <StackPanel>
@@ -44,7 +44,7 @@
                             <StackPanel Orientation="Horizontal" Height="40">
                                 <CheckBox x:Name="cb_delete" Grid.ColumnSpan="3" FontSize="25">Auto delete a picture every</CheckBox>
                                 <StackPanel Width="5"></StackPanel>
-                                <TextBox x:Name="tb_delete_hours" Width="50" Height="35" VerticalAlignment="Top" FontSize="25" FlowDirection="RightToLeft" />
+                                <TextBox x:Name="tb_delete_days" Width="50" Height="35" VerticalAlignment="Top" FontSize="25" FlowDirection="RightToLeft" />
                                 <StackPanel Width="5"></StackPanel>
                                 <TextBlock Text="days" VerticalAlignment="Center" FontSize="25"></TextBlock>
                                 <StackPanel Width="5"></StackPanel>

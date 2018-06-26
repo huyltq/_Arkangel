@@ -35,7 +35,7 @@ namespace Arkangel
         public void btn_Login_Click(object sender, RoutedEventArgs e)
         {
            
-            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=database.db"))
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
             {
                 connect.Open();
                 using (SQLiteCommand fmd = connect.CreateCommand())
@@ -50,11 +50,13 @@ namespace Arkangel
                         count = 1;
                         username_ = ((string)r["username"]);
                         Uid = (long)r["id"];
+                        
                     }
                     if (count == 1)
                     {
                         MainWindow bs = new MainWindow();
                         bs._username.Text = username_;
+                       // bs._currentid = (int)Uid;
                         SQLiteCommand getid = new SQLiteCommand(@"UPDATE current_user SET id="+Uid, connect);
                         getid.ExecuteNonQuery();
                         bs.Show();
@@ -70,7 +72,7 @@ namespace Arkangel
         }
         public void enter ()
         {
-            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=database.db"))
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
             {
                 connect.Open();
                 using (SQLiteCommand fmd = connect.CreateCommand())

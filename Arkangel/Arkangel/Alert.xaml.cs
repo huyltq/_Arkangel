@@ -19,6 +19,7 @@ namespace Arkangel
     /// <summary>
     /// Interaction logic for Alert.xaml
     /// </summary>
+    /// 
     public partial class Alert : UserControl
     {
         int check;
@@ -27,7 +28,7 @@ namespace Arkangel
             check = 0;
 
             InitializeComponent();
-            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=database.db"))
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
             {
                 connect.Open();
                 using (SQLiteCommand fmd = connect.CreateCommand())
@@ -54,14 +55,21 @@ namespace Arkangel
                     {
                         keyword_list.Items.Add(data2["key"].ToString());
                     }
+
                 }
             }
         }
-        private void bt_add_Click(object sender, RoutedEventArgs e)
+        //synccccc
+       
+
+
+
+        private async void bt_add_Click(object sender, RoutedEventArgs e)
         {
             check = 1;
             Alert_Add alert_Add = new Alert_Add(this);
             alert_Add.Show();
+            
         }
 
         private void bt_delete_Click(object sender, RoutedEventArgs e)
@@ -69,12 +77,16 @@ namespace Arkangel
             check = 1;
             keyword_list.Items.Remove(keyword_list.SelectedItem);
         }
-
+        public class _Alert
+        {
+            int id;
+            string key;
+        }
         private void bt_OK_Click(object sender, RoutedEventArgs e)
         {
             if (check == 1)
             {
-                using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=database.db"))
+                using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
                 {
                     connect.Open();
                     int scrShot = 0;
@@ -103,6 +115,7 @@ namespace Arkangel
                     }
                     connect.Close();
                 }
+
             }
         }
 
