@@ -49,6 +49,6 @@
                 </StackPanel>
             </Grid>
         </StackPanel>
-        <Button Width="130" Margin="593,388,36,10">OK</Button>
+        <Button x:Name="btn_OK" Width="130" Margin="593,388,36,10" Click="btn_OK_Click">OK</Button>
     </Grid>
 </UserControl>

@@ -59,6 +59,14 @@ namespace Arkangel {
         #line default
         #line hidden
         
+        
+        #line 52 "..\..\User.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button btn_OK;
+        
+        #line default
+        #line hidden
+        
         private bool _contentLoaded;
         
         /// <summary>
@@ -94,6 +102,15 @@ namespace Arkangel {
             return;
             case 2:
             this.GridMain = ((System.Windows.Controls.Grid)(target));
+            return;
+            case 3:
+            this.btn_OK = ((System.Windows.Controls.Button)(target));
+            
+            #line 52 "..\..\User.xaml"
+            this.btn_OK.Click += new System.Windows.RoutedEventHandler(this.btn_OK_Click);
+            
+            #line default
+            #line hidden
             return;
             }
             this._contentLoaded = true;
