@@ -24,5 +24,10 @@ namespace Arkangel
         {
             InitializeComponent();
         }
+
+        private void btn_OK_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

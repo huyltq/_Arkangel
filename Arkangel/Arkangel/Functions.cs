@@ -1,15 +1,15 @@
 ﻿using Ionic.Zip;
 using Microsoft.Win32;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Diagnostics;
+using System.DirectoryServices;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
 using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
+
 
 namespace Arkangel
 {
@@ -111,7 +111,7 @@ namespace Arkangel
                 if (Directory.Exists(dir))
                 {
                     zip.Password = password;
-                    zip.AddDirectory(dir+"\\");
+                    zip.AddDirectory(dir + "\\");
                     zip.Save(dir + ".zip");
                 }
             }
@@ -184,6 +184,79 @@ namespace Arkangel
                 Process.Start(start);
             }
             catch { }
+        }
+
+        public static void FindUsers()
+        {
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
+            {
+                connect.Open();
+                using (SQLiteCommand fmd = connect.CreateCommand())
+                {
+                    SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"SELECT * FROM user_list,current_user WHERE user_list.id = current_user.id", connect);
+                    SQLiteDataReader data = sqlComm_Alert.ExecuteReader();
+                    while (data.Read())
+                    {
+                        if (data["user"].ToString() == null)
+                        {
+                            DirectoryEntry localMachine = new DirectoryEntry("WinNT://" + Environment.MachineName);
+                            DirectoryEntry admGroup = localMachine.Children.Find("administrators", "group");
+                            object members = admGroup.Invoke("members", null);
+                            foreach (object groupMember in (IEnumerable)members)
+                            {
+                                DirectoryEntry member = new DirectoryEntry(groupMember);
+                                // d.Add(member.Name.ToString(), "false");
+                                SQLiteCommand sqlConn = new SQLiteCommand(@"INSERT INTO user_list(user) VALUES ('" + member.Name.ToString() + "') ", connect);
+                                sqlConn.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                }
+                connect.Close();
+            }
+            //using (StreamWriter file = new StreamWriter("username.ini"))
+            //    foreach (var entry in d)
+            //        file.WriteLine("{0},{1}", entry.Key, entry.Value);
+
+            //  }
+        }
+
+        public static void CheckUser()
+        {
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
+            {
+                connect.Open();
+                using (SQLiteCommand fmd = connect.CreateCommand())
+                {
+                    SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"SELECT * FROM monitor_user,current_user WHERE user_list.id = current_user.id", connect);
+                    SQLiteDataReader data = sqlComm_Alert.ExecuteReader();
+                    while (data.Read())
+                    {
+                        if (data["enable"].ToString() == "2")
+                        {
+                            if (data["current_user"].ToString() != Environment.UserName)
+                                Environment.Exit(Environment.ExitCode);
+                        }
+
+                        if (data["enable"].ToString() == "3")
+                        {
+                            SQLiteCommand sqlConn = new SQLiteCommand(@"SELECT * FROM user_list,current_user WHERE user_list.id = current_user.id", connect);
+                            SQLiteDataReader list = sqlConn.ExecuteReader();
+                            int flag = 0;
+                            while (list.Read())
+                            {
+                                if (list["user"].ToString() == Environment.UserName)
+                                    flag = 1;
+                            }
+
+                            if (flag == 0)
+                            {
+                                Environment.Exit(Environment.ExitCode);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
