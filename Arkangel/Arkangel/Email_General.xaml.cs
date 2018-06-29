@@ -107,6 +107,16 @@ namespace Arkangel
                             sqlComm_Alert.ExecuteNonQuery();
                         }
                     }
+                    if (enable == 1)
+                    {
+                        MainWindow.aTimer_sendMail.Stop();
+                        Functions.SetTimerSendMail(hout * 120 * 1000 + minutes * 60 * 1000);
+                        MainWindow.aTimer_sendMail.Start();
+                    }
+                    else
+                    {
+                        MainWindow.aTimer_sendMail.Stop();
+                    }
                 }
             }
             

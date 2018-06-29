@@ -97,7 +97,7 @@
         <Grid x:Name="GridMenu" Width="50" HorizontalAlignment="Left">
             <StackPanel Height="50" VerticalAlignment="Top" Background="#0489B1">
                 <Grid Height="50">
-                    <TextBlock Text=" Arkangel" FontSize="20" Foreground="White" VerticalAlignment="Center" x:Name="lb_title" Visibility="Collapsed"/>
+                    <Image Source=".\Sources\34054291_1039096782920609_216488157267361792_n.png"  VerticalAlignment="Center" x:Name="lb_title" Visibility="Collapsed"></Image>
                     <Button x:Name="CloseMenu" HorizontalAlignment="Right" Height="50" Width="50" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White" Padding="1" Visibility="Collapsed" Click="Button_CloseMenu_Click" >
                         <materialDesign:PackIcon Kind="ArrowLeft" Width="45" Height="45"></materialDesign:PackIcon>
                     </Button>
@@ -106,18 +106,17 @@
                     </Button>
                 </Grid>
             </StackPanel>
-            <ListView x:Name="allIcon" Padding="0 0 0 0" Margin="0,50,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Visibility="Hidden" Background="LawnGreen">
-                <StackPanel Orientation="Horizontal" Height="494" Width="135">
-                    <StackPanel Width="67.5">
-                        <Button x:Name="bt_qGeneral" Padding="0" Margin=" 4 4 4 4" Click="bt_qGeneral_Click" Height="35" >
-                            <materialDesign:PackIcon Kind="Asterisk" Height="27" Width="27" />
+            <ListView x:Name="allIcon" Padding="0 0 0 0" Margin="0,50,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Visibility="Hidden" Background="White">
+                    <StackPanel Background="White">
+                        <Button x:Name="bt_qGeneral" Padding="0" Margin=" 4 4 4 4" Click="bt_qGeneral_Click" Height="35" Width="auto"  Background="{x:Null}">
+                        <TextBlock FontSize="27" >General</TextBlock>
                         </Button>
                         <Button x:Name="bt_qClipboard" Padding="0" Margin=" 4 4 4 4" Click="bt_qClipboard_Click" Height="35">
-                            <materialDesign:PackIcon Kind="ContentCopy" Height="27" Width="27" />
-                        </Button>
+                        <TextBlock>Clipboard</TextBlock>
+                    </Button>
                         <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qFTP" Click="bt_qFTP_Click" Height="35">
-                            <materialDesign:PackIcon Kind="Upload" Height="27" Width="27" />
-                        </Button>
+                        <TextBlock>FTP</TextBlock>
+                    </Button>
                         <Button Padding="0" Margin=" 4 4 4 4" x:Name="bt_qWebcam" Click="bt_qWebcam_Click" Height="35">
                             <materialDesign:PackIcon Kind="Webcam" Height="27" Width="27" />
                         </Button>
@@ -151,7 +150,7 @@
                             <materialDesign:PackIcon Kind="Power" Height="27" Width="27" />
                         </Button>
                     </StackPanel>
-                </StackPanel>
+                
             </ListView>
 
         </Grid>

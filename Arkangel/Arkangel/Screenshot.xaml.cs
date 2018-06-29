@@ -102,8 +102,17 @@ namespace Arkangel
                             MessageBox.Show("Invalid days input", "Fail");
                         else
                         {
-                            SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"UPDATE Screenshot SET enable= " + enable + ", hours=" + hour + ", minutes=" + minute + ",timeNuser="+timeNuser+",doubleScr="+doubleScr+",enDel="+enDel+",daysDel="+daysDel+",quality="+quality+" WHERE Screenshot.id = (SELECT current_user.id FROM current_user)", connect);
-                            sqlComm_Alert.ExecuteNonQuery();
+                            if (enDel == 0)
+                            {
+                                SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"UPDATE Screenshot SET enable= " + enable + ", hours=" + hour + ", minutes=" + minute + ",timeNuser=" + timeNuser + ",doubleScr=" + doubleScr + ",enDel=" + enDel + ",daysDel=" + daysDel + ",quality=" + quality + " WHERE Screenshot.id = (SELECT current_user.id FROM current_user)", connect);
+                                sqlComm_Alert.ExecuteNonQuery();
+                            }
+                            else
+                            {
+                                SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"UPDATE Screenshot SET enable= " + enable + ", hours=" + hour + ", minutes=" + minute + ",timeNuser=" + timeNuser + ",doubleScr=" + doubleScr + ",enDel=" + enDel + ",daysDel=" + daysDel + ",quality=" + quality + ",datetime='"+ DateTime.Now.ToString() +"' WHERE Screenshot.id = (SELECT current_user.id FROM current_user)", connect);
+                                sqlComm_Alert.ExecuteNonQuery();
+                            }
+                            
                         }
 
                         if (enable == 1)

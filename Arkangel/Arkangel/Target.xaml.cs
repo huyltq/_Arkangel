@@ -28,6 +28,14 @@ namespace Arkangel
         {
             check= 0;
             InitializeComponent();
+            if (cb_FollowApp.IsChecked.Value==true)
+            {
+                target_list.IsEnabled = true;
+            }
+            else
+            {
+                target_list.IsEnabled = false;
+            }
             using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
             {
                 connect.Open();
@@ -118,11 +126,15 @@ namespace Arkangel
         private void cb_enAllApp_Click(object sender, RoutedEventArgs e)
         {
             check = 1;
+            cb_FollowApp.IsChecked = false;
+            target_list.IsEnabled = false;
         }
 
         private void cb_FollowApp_Click(object sender, RoutedEventArgs e)
         {
             check = 1;
+            cb_enAllApp.IsChecked = false;
+            target_list.IsEnabled = true;
         }
     }
 }

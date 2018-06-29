@@ -16,13 +16,13 @@
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
-        <StackPanel Margin="8,4,4,4" Background="#F2F2F2">
-            <Grid Height="50">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0" Background="#0489B1">
-                    <Button Uid="0" Width="150" Content="General" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="20" Click="Button_Click"/>
-                    <Button Uid="1" Width="150" Content="Mail Sever" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="20" Click="Button_Click"/>
+        <StackPanel Margin="0" Background="#F2F2F2">
+            <Grid Height="53">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0" Background="#0489B1">
+                    <Button Uid="0" Width="150" Content="General" Height="53" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="20" Click="Button_Click"/>
+                    <Button Uid="1" Width="150" Content="Mail Sever" Height="53" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="20" Click="Button_Click"/>
                 </StackPanel>
-                <Grid x:Name="GridCursor" Width="150" Height="5" Background="#DBA901" HorizontalAlignment="Left" Margin="10 0" VerticalAlignment="Bottom"/>
+                <Grid x:Name="GridCursor" Width="150" Height="5" Background="#DBA901" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Bottom"/>
             </Grid>
 
             <Grid x:Name="GridMain" Height="358" Margin="10,16,10,0" Background="#F2F2F2">
