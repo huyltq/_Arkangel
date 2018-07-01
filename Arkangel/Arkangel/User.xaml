@@ -27,22 +27,23 @@
                 <StackPanel Margin="10,0,0,0">
                     <GroupBox Header="Security Setting" FontSize="15" materialDesign:ColorZoneAssist.Mode="Light" Padding="4" Height="320">
                         <StackPanel>
-                            <CheckBox Content="Monitor all Users" FontSize="25" Height="40"/>
-                            <CheckBox Content="Monitor the current User" FontSize="25" Height="40"/>
-                            <CheckBox Content="Monitor the following User" FontSize="25" Height="40"/>
+                            <RadioButton x:Name="rad_allUser" Content="Monitor all Users" FontSize="25" Height="40"/>
+                            <RadioButton x:Name="rad_currentUser" Content="Monitor the current User" FontSize="25" Height="40"/>
+                            <RadioButton x:Name="rad_followingUser" Content="Monitor the following User" FontSize="25" Height="40"/>
                             <Grid Height="2" Background="Black"/>
-                            <ListView Width="700" Height="100" FontSize="20" HorizontalAlignment="Center">
-                                <CheckBox Content="Hello"/>
+                            <ListView x:Name="user_list" Width="700" Height="100" FontSize="20" HorizontalAlignment="Center">
+                             <!--   <CheckBox Content="Hello"/>
                                 <CheckBox Content="World"/>
                                 <CheckBox Content=":)"/>
                                 <CheckBox Content="abc"/>
+                                -->
                             </ListView>
                             <Grid Height="2" Background="Black"/>
                             <StackPanel Orientation="Horizontal" Margin="10" Height="50" Width="375">
-                                <Button Content="Add a User"/>
+                                <Button x:Name="btn_LoadUser" Content="Load User" Click="btn_LoadUser_Click"/>
                                 <StackPanel Width="100"/>
                                 <StackPanel Width="100"/>
-                                <Button Content="Delete"/>
+                                <Button x:Name="btn_Delete" Content="Delete" Click="btn_Delete_Click"/>
                             </StackPanel>
                         </StackPanel>
                     </GroupBox>

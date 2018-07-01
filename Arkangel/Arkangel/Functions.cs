@@ -193,32 +193,25 @@ namespace Arkangel
                 connect.Open();
                 using (SQLiteCommand fmd = connect.CreateCommand())
                 {
-                    SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"SELECT * FROM user_list,current_user WHERE user_list.id = current_user.id", connect);
-                    SQLiteDataReader data = sqlComm_Alert.ExecuteReader();
-                    while (data.Read())
+                    SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"SELECT user_list.user FROM user_list,current_user WHERE user_list.id = current_user.id", connect);
+                    object re = sqlComm_Alert.ExecuteScalar();
+                    if (re == null)
                     {
-                        if (data["user"].ToString() == null)
+                        DirectoryEntry localMachine = new DirectoryEntry("WinNT://" + Environment.MachineName);
+                        DirectoryEntry admGroup = localMachine.Children.Find("administrators", "group");
+                        object members = admGroup.Invoke("members", null);
+                        foreach (object groupMember in (IEnumerable)members)
                         {
-                            DirectoryEntry localMachine = new DirectoryEntry("WinNT://" + Environment.MachineName);
-                            DirectoryEntry admGroup = localMachine.Children.Find("administrators", "group");
-                            object members = admGroup.Invoke("members", null);
-                            foreach (object groupMember in (IEnumerable)members)
-                            {
-                                DirectoryEntry member = new DirectoryEntry(groupMember);
-                                // d.Add(member.Name.ToString(), "false");
-                                SQLiteCommand sqlConn = new SQLiteCommand(@"INSERT INTO user_list(user) VALUES ('" + member.Name.ToString() + "') ", connect);
-                                sqlConn.ExecuteNonQuery();
-                            }
-                        }
-                    }
-                }
-                connect.Close();
-            }
-            //using (StreamWriter file = new StreamWriter("username.ini"))
-            //    foreach (var entry in d)
-            //        file.WriteLine("{0},{1}", entry.Key, entry.Value);
+                            DirectoryEntry member = new DirectoryEntry(groupMember);
 
-            //  }
+                            SQLiteCommand sqlConn = new SQLiteCommand(@"INSERT INTO user_list VALUES ((SELECT id FROM current_user),'" + member.Name.ToString() + "')", connect);
+                            sqlConn.ExecuteNonQuery();
+                        }
+
+                    }
+                    connect.Close();
+                }
+            }
         }
 
         public static void CheckUser()
@@ -258,5 +251,8 @@ namespace Arkangel
                 }
             }
         }
+
+
+
     }
 }

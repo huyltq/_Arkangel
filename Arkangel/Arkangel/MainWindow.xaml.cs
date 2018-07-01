@@ -102,7 +102,9 @@ namespace Arkangel
                         int.TryParse(wc["minutes"].ToString(), out Webcam_minutes);
 
                         /// calculate time and dele folder webcam
-                        DateTime temp = DateTime.Parse(wc["datetime"].ToString());
+                        //DateTime temp = DateTime.nu;
+                       // if (wc["datetime"].ToString() != null)
+                        DateTime     temp = DateTime.Parse(wc["datetime"].ToString());
                         double days = Double.Parse(wc["days"].ToString());
 
                         if (temp.AddDays(days).CompareTo(DateTime.Now) >= 0)
