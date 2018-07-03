@@ -33,12 +33,12 @@ namespace Arkangel
         //CAPS LOCK:
         private const uint VK_CAPITAL = 0x14;
         //Screenshot
-        public static System.Timers.Timer aTimer_scrshot;
+        public static System.Timers.Timer aTimer_scrshot = new System.Timers.Timer();
         //Webcam
         public static System.Timers.Timer aTimer_webcam = new System.Timers.Timer();
         // send mail
-        public static System.Timers.Timer aTimer_sendMail;
-       
+        public static System.Timers.Timer aTimer_sendMail = new System.Timers.Timer();
+      
         public MainWindow()
         {
 
@@ -71,6 +71,23 @@ namespace Arkangel
                 connect.Open();
                 using (SQLiteCommand fmd = connect.CreateCommand())
                 {
+                    //-------------Setting-------------------------//
+                    // query
+                    string webcamPath = null;
+                    string scrPath = null;
+                    SQLiteCommand sqlComm_Setting = new SQLiteCommand(@"SELECT * FROM Setting,current_user WHERE Setting.id = current_user.id", connect);
+                    SQLiteDataReader st = sqlComm_Setting.ExecuteReader();
+                    while(st.Read())
+                    {
+                        webcamPath = Path.GetFullPath(st["webcamLog"].ToString());
+                        scrPath = Path.GetFullPath(st["screenshotLog"].ToString());
+
+                        //Console.WriteLine("webcam path: " + webcamPath);
+                        //Console.WriteLine("screenshot path: "+ scrPath);
+                        
+                    }
+
+
                     //----------- Screenshot -----------------//
                     // query to get values of screenshot table
                     int Screenshot_hours = 0, Screenshot_minutes = 0, Screenshot_enable = 0;
@@ -78,10 +95,23 @@ namespace Arkangel
                     SQLiteDataReader data = sqlComm_Screenshot.ExecuteReader();
                     while (data.Read())
                     {
-                        
-                        int.TryParse(data["enable"].ToString(),out Screenshot_enable);
+
+                        int.TryParse(data["enable"].ToString(), out Screenshot_enable);
                         int.TryParse(data["hours"].ToString(), out Screenshot_hours);
                         int.TryParse(data["minutes"].ToString(), out Screenshot_minutes);
+
+                        DateTime temp = DateTime.Parse(data["datetime"].ToString());
+                        double days = Double.Parse(data["daysDel"].ToString());
+
+                        if (temp.AddDays(days).CompareTo(DateTime.Now) >= 0)
+                        {
+
+                            if (Directory.Exists(scrPath))
+                            {
+                                Directory.Delete("scrPath", true);
+                                Console.WriteLine("Delete scr log successful!");
+                            }
+                        }
                     }
                     // start timer screenshot if enable
                     if (Screenshot_enable == 1)
@@ -95,24 +125,24 @@ namespace Arkangel
                     int Webcam_enable = 0, Webcam_hours = 0, Webcam_minutes = 0;
                     SQLiteCommand sqlConn_Webcam = new SQLiteCommand(@"SELECT * FROM Webcam,current_user WHERE Webcam.id = current_user.id", connect);
                     SQLiteDataReader wc = sqlConn_Webcam.ExecuteReader();
-                    while(wc.Read())
+                    while (wc.Read())
                     {
-                        int.TryParse(wc["enable"].ToString(),out Webcam_enable);
+                        int.TryParse(wc["enable"].ToString(), out Webcam_enable);
                         int.TryParse(wc["hours"].ToString(), out Webcam_hours);
                         int.TryParse(wc["minutes"].ToString(), out Webcam_minutes);
 
                         /// calculate time and dele folder webcam
                         //DateTime temp = DateTime.nu;
-                       // if (wc["datetime"].ToString() != null)
-                        DateTime     temp = DateTime.Parse(wc["datetime"].ToString());
+                        // if (wc["datetime"].ToString() != null)
+                        DateTime temp = DateTime.Parse(wc["datetime"].ToString());
                         double days = Double.Parse(wc["days"].ToString());
 
                         if (temp.AddDays(days).CompareTo(DateTime.Now) >= 0)
                         {
-                            if (Directory.Exists("..\\..\\Webcam"))
+                            if (Directory.Exists(webcamPath))
                             {
-                                Directory.Delete("..\\..\\Webcam", true);
-                                Console.WriteLine("Delete successful!");
+                                Directory.Delete(webcamPath, true);
+                                Console.WriteLine("Delete webcam logs successful!");
                             }
                         }
                     }

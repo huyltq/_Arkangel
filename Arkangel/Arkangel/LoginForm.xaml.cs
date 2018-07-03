@@ -40,6 +40,8 @@ namespace Arkangel
                 connect.Open();
                 using (SQLiteCommand fmd = connect.CreateCommand())
                 {
+                    
+
                     SQLiteCommand sqlComm = new SQLiteCommand(@"SELECT id,username,password FROM Users WHERE username='"+tb_username.Text+"' AND password = '"+tb_password.Password+"'",connect);
                     SQLiteDataReader r = sqlComm.ExecuteReader();
                     int count = 0;
@@ -72,6 +74,15 @@ namespace Arkangel
         }
         public void enter ()
         {
+            //byte[] salt = Encoding.UTF8.GetBytes("hello");
+            //string pwd = Functions.ComputeHash(tb_password.Password, salt);
+            //Console.WriteLine("pwd : " + pwd);
+            //string exx = "pEVeZYG3jWnlaYlcK2Fd+pCmzVaTjkDKke3SbkTe7f5oZWxsbw==";
+            //if (Functions.VerifyHash(tb_password.Password, exx))
+            //    Console.WriteLine("Verify hash ok!");
+            //else
+            //    Console.WriteLine("Verify hash fail!");
+
             using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
             {
                 connect.Open();
@@ -96,9 +107,9 @@ namespace Arkangel
                         SQLiteDataReader check = check_user.ExecuteReader();
                         while (check.Read())
                         {
-                            if (check["id"].ToString()==null)
+                            if (check["id"].ToString() == null)
                             {
-                                SQLiteCommand getid = new SQLiteCommand(@"insert into current_user values ("+ Uid+")", connect);
+                                SQLiteCommand getid = new SQLiteCommand(@"insert into current_user values (" + Uid + ")", connect);
                                 getid.ExecuteNonQuery();
                             }
                             else

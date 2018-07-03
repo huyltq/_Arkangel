@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using System.DirectoryServices;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace Arkangel
                 connect.Open();
                 using (SQLiteCommand fmd = connect.CreateCommand())
                 {
-                    SQLiteCommand sqlConn_monitorUser = new SQLiteCommand(@"SELECT * FROM monitor_user,current_user WHERE monitor_user.id = current_user.id", connect);
+                    SQLiteCommand sqlConn_monitorUser = new SQLiteCommand(@"SELECT DISTINCT * FROM monitor_user,current_user WHERE monitor_user.id = current_user.id", connect);
                     SQLiteDataReader mU = sqlConn_monitorUser.ExecuteReader();
                     while (mU.Read())
                     {
@@ -52,24 +53,28 @@ namespace Arkangel
                             rad_followingUser.IsChecked = false;
                     }
 
-                    SQLiteCommand sqlConn_UserList1 = new SQLiteCommand(@"SELECT user_list.user FROM user_list,current_user WHERE user_list.id = current_user.id", connect);
+                    SQLiteCommand sqlConn_UserList1 = new SQLiteCommand(@"SELECT user FROM user_list WHERE id = (SELECT current_user.id FROM current_user)", connect);
                     // SQLiteDataReader ul1 = sqlConn_UserList1.ExecuteReader();
 
                     object re = sqlConn_UserList1.ExecuteScalar();
+
                     if (re == null)
                         Functions.FindUsers();
 
-                    SQLiteCommand sqlConn_UserList = new SQLiteCommand(@"SELECT * FROM user_list,current_user WHERE user_list.id = current_user.id", connect);
+                    SQLiteCommand sqlConn_UserList = new SQLiteCommand(@"SELECT user FROM user_list WHERE id = (SELECT current_user.id FROM current_user)", connect);
                     SQLiteDataReader ul = sqlConn_UserList.ExecuteReader();
-
+                    // ad 2 lan // bug
+                    //Console.WriteLine(ul.StepCount);
+                    
                     while (ul.Read())
                     {
-                        if (ul["user"].ToString() != null)
-                        {
-                            user_list.Items.Add(ul["user"].ToString());
-                        }
-
+                        //Console.WriteLine(ul.GetString(0));
+                        //if (ul["user"].ToString() != null)
+                        //{
+                            user_list.Items.Add(ul.GetString(0));
+                       // }
                     }
+
                 }
                 connect.Close();
             }
@@ -99,9 +104,10 @@ namespace Arkangel
 
                     for (int i = 0; i < user_list.Items.Count; i++)
                     {
-                        SQLiteCommand sqlConn = new SQLiteCommand(@"INSERT INTO user_list VALUES ((SELECT id FROM current_user),'" + user_list.Items[i].ToString() + "')", connect);
+                        SQLiteCommand sqlConn = new SQLiteCommand(@"INSERT INTO user_list VALUES ((SELECT current_user.id FROM current_user),'" + user_list.Items[i].ToString() + "')", connect);
                         sqlConn.ExecuteNonQuery();
                     }
+
                 }
             }
         }
