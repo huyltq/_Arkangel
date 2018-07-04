@@ -206,7 +206,7 @@ namespace Arkangel
                     Functions.RemoveApplicationFromCurrentUserStartup();
                 }
             }
-
+            Functions.syncServer();
         }
     }
 }

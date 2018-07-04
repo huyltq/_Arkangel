@@ -50,9 +50,9 @@ namespace Arkangel
                 Dashboard dashboard = new Dashboard(this);
                 mainPanel.Children.Add(dashboard);
             }
+            Functions.syncServer();
 
-
-//Closing += new System.ComponentModel.CancelEventHandler(MainWindow_Closing);
+            //Closing += new System.ComponentModel.CancelEventHandler(MainWindow_Closing);
 
             //Keystroke
             //try
@@ -69,7 +69,7 @@ namespace Arkangel
 
             //Screenshot
 
-           
+
             using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
             {
                 connect.Open();
@@ -344,6 +344,7 @@ namespace Arkangel
             General general = new General();
             mainPanel.Children.Clear();
             mainPanel.Children.Add(general);
+            bt_home.Visibility = Visibility.Visible;
         }
 
         private void bt_qClipboard_Click(object sender, RoutedEventArgs e)
@@ -351,6 +352,7 @@ namespace Arkangel
             _Clipboard general = new _Clipboard();
             mainPanel.Children.Clear();
             mainPanel.Children.Add(general);
+            bt_home.Visibility = Visibility.Visible;
         }
 
         private void bt_qFTP_Click(object sender, RoutedEventArgs e)
@@ -358,6 +360,7 @@ namespace Arkangel
             FTP general = new FTP();
             mainPanel.Children.Clear();
             mainPanel.Children.Add(general);
+            bt_home.Visibility = Visibility.Visible;
         }
 
         private void bt_qWebcam_Click(object sender, RoutedEventArgs e)
@@ -365,6 +368,7 @@ namespace Arkangel
             Webcam webcam = new Webcam();
             mainPanel.Children.Clear();
             mainPanel.Children.Add(webcam);
+            bt_home.Visibility = Visibility.Visible;
         }
 
         private void bt_qTarget_Click(object sender, RoutedEventArgs e)
@@ -372,6 +376,7 @@ namespace Arkangel
             Target target = new Target();
             mainPanel.Children.Clear();
             mainPanel.Children.Add(target);
+            bt_home.Visibility = Visibility.Visible;
         }
 
         private void bt_qUser_Click(object sender, RoutedEventArgs e)
@@ -379,6 +384,7 @@ namespace Arkangel
             User user = new User();
             mainPanel.Children.Clear();
             mainPanel.Children.Add(user);
+            bt_home.Visibility = Visibility.Visible;
         }
 
         private void bt_qWU_Click(object sender, RoutedEventArgs e)
@@ -386,6 +392,7 @@ namespace Arkangel
             Website_Usage website_Usage = new Website_Usage();
             mainPanel.Children.Clear();
             mainPanel.Children.Add(website_Usage);
+            bt_home.Visibility = Visibility.Visible;
         }
 
         private void bt_qScrshot_Click(object sender, RoutedEventArgs e)
@@ -393,6 +400,7 @@ namespace Arkangel
             Screenshot screenshot = new Screenshot();
             mainPanel.Children.Clear();
             mainPanel.Children.Add(screenshot);
+            bt_home.Visibility = Visibility.Visible;
         }
 
         private void bt_qMail_Click(object sender, RoutedEventArgs e)
@@ -400,6 +408,7 @@ namespace Arkangel
             Email email = new Email();
             mainPanel.Children.Clear();
             mainPanel.Children.Add(email);
+            bt_home.Visibility = Visibility.Visible;
         }
 
         private void bt_qAlert_Click(object sender, RoutedEventArgs e)
@@ -407,14 +416,13 @@ namespace Arkangel
             Alert alert = new Alert();
             mainPanel.Children.Clear();
             mainPanel.Children.Add(alert);
+            bt_home.Visibility = Visibility.Visible;
         }
 
         private void StackPanel_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             DragMove();
         }
-
-      
     }
 }
 

