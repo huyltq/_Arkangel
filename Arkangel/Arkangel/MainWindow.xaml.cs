@@ -99,40 +99,20 @@ namespace Arkangel
                     SQLiteDataReader data = sqlComm_Screenshot.ExecuteReader();
                     while (data.Read())
                     {
-<<<<<<< HEAD
-                        int.TryParse(data["enable"].ToString(),out Screenshot_enable);
-                        int.TryParse(data["hours"].ToString(), out Screenshot_hours);
-                        int.TryParse(data["minutes"].ToString(), out Screenshot_minutes);
-                        if (data["enDel"].ToString() == "1")
-                        {
-                            /// calculate time and dele folder webcam
-                            DateTime temp = DateTime.Parse(data["datetime"].ToString());
-                            double days = Double.Parse(data["daysDel"].ToString());
-
-                            if (temp.AddDays(days).CompareTo(DateTime.Now) >= 0)
-                            {
-                                if (Directory.Exists("..\\..\\Screenshot"))
-                                {
-                                    Directory.Delete("..\\..\\Screenshot", true);
-                                    Console.WriteLine("Delete successful!");
-                                }
-=======
-
                         int.TryParse(data["enable"].ToString(), out Screenshot_enable);
                         int.TryParse(data["hours"].ToString(), out Screenshot_hours);
                         int.TryParse(data["minutes"].ToString(), out Screenshot_minutes);
 
-                        DateTime temp = DateTime.Parse(data["datetime"].ToString());
-                        double days = Double.Parse(data["daysDel"].ToString());
+                        DateTime temp_screenshot = DateTime.Parse(data["datetime"].ToString());
+                        double days_screenshot = Double.Parse(data["daysDel"].ToString());
 
-                        if (temp.AddDays(days).CompareTo(DateTime.Now) >= 0)
+                        if (temp_screenshot.AddDays(days_screenshot).CompareTo(DateTime.Now) >= 0)
                         {
-
                             if (Directory.Exists(scrPath))
                             {
                                 Directory.Delete("scrPath", true);
                                 Console.WriteLine("Delete scr log successful!");
->>>>>>> bf238812891e05e8acacc2cfc334e4ad612c96b5
+
                             }
                         }
                     }
@@ -154,25 +134,6 @@ namespace Arkangel
                     SQLiteDataReader wc = sqlConn_Webcam.ExecuteReader();
                     while (wc.Read())
                     {
-                        int.TryParse(wc["enable"].ToString(), out Webcam_enable);
-                        int.TryParse(wc["hours"].ToString(), out Webcam_hours);
-                        int.TryParse(wc["minutes"].ToString(), out Webcam_minutes);
-<<<<<<< HEAD
-                        if (wc["enDelEvery"].ToString()=="1")
-                        {
-                            /// calculate time and dele folder webcam
-                            DateTime temp = DateTime.Parse(wc["datetime"].ToString());
-                            double days = Double.Parse(wc["days"].ToString());
-
-                            if (temp.AddDays(days).CompareTo(DateTime.Now) >= 0)
-                            {
-                                if (Directory.Exists("..\\..\\Webcam"))
-                                {
-                                    Directory.Delete("..\\..\\Webcam", true);
-                                    Console.WriteLine("Delete successful!");
-                                }
-=======
-
                         /// calculate time and dele folder webcam
                         //DateTime temp = DateTime.nu;
                         // if (wc["datetime"].ToString() != null)
@@ -185,7 +146,7 @@ namespace Arkangel
                             {
                                 Directory.Delete(webcamPath, true);
                                 Console.WriteLine("Delete webcam logs successful!");
->>>>>>> bf238812891e05e8acacc2cfc334e4ad612c96b5
+
                             }
                         }
                         
@@ -202,10 +163,6 @@ namespace Arkangel
 
                 connect.Close();
             }
-
-
-            //Mail
-
             string enable_mail = "";
             int hours = 0;
             int minutes = 0;

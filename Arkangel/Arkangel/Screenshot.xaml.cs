@@ -103,22 +103,16 @@ namespace Arkangel
                             MessageBox.Show("Invalid days input", "Fail");
                         else
                         {
-<<<<<<< HEAD
                             if (enDel == 0)
                             {
-                                SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"UPDATE Screenshot SET enable= " + enable + ", hours=" + hour + ", minutes=" + minute + ",timeNuser=" + timeNuser + ",doubleScr=" + doubleScr + ",enDel=" + enDel + ",daysDel=" + daysDel + ",quality=" + quality + " WHERE Screenshot.id = (SELECT current_user.id FROM current_user)", connect);
-                                sqlComm_Alert.ExecuteNonQuery();
+                                SQLiteCommand sqlComm_Alert1 = new SQLiteCommand(@"UPDATE Screenshot SET enable= " + enable + ", hours=" + hour + ", minutes=" + minute + ",timeNuser=" + timeNuser + ",doubleScr=" + doubleScr + ",enDel=" + enDel + ",daysDel=" + daysDel + ",quality=" + quality + " WHERE Screenshot.id = (SELECT current_user.id FROM current_user)", connect);
+                                sqlComm_Alert1.ExecuteNonQuery();
                             }
                             else
                             {
-                                SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"UPDATE Screenshot SET enable= " + enable + ", hours=" + hour + ", minutes=" + minute + ",timeNuser=" + timeNuser + ",doubleScr=" + doubleScr + ",enDel=" + enDel + ",daysDel=" + daysDel + ",quality=" + quality + ",datetime='"+ DateTime.Now.ToString() +"' WHERE Screenshot.id = (SELECT current_user.id FROM current_user)", connect);
-                                sqlComm_Alert.ExecuteNonQuery();
+                                SQLiteCommand sqlComm_Alert1 = new SQLiteCommand(@"UPDATE Screenshot SET enable= " + enable + ", hours=" + hour + ", minutes=" + minute + ",timeNuser=" + timeNuser + ",doubleScr=" + doubleScr + ",enDel=" + enDel + ",daysDel=" + daysDel + ",quality=" + quality + ",datetime='"+ DateTime.Now.ToString() +"' WHERE Screenshot.id = (SELECT current_user.id FROM current_user)", connect);
+                                sqlComm_Alert1.ExecuteNonQuery();
                             }
-                            
-=======
-                            SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"UPDATE Screenshot SET enable= " + enable + ", hours=" + hour + ", minutes=" + minute + ",timeNuser="+timeNuser+",doubleScr="+doubleScr+",enDel="+enDel+",daysDel="+daysDel+",quality="+quality+", datetime ='"+ DateTime.Now.ToString() +"' WHERE Screenshot.id = (SELECT current_user.id FROM current_user)", connect);
-                            sqlComm_Alert.ExecuteNonQuery();
->>>>>>> bf238812891e05e8acacc2cfc334e4ad612c96b5
                         }
 
                         if (enable == 1)

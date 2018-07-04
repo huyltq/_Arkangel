@@ -31,13 +31,13 @@ namespace Arkangel
                 connect.Open();
                 using (SQLiteCommand fmd = connect.CreateCommand())
                 {
-<<<<<<< HEAD
+
                     SQLiteCommand sqlComm = new SQLiteCommand(@"SELECT * from current_user", connect);
-=======
+
                     
 
-                    SQLiteCommand sqlComm = new SQLiteCommand(@"SELECT id,username,password FROM Users WHERE username='"+tb_username.Text+"' AND password = '"+tb_password.Password+"'",connect);
->>>>>>> bf238812891e05e8acacc2cfc334e4ad612c96b5
+                //    SQLiteCommand sqlComm = new SQLiteCommand(@"SELECT id,username,password FROM Users WHERE username='"+tb_username.Text+"' AND password = '"+tb_password.Password+"'",connect);
+
                     SQLiteDataReader r = sqlComm.ExecuteReader();
                     while(r.Read())
                     {
@@ -95,47 +95,37 @@ namespace Arkangel
                     // check user in Server...
 
 
-                    int count = 0;
-                   // string username_ = null;
-                    //long Uid = 0;
-                    //while (r.Read())
-                    //{
-                    count = 1;
-                    //    username_ = ((string)r["username"]);
-                    //    Uid = ((long)r["id"]);
-                    //}
-                    if (count == 1)
+                    if (true)
                     {
                         MainWindow bs = new MainWindow();
-<<<<<<< HEAD
+
                         bs._username.Text = tb_username.Text;
                         //SQLiteCommand check_user = new SQLiteCommand(@"UPDATE Users SET username",connect);
                         //SQLiteDataReader check = check_user.ExecuteReader();
                         SQLiteCommand getid = new SQLiteCommand(@"UPDATE current_user SET id=1", connect);
                         getid.ExecuteNonQuery();
-=======
-                        bs._username.Text = username_;
-                        SQLiteCommand check_user = new SQLiteCommand(@"SELECT * FROM current_user",connect);
-                        SQLiteDataReader check = check_user.ExecuteReader();
-                        while (check.Read())
-                        {
-                            if (check["id"].ToString() == null)
-                            {
-                                SQLiteCommand getid = new SQLiteCommand(@"insert into current_user values (" + Uid + ")", connect);
-                                getid.ExecuteNonQuery();
-                            }
-                            else
-                            {
-                                SQLiteCommand getid = new SQLiteCommand(@"UPDATE current_user SET id=" + Uid, connect);
-                                getid.ExecuteNonQuery();
-                            }
-                        }
-                        
->>>>>>> bf238812891e05e8acacc2cfc334e4ad612c96b5
+                        ////    bs._username.Text = tb_username.Text;
+                        //    SQLiteCommand check_user = new SQLiteCommand(@"SELECT * FROM current_user",connect);
+                        //    SQLiteDataReader check = check_user.ExecuteReader();
+                        //    while (check.Read())
+                        //    {
+                        //        if (check["id"].ToString() == null)
+                        //        {
+                        //            SQLiteCommand getid = new SQLiteCommand(@"insert into current_user values (" + Uid + ")", connect);
+                        //            getid.ExecuteNonQuery();
+                        //        }
+                        //        else
+                        //        {
+                        //            SQLiteCommand getid = new SQLiteCommand(@"UPDATE current_user SET id=" + Uid, connect);
+                        //            getid.ExecuteNonQuery();
+                        //        }
+                        //    }
+
+
                         bs.Show();
                         Close();
                     }
-                    else if (count == 0)
+                    else if (false)
                     {
                         MessageBox.Show("Invalid Username or Password");
                     }

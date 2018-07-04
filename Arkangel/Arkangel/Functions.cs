@@ -327,8 +327,5 @@ namespace Arkangel
             Console.WriteLine("hash expected : " + expectedHashString);
             return (hashValue == expectedHashString);
         }
-
-
-
     }
 }
