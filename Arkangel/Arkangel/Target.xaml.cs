@@ -41,7 +41,7 @@ namespace Arkangel
                 connect.Open();
                 using (SQLiteCommand fmd = connect.CreateCommand())
                 {
-                    SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"SELECT * FROM Targets,current_user WHERE Targets.id = current_user.id", connect);
+                    SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"SELECT DISTINCT * FROM Targets,current_user WHERE Targets.id = current_user.id", connect);
                     SQLiteDataReader data = sqlComm_Alert.ExecuteReader();
                     while (data.Read())
                     {
@@ -57,7 +57,7 @@ namespace Arkangel
                         }
                         else cb_FollowApp.IsChecked = false;
                     }
-                    SQLiteCommand sqlComm_AlertList = new SQLiteCommand(@"SELECT byApp FROM TargetList,current_user WHERE TargetList.id = current_user.id", connect);
+                    SQLiteCommand sqlComm_AlertList = new SQLiteCommand(@"SELECT byApp FROM TargetList WHERE id =(SELECT current_user.id FROM current_user.id)", connect);
                     SQLiteDataReader data2 = sqlComm_AlertList.ExecuteReader();
                     while (data2.Read())
                     {

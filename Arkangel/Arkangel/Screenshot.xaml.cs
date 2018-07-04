@@ -34,7 +34,7 @@ namespace Arkangel
                 connect.Open();
                 using (SQLiteCommand fmd = connect.CreateCommand())
                 {
-                    SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"SELECT * FROM Screenshot,current_user WHERE Screenshot.id = current_user.id", connect);
+                    SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"SELECT DISTINCT * FROM Screenshot,current_user WHERE Screenshot.id = current_user.id", connect);
                     SQLiteDataReader data = sqlComm_Alert.ExecuteReader();
                     while (data.Read())
                     {
@@ -68,7 +68,8 @@ namespace Arkangel
             }
             else
             {
-                MainWindow.aTimer_scrshot.Stop();
+                if(MainWindow.aTimer_scrshot.Enabled)
+                    MainWindow.aTimer_scrshot.Stop();
             }
         }
 
@@ -102,6 +103,7 @@ namespace Arkangel
                             MessageBox.Show("Invalid days input", "Fail");
                         else
                         {
+<<<<<<< HEAD
                             if (enDel == 0)
                             {
                                 SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"UPDATE Screenshot SET enable= " + enable + ", hours=" + hour + ", minutes=" + minute + ",timeNuser=" + timeNuser + ",doubleScr=" + doubleScr + ",enDel=" + enDel + ",daysDel=" + daysDel + ",quality=" + quality + " WHERE Screenshot.id = (SELECT current_user.id FROM current_user)", connect);
@@ -113,6 +115,10 @@ namespace Arkangel
                                 sqlComm_Alert.ExecuteNonQuery();
                             }
                             
+=======
+                            SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"UPDATE Screenshot SET enable= " + enable + ", hours=" + hour + ", minutes=" + minute + ",timeNuser="+timeNuser+",doubleScr="+doubleScr+",enDel="+enDel+",daysDel="+daysDel+",quality="+quality+", datetime ='"+ DateTime.Now.ToString() +"' WHERE Screenshot.id = (SELECT current_user.id FROM current_user)", connect);
+                            sqlComm_Alert.ExecuteNonQuery();
+>>>>>>> bf238812891e05e8acacc2cfc334e4ad612c96b5
                         }
 
                         if (enable == 1)

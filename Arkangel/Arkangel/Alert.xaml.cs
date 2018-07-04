@@ -49,7 +49,7 @@ namespace Arkangel
                         }
                         else cb_scrShot.IsChecked = false;
                     }
-                    SQLiteCommand sqlComm_AlertList = new SQLiteCommand(@"SELECT key FROM AlertList,current_user WHERE AlertList.id = current_user.id", connect);
+                    SQLiteCommand sqlComm_AlertList = new SQLiteCommand(@"SELECT key FROM AlertList WHERE id =(SELECT current_user.id FROM current_user)", connect);
                     SQLiteDataReader data2 = sqlComm_AlertList.ExecuteReader();
                     while (data2.Read())
                     {
