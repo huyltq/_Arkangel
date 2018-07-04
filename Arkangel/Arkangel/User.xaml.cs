@@ -116,7 +116,6 @@ namespace Arkangel
                 user_list.Items.Refresh();
                 user_list.Items.Remove(user_list.SelectedItems);
             }
-
             DirectoryEntry localMachine = new DirectoryEntry("WinNT://" + Environment.MachineName);
             DirectoryEntry admGroup = localMachine.Children.Find("administrators", "group");
             object members = admGroup.Invoke("members", null);

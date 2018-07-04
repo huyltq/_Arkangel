@@ -28,14 +28,7 @@ namespace Arkangel
         {
             check= 0;
             InitializeComponent();
-            if (cb_FollowApp.IsChecked.Value==true)
-            {
-                target_list.IsEnabled = true;
-            }
-            else
-            {
-                target_list.IsEnabled = false;
-            }
+            
             using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
             {
                 connect.Open();
@@ -64,6 +57,14 @@ namespace Arkangel
                         target_list.Items.Add(data2["byApp"].ToString());
                     }
                 }
+            }
+            if (cb_FollowApp.IsChecked.Value == true)
+            {
+                target_list.IsEnabled = true;
+            }
+            else
+            {
+                target_list.IsEnabled = false;
             }
         }
 
@@ -106,7 +107,6 @@ namespace Arkangel
                     SQLiteDataReader data = getuser.ExecuteReader();
                     while (data.Read())
                     {
-
                         string user = data["id"].ToString();
                         SQLiteCommand sqldelete = new SQLiteCommand(@"DELETE from TargetList where id =" + user, connect);
                         sqldelete.ExecuteNonQuery();

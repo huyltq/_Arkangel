@@ -26,7 +26,7 @@ namespace Arkangel
         public LoginForm()
         {
             InitializeComponent();
-           
+            Functions.CheckUser();
             using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
             {
                 connect.Open();
