@@ -47,7 +47,7 @@ namespace Arkangel
            // ProcessStartInfo _startkeylog = startkeylog();
             if (mainPanel.Children.ToString() != "Dashboard")
             {
-                Dashboard dashboard = new Dashboard();
+                Dashboard dashboard = new Dashboard(this);
                 mainPanel.Children.Add(dashboard);
             }
 
@@ -241,22 +241,26 @@ namespace Arkangel
         {
             CloseMenu.Visibility = Visibility.Visible;
             OpenMenu.Visibility = Visibility.Collapsed;
-            allIcon.Visibility = Visibility.Visible;
-            lb_title.Visibility = Visibility.Visible;
+            StackPanelMenu.Visibility = Visibility.Visible;
+            //lb_title.Visibility = Visibility.Visible;
+           // listview.Visibility = Visibility.Visible;
+            mainPanel.IsEnabled = false;
         }
 
         private void Button_CloseMenu_Click(object sender, RoutedEventArgs e)
         {
             CloseMenu.Visibility = Visibility.Collapsed;
             OpenMenu.Visibility = Visibility.Visible;
-            allIcon.Visibility = Visibility.Hidden;
-            lb_title.Visibility = Visibility.Collapsed;
+            StackPanelMenu.Visibility = Visibility.Hidden;
+            //lb_title.Visibility = Visibility.Collapsed;
+            //listview.Visibility = Visibility.Hidden;
+            mainPanel.IsEnabled = true;
         }
 
         private void bt_home_Click(object sender, RoutedEventArgs e)
         {
             mainPanel.Children.Clear();
-            Dashboard dashboard = new Dashboard();
+            Dashboard dashboard = new Dashboard(this);
             mainPanel.Children.Add(dashboard);
         }
         private void bt_logout_Click_1(object sender, RoutedEventArgs e)
@@ -410,6 +414,7 @@ namespace Arkangel
             DragMove();
         }
 
+      
     }
 }
 

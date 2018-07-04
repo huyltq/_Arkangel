@@ -64,7 +64,7 @@ namespace Arkangel
 
 
 
-        private async void bt_add_Click(object sender, RoutedEventArgs e)
+        private void bt_add_Click(object sender, RoutedEventArgs e)
         {
             check = 1;
             Alert_Add alert_Add = new Alert_Add(this);
@@ -77,11 +77,11 @@ namespace Arkangel
             check = 1;
             keyword_list.Items.Remove(keyword_list.SelectedItem);
         }
-        public class _Alert
-        {
-            int id;
-            string key;
-        }
+        //public class _Alert
+        //{
+        //    //int id;
+        //    //string key;
+        //}
         private void bt_OK_Click(object sender, RoutedEventArgs e)
         {
             if (check == 1)
@@ -106,11 +106,8 @@ namespace Arkangel
                         sqldelete.ExecuteNonQuery();
                         for (int i =0;i<keyword_list.Items.Count;i++)
                         {
-                            
-                                    SQLiteCommand sqlUpdateAlertList = new SQLiteCommand(@"INSERT INTO AlertList VALUES (" + user + ",'" + keyword_list.Items[i].ToString() + "')", connect);
-                                    sqlUpdateAlertList.ExecuteNonQuery();
-                            
-                            
+                            SQLiteCommand sqlUpdateAlertList = new SQLiteCommand(@"INSERT INTO AlertList VALUES (" + user + ",'" + keyword_list.Items[i].ToString() + "')", connect);
+                            sqlUpdateAlertList.ExecuteNonQuery();
                         }
                     }
                     connect.Close();

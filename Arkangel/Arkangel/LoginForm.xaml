@@ -37,7 +37,7 @@
         </Grid>
         <Button x:Name="btn_Login" Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,65" Content="LOGIN" Click="btn_Login_Click"/>
         <TextBlock Text="Forget Password?" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="130,0,126,35" Foreground="Gray" Cursor="Hand"/>
-        <Button VerticalAlignment="Bottom" Content="Sign In" FontSize="10" Width="70" Height="20" Margin="140,0,140,10" Padding="0" HorizontalAlignment="Center"></Button>
+        <Button x:Name="bt_signin" VerticalAlignment="Bottom" Content="Sign In" FontSize="10" Width="70" Height="20" Margin="140,0,140,10" Padding="0" HorizontalAlignment="Center" Click="bt_signin_Click"></Button>
         <Button x:Name="btn_Close" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" Padding="0" BorderBrush="{x:Null}" Click="btn_Close_Click">
             <materialDesign:PackIcon Kind="Power" Height="50" Width="50"></materialDesign:PackIcon>
         </Button>

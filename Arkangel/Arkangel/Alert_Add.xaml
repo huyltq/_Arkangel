@@ -15,7 +15,7 @@
      WindowStartupLocation="CenterScreen"
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
-     Icon ="C:\Users\8460p\Downloads\logo_LSC_icon.ico"
+    
         
         >
     <Grid>

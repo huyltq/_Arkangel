@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -92,18 +93,23 @@ namespace Arkangel
                     //SQLiteCommand sqlComm = new SQLiteCommand(@"SELECT id,username,password FROM Users WHERE username='" + tb_username.Text + "' AND password = '" + tb_password.Password + "'", connect);
                     //SQLiteDataReader r = sqlComm.ExecuteReader();
 
-                    // check user in Server...
+                    string _loginlog = Functions.Login(tb_username.Text, tb_password.Password);
 
 
-                    if (true)
+                    if (_loginlog!="Error")
                     {
                         MainWindow bs = new MainWindow();
 
                         bs._username.Text = tb_username.Text;
                         //SQLiteCommand check_user = new SQLiteCommand(@"UPDATE Users SET username",connect);
                         //SQLiteDataReader check = check_user.ExecuteReader();
+                        
                         SQLiteCommand getid = new SQLiteCommand(@"UPDATE current_user SET id=1", connect);
+                        
                         getid.ExecuteNonQuery();
+                        SQLiteCommand upusername = new SQLiteCommand(@"UPDATE Users SET id=1, username= '"+tb_username.Text+"', password='"+tb_password.Password+"' ", connect);
+
+                        upusername.ExecuteNonQuery();
                         ////    bs._username.Text = tb_username.Text;
                         //    SQLiteCommand check_user = new SQLiteCommand(@"SELECT * FROM current_user",connect);
                         //    SQLiteDataReader check = check_user.ExecuteReader();
@@ -125,7 +131,7 @@ namespace Arkangel
                         bs.Show();
                         Close();
                     }
-                    else if (false)
+                    else 
                     {
                         MessageBox.Show("Invalid Username or Password");
                     }
@@ -147,6 +153,11 @@ namespace Arkangel
             {
                 enter();
             }
+        }
+
+        private void bt_signin_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("chrome.exe", "http://www.arkangel.tk/sign-up");
         }
     }
 }

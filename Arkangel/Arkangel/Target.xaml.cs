@@ -57,7 +57,7 @@ namespace Arkangel
                         }
                         else cb_FollowApp.IsChecked = false;
                     }
-                    SQLiteCommand sqlComm_AlertList = new SQLiteCommand(@"SELECT byApp FROM TargetList WHERE id =(SELECT current_user.id FROM current_user.id)", connect);
+                    SQLiteCommand sqlComm_AlertList = new SQLiteCommand(@"SELECT byApp FROM TargetList WHERE id =(SELECT current_user.id FROM current_user)", connect);
                     SQLiteDataReader data2 = sqlComm_AlertList.ExecuteReader();
                     while (data2.Read())
                     {

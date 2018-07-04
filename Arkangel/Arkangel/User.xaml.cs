@@ -52,15 +52,11 @@ namespace Arkangel
                         else
                             rad_followingUser.IsChecked = false;
                     }
-
                     SQLiteCommand sqlConn_UserList1 = new SQLiteCommand(@"SELECT user FROM user_list WHERE id = (SELECT current_user.id FROM current_user)", connect);
                     // SQLiteDataReader ul1 = sqlConn_UserList1.ExecuteReader();
-
                     object re = sqlConn_UserList1.ExecuteScalar();
-
                     if (re == null)
-                        Functions.FindUsers();
-
+                    Functions.FindUsers();
                     SQLiteCommand sqlConn_UserList = new SQLiteCommand(@"SELECT user FROM user_list WHERE id = (SELECT current_user.id FROM current_user)", connect);
                     SQLiteDataReader ul = sqlConn_UserList.ExecuteReader();
                     // ad 2 lan // bug
@@ -74,7 +70,6 @@ namespace Arkangel
                             user_list.Items.Add(ul.GetString(0));
                        // }
                     }
-
                 }
                 connect.Close();
             }
@@ -90,18 +85,12 @@ namespace Arkangel
                     int enable = 0;
                     string currentUser = Environment.UserName;
                     if (rad_allUser.IsChecked == true) enable = 1;
-
                     if (rad_currentUser.IsChecked == true) enable = 2;
-
                     if (rad_followingUser.IsChecked == true) enable = 3;
-
-
                     SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"UPDATE monitor_user SET enable= " + enable + ",current_user='" + currentUser + "' WHERE monitor_user.id = (SELECT current_user.id FROM current_user)", connect);
                     sqlComm_Alert.ExecuteNonQuery();
-
                     SQLiteCommand sqlConn_Del = new SQLiteCommand(@"DELETE FROM user_list WHERE user_list.id = (SELECT current_user.id FROM current_user) ", connect);
                     sqlConn_Del.ExecuteNonQuery();
-
                     for (int i = 0; i < user_list.Items.Count; i++)
                     {
                         SQLiteCommand sqlConn = new SQLiteCommand(@"INSERT INTO user_list VALUES ((SELECT current_user.id FROM current_user),'" + user_list.Items[i].ToString() + "')", connect);

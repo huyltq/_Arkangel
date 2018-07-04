@@ -16,18 +16,29 @@
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
-        <StackPanel Margin="8,4,4,4" Background="#F2F2F2">
-            <Grid Height="50">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0" Background="#0489B1">
-                    <Button Uid="0" Width="150" Content="Website Usage" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="17"/>
+        <StackPanel Margin="0" Background="#F2F2F2">
+            <Grid Height="53">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0" Background="#0489B1">
+                    <Button Uid="0" Width="150" Content="Website Usage" Height="53" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="17"/>
                 </StackPanel>
-                <Grid x:Name="GridCursor" Width="150" Height="5" Background="#DBA901" HorizontalAlignment="Left" Margin="10 0" VerticalAlignment="Bottom"/>
+                <Grid x:Name="GridCursor" Width="150" Height="5" Background="#DBA901" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Bottom"/>
             </Grid>
 
             <Grid x:Name="GridMain" Height="356" Margin="10,16,10,0" Background="#F2F2F2">
                 <StackPanel>
-                    
+                    <GroupBox Header="Enable/Disable" Height="120" materialDesign:ColorZoneAssist.Mode="Light">
+                        <StackPanel VerticalAlignment="Center">
+                            <CheckBox Content="Enable get History from Chrome" Height="50" FontSize="25"></CheckBox>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="More Setting" materialDesign:ColorZoneAssist.Mode="Light">
+                        <StackPanel>
+                            <CheckBox Content="Get bookmark in Chrome" Height="50" FontSize="25"></CheckBox>
+                            <CheckBox Content="Get saved Password in Chrome" Height="50" FontSize="25"></CheckBox>
+                        </StackPanel>
+                    </GroupBox>
                 </StackPanel>
+                <Button Width="150" Margin="567,299,10,25">OK</Button>
             </Grid>
         </StackPanel>
     </Grid>

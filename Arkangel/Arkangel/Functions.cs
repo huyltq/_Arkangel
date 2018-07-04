@@ -7,6 +7,7 @@ using System.Data.SQLite;
 using System.Diagnostics;
 using System.DirectoryServices;
 using System.IO;
+using System.Net;
 using System.Security.Cryptography;
 using System.Security.Principal;
 using System.Text;
@@ -24,7 +25,6 @@ namespace Arkangel
                 key.SetValue("Arkangle", "\"" + System.Reflection.Assembly.GetExecutingAssembly().Location + "\"");
             }
         }
-
         public static void AddApplicationToAllUserStartup()
         {
             using (RegistryKey key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true))
@@ -48,7 +48,19 @@ namespace Arkangel
                 key.DeleteValue("Arkangle", false);
             }
         }
-
+        public static string Login( string username,string passsword)
+        {
+            string formUrl = "http://www.arkangel.tk/logginUpload"; // NOTE: This is the URL the form POSTs to, not the URL of the form (you can find this in the "action" attribute of the HTML's form tag
+            WebClient wc = new WebClient();
+            byte[] resp = wc.UploadValues(formUrl, new System.Collections.Specialized.NameValueCollection
+            {
+                {"email",username},
+                {"password",passsword}
+            });
+            string _response = Encoding.ASCII.GetString(resp);
+            Console.WriteLine(_response);
+            return _response;
+        }
         public static bool IsUserAdministrator()
         {
             //bool value to hold our return value
