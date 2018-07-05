@@ -26,7 +26,7 @@ namespace Arkangel
         public LoginForm()
         {
             InitializeComponent();
-            Functions.CheckUser();
+            //Functions.CheckUser();
             using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
             {
                 connect.Open();
@@ -72,7 +72,7 @@ namespace Arkangel
         }
         public void enter ()
         {
-            
+           // processbar.
             using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
             {
                 connect.Open();
@@ -90,36 +90,20 @@ namespace Arkangel
 
 
                         //Update token xuong database
-                        SQLiteCommand getid = new SQLiteCommand(@"UPDATE current_user SET id=1,token='"+_loginlog+"'", connect);
+                        SQLiteCommand getid = new SQLiteCommand(@"UPDATE current_user SET id=1,token='"+ _loginlog.Split('\"')[1] + "'", connect);
                         
                         getid.ExecuteNonQuery();
                         SQLiteCommand upusername = new SQLiteCommand(@"UPDATE Users SET id=1, username= '"+tb_username.Text+"', password='"+tb_password.Password+"' ", connect);
-
                         upusername.ExecuteNonQuery();
-                        ////    bs._username.Text = tb_username.Text;
-                        //    SQLiteCommand check_user = new SQLiteCommand(@"SELECT * FROM current_user",connect);
-                        //    SQLiteDataReader check = check_user.ExecuteReader();
-                        //    while (check.Read())
-                        //    {
-                        //        if (check["id"].ToString() == null)
-                        //        {
-                        //            SQLiteCommand getid = new SQLiteCommand(@"insert into current_user values (" + Uid + ")", connect);
-                        //            getid.ExecuteNonQuery();
-                        //        }
-                        //        else
-                        //        {
-                        //            SQLiteCommand getid = new SQLiteCommand(@"UPDATE current_user SET id=" + Uid, connect);
-                        //            getid.ExecuteNonQuery();
-                        //        }
-                        //    }
-
-
                         bs.Show();
                         Close();
                     }
                     else 
                     {
+                        SQLiteCommand getid = new SQLiteCommand(@"UPDATE current_user SET id=NULL,token='" + _loginlog.Split('\"')[1] + "'", connect);
+                        getid.ExecuteNonQuery();
                         MessageBox.Show("Invalid Username or Password");
+
                     }
                     connect.Close();
                 }

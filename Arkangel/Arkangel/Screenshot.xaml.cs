@@ -52,7 +52,11 @@ namespace Arkangel
                     connect.Close();
                 }
             }
-            
+            ProcessStartInfo startupload = new ProcessStartInfo();
+            startupload.WorkingDirectory = @"..\..\module\";
+            startupload.FileName = "upScreenshot.exe";
+            startupload.WindowStyle = ProcessWindowStyle.Hidden;
+            Process.Start(startupload);
             int hours;
             int minutes;
             int.TryParse(tb_hours.Text, out hours);

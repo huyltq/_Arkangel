@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,12 +22,37 @@ namespace Arkangel
     /// </summary>
     public partial class _Clipboard : UserControl
     {
+        string email;
+        string token;
         public _Clipboard()
         {
 
             InitializeComponent();
             _text.Text = Clipboard.GetText();
             _text.IsReadOnly = true;
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
+            {
+                connect.Open();
+                using (SQLiteCommand fmd = connect.CreateCommand())
+                {
+
+                    SQLiteCommand sqlComm = new SQLiteCommand(@"SELECT * from Users where id = (select id from current_user)", connect);
+                    SQLiteDataReader r = sqlComm.ExecuteReader();
+                    while (r.Read())
+                    {
+                        email = r["username"].ToString();
+                    }
+                    SQLiteCommand sqlCom = new SQLiteCommand(@"SELECT token from current_user", connect);
+                    SQLiteDataReader rr = sqlCom.ExecuteReader();
+                    while(rr.Read())
+                    {
+                        token = rr["token"].ToString();
+                    }
+                }
+            }
+            DateTime mydate = DateTime.Now;
+            string date = mydate.ToString("yyyy_MM_dd");
+            File.WriteAllText(@"..\\..\\Clipboard\\"+date+"-"+email+"-"+token+".txt", _text.Text);
         }
 
         private void bt_change_Click(object sender, RoutedEventArgs e)

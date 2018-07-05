@@ -42,5 +42,6 @@
             <materialDesign:PackIcon Kind="Power" Height="50" Width="50"></materialDesign:PackIcon>
         </Button>
         <Image Source=".\Sources\34054291_1039096782920609_216488157267361792_n.png" Height="100" Width="70" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="140,77,140,0" IsManipulationEnabled="True"></Image>
+        <ProgressBar x:Name="processbar" Margin="0,435,0,61" Visibility="Hidden"></ProgressBar>
     </Grid>
 </Window>
