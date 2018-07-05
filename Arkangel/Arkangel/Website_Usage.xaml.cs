@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,40 @@ namespace Arkangel
         public Website_Usage()
         {
             InitializeComponent();
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
+            {
+                connect.Open();
+                using (SQLiteCommand fmd = connect.CreateCommand())
+                {
+                    SQLiteCommand sqlConn_WU = new SQLiteCommand(@"SELECT * FROM webusage,current_user WHERE webusage.id = current_user.id", connect);
+                    SQLiteDataReader mWU = sqlConn_WU.ExecuteReader();
+                    while (mWU.Read())
+                    {
+                        if (mWU["getHistory"].ToString() == "1") cb_enable.IsChecked = true; else cb_enable.IsChecked = false;
+                        if (mWU["getBookmark"].ToString() == "1") cb_bookmark.IsChecked = true; else cb_bookmark.IsChecked = false;
+                        if (mWU["getPassword"].ToString() == "1") cb_password.IsChecked = true; else cb_password.IsChecked = false;
+                    }
+                }
+            }
+        }
+
+        private void bt_OK_Click(object sender, RoutedEventArgs e)
+        {
+            string getHistory="0";
+            string getBookmark="0";
+            string getPassword="0";
+            if (cb_enable.IsChecked.Value == true) getHistory = "1";
+            if (cb_bookmark.IsChecked.Value == true) getBookmark = "1";
+            if (cb_password.IsChecked.Value == true) getPassword = "1";
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
+            {
+                connect.Open();
+                using (SQLiteCommand fmd = connect.CreateCommand())
+                {
+                    SQLiteCommand sqlup_WU = new SQLiteCommand(@"UPDATE webusage SET id=1, getHistory="+getHistory+",getBookmark="+getBookmark+",getPassword="+getPassword, connect);
+                    sqlup_WU.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

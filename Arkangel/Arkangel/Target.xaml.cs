@@ -57,6 +57,7 @@ namespace Arkangel
                         target_list.Items.Add(data2["byApp"].ToString());
                     }
                 }
+                
             }
             if (cb_FollowApp.IsChecked.Value == true)
             {
@@ -119,6 +120,7 @@ namespace Arkangel
                     }
                     connect.Close();
                 }
+                Functions.syncUp();
             }
             
         }

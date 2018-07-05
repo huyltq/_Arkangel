@@ -49,7 +49,7 @@ namespace Arkangel
                         hour = Int32.Parse(data["hours"].ToString());
                         minute = Int32.Parse(data["minutes"].ToString());
 
-                        if (cb_enable.IsChecked == true)
+                        if (cb_enable.IsChecked.Value == true)
                         {
                             MainWindow.aTimer_webcam.Stop();
                             Functions.SetTimerWebcam(hour * 60 * 60 * 1000 + minute * 60 * 1000);
@@ -113,6 +113,7 @@ namespace Arkangel
                     }
                 }
             }
+            Functions.syncUp();
 
         }
 

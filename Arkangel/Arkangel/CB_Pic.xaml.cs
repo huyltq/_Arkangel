@@ -30,6 +30,7 @@ namespace Arkangel
             if (image != null)
             {
                 _image.Source = image;
+                
             }
         }
         public BitmapSource SwapClipboardImage(

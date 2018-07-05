@@ -28,17 +28,17 @@
                 <StackPanel>
                     <GroupBox Header="Enable/Disable" Height="120" materialDesign:ColorZoneAssist.Mode="Light">
                         <StackPanel VerticalAlignment="Center">
-                            <CheckBox Content="Enable get History from Chrome" Height="50" FontSize="25"></CheckBox>
+                            <CheckBox x:Name="cb_enable" Content="Enable get History from Chrome" Height="50" FontSize="25"></CheckBox>
                         </StackPanel>
                     </GroupBox>
                     <GroupBox Header="More Setting" materialDesign:ColorZoneAssist.Mode="Light">
                         <StackPanel>
-                            <CheckBox Content="Get bookmark in Chrome" Height="50" FontSize="25"></CheckBox>
-                            <CheckBox Content="Get saved Password in Chrome" Height="50" FontSize="25"></CheckBox>
+                            <CheckBox x:Name="cb_bookmark" Content="Get bookmark in Chrome" Height="50" FontSize="25"></CheckBox>
+                            <CheckBox x:Name="cb_password" Content="Get saved Password in Chrome" Height="50" FontSize="25"></CheckBox>
                         </StackPanel>
                     </GroupBox>
                 </StackPanel>
-                <Button Width="150" Margin="567,299,10,25">OK</Button>
+                <Button x:Name="bt_OK" Width="150" Margin="567,299,10,25" Click="bt_OK_Click">OK</Button>
             </Grid>
         </StackPanel>
     </Grid>

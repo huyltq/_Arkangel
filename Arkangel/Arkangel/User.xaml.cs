@@ -99,6 +99,7 @@ namespace Arkangel
 
                 }
             }
+            Functions.syncUp();
         }
 
         private void btn_Delete_Click(object sender, RoutedEventArgs e)

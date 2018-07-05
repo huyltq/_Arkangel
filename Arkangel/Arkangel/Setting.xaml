@@ -89,7 +89,7 @@
             </StackPanel>
             <StackPanel Height="20"></StackPanel>
             <StackPanel HorizontalAlignment="Center" Height="27" VerticalAlignment="Bottom" Margin="58,0,93,0" Width="349" >
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Height="29" Text="HOT KEY to OPEN: CTRL+Caps Lock" Foreground="DarkGreen" Width="317"/>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Height="29" Text="HOT KEY to OPEN: CTRL+Caps Lock" Foreground="DarkGreen" Width="325"/>
             </StackPanel>
         </StackPanel>
     </Grid>

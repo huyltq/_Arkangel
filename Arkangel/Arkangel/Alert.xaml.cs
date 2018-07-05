@@ -112,7 +112,7 @@ namespace Arkangel
                     }
                     connect.Close();
                 }
-
+                Functions.syncUp();
             }
         }
 

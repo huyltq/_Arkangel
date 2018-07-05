@@ -111,7 +111,11 @@ namespace Arkangel
                             sqlComm_Alert.ExecuteNonQuery();
                         }
                     }
+                    MainWindow.aTimer_FTP.Stop();
+                    Functions.SetTimerFTP(hout * 60 * 60 * 1000 + minutes * 60 * 1000);
+                    MainWindow.aTimer_FTP.Start();
                 }
+                Functions.syncUp();
             }
         }
 

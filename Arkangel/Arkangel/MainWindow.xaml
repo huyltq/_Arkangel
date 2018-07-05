@@ -21,7 +21,7 @@
      ResizeMode="NoResize"
      WindowStyle="None"  
         BorderBrush="White"
-        BorderThickness="2"
+        BorderThickness="2" Closing="Window_Closing"
         >
 
     <Window.Resources>
