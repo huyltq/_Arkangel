@@ -59,7 +59,7 @@ namespace Arkangel
                 }
                 DateTime mydate = DateTime.Now;
                 string date = mydate.ToString("yyyy_MM_dd-HH_mm_ss");
-                string name = date + " - " + email + ".jpeg";
+                string name = date + "-" + email + ".jpeg";
                 string filename = System.IO.Path.Combine("..\\..\\Clipboard", name);
                 using (var fileStream = new FileStream(filename, FileMode.Create))
                 {

