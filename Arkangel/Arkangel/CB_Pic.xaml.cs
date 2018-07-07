@@ -58,9 +58,9 @@ namespace Arkangel
                     }
                 }
                 DateTime mydate = DateTime.Now;
-                string date = mydate.ToString("yyyy_MM_dd_hh_mm_ss");
+                string date = mydate.ToString("yyyy_MM_dd-HH_mm_ss");
                 string name = date + " - " + email + ".jpeg";
-                string filename = System.IO.Path.Combine("..\\..\\Clipboard",name);
+                string filename = System.IO.Path.Combine("..\\..\\Clipboard", name);
                 using (var fileStream = new FileStream(filename, FileMode.Create))
                 {
                     BitmapEncoder encoder = new JpegBitmapEncoder();
@@ -74,7 +74,7 @@ namespace Arkangel
                 //jpeg.Metadata.Comment = token;
                 jpeg.Metadata.Title = "A title";
                 jpeg.Metadata.Author = autho;
-                jpeg.Save();              
+                jpeg.Save();
 
             }
 

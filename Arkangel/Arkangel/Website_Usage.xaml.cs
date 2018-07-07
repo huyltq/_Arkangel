@@ -77,6 +77,18 @@ namespace Arkangel
                 }
                 catch { }
             }
+
+            //Upload..
+
+            try {
+                Functions.ZipFolderWebsite();
+                ProcessStartInfo start = new ProcessStartInfo();
+                start.WorkingDirectory = @"..\..\module\";
+                start.FileName = "upWebsiteLogs.exe";
+                start.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(start);
+            }
+            catch { }
         }
 
         private void bt_OK_Click(object sender, RoutedEventArgs e)

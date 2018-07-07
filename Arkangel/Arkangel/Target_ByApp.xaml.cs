@@ -23,8 +23,9 @@ namespace Arkangel
         private Target _target = null;
         public Target_ByApp(Target target)
         {
-            _target = target;
+            
             InitializeComponent();
+            _target = target;
             Process[] processlist = Process.GetProcesses();
 
             foreach (Process p in processlist)
