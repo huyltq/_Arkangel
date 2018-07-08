@@ -86,16 +86,11 @@ namespace Arkangel
                         MainWindow bs = new MainWindow();
 
                         bs._username.Text = tb_username.Text;
-                        //SQLiteCommand check_user = new SQLiteCommand(@"UPDATE Users SET username",connect);
-                        //SQLiteDataReader check = check_user.ExecuteReader();
-                        
-
-
                         //Update token xuong database
                         SQLiteCommand getid = new SQLiteCommand(@"UPDATE current_user SET id=1,token='"+ _loginlog.Split('\"')[1] + "'", connect);
-                        
+                       
                         getid.ExecuteNonQuery();
-                        SQLiteCommand upusername = new SQLiteCommand(@"UPDATE Users SET id=1, username= '"+tb_username.Text+"', password='"+tb_password.Password+"' ", connect);
+                        SQLiteCommand upusername = new SQLiteCommand(@"UPDATE Users SET id=1, username= '"+tb_username.Text+"', password='"+Functions.Base64Encode(tb_password.Password)+"' ", connect);
                         upusername.ExecuteNonQuery();
                         Functions.syncDown();
                         Functions.CheckUser();
@@ -132,6 +127,11 @@ namespace Arkangel
         private void bt_signin_Click(object sender, RoutedEventArgs e)
         {
             Process.Start("chrome.exe", "http://www.arkangel.tk/sign-up");
+        }
+
+        private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }

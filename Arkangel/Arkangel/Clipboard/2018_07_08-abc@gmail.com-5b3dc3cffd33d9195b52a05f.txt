@@ -1,0 +1,47 @@
+
+18_12_20
+
+18_17_35
+
+18_19_39
+
+18_55_25
+System.Windows.IDataObject iData = System.Windows.Clipboard.GetDataObject();
+
+                    ClipboardFormat? format = null;
+
+                    foreach (var f in formats)
+                    {
+                        if (iData.GetDataPresent(f))
+                        {
+                            format = (ClipboardFormat)Enum.Parse(typeof(ClipboardFormat), f);
+                            break;
+                        }
+                    }
+
+                    object data = iData.GetData(format.ToString());
+
+                    if (data == null || format == null)
+                        return;
+
+                    if (OnClipboardChange != null)
+                        OnClipboardChange((ClipboardFormat)format, data);
+20_45_25
+es
+20_46_05
+
+20_53_55
+
+20_54_15
+
+20_55_07
+
+20_57_00
+
+23_00_03
+            Functions.syncDown();
+
+23_00_33
+C:\Users\8460p\Downloads\Logs
+23_00_33
+C:\Users\8460p\Downloads\Logs

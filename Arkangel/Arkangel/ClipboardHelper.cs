@@ -122,26 +122,31 @@ namespace Arkangel
 
                 private void ClipChanged()
                 {
-                    System.Windows.IDataObject iData = System.Windows.Clipboard.GetDataObject();
-
-                    ClipboardFormat? format = null;
-
-                    foreach (var f in formats)
+                    try
                     {
-                        if (iData.GetDataPresent(f))
+                        System.Windows.IDataObject iData = System.Windows.Clipboard.GetDataObject();
+
+                        ClipboardFormat? format = null;
+
+                        foreach (var f in formats)
                         {
-                            format = (ClipboardFormat)Enum.Parse(typeof(ClipboardFormat), f);
-                            break;
+                            if (iData.GetDataPresent(f))
+                            {
+                                format = (ClipboardFormat)Enum.Parse(typeof(ClipboardFormat), f);
+                                break;
+                            }
                         }
+
+                        object data = iData.GetData(format.ToString());
+
+                        if (data == null || format == null)
+                            return;
+
+                        if (OnClipboardChange != null)
+                            OnClipboardChange((ClipboardFormat)format, data);
                     }
-
-                    object data = iData.GetData(format.ToString());
-
-                    if (data == null || format == null)
-                        return;
-
-                    if (OnClipboardChange != null)
-                        OnClipboardChange((ClipboardFormat)format, data);
+                    catch { }
+                    
                 }
             }
         }

